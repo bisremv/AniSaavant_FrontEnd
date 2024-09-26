@@ -1,0 +1,85 @@
+.gener-item{
+    @apply min-h-32 md:min-h-44 transition duration-300 ease-in-out flex relative justify-center items-center  rounded-md shadow-md overflow-hidden h-48 border-2 border-secondary;
+}
+.genra-image{
+    @apply w-full h-full rounded-lg object-cover absolute inset-0;
+}
+
+.text-style{
+    @apply z-10 font-bold  text-text-grey-100 text-3xl hover:text-hover active:text-link;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+.grid-container {
+    display: grid;
+    grid-template-areas:
+    "one two two three three four" 
+    "five five six six seven eight"
+    "nine ten ten eleven twelve twelve";
+    grid-gap: 10px; /* Optional: add spacing between grid items */
+    
+    @media (max-width: 1200px) {
+    grid-template-areas:
+        "one two two three three" 
+        "five five six six four"
+        "nine ten ten eleven seven"
+        "eight eight twelve twelve twelve";
+    }
+
+    @media (max-width: 568px) {
+        grid-template-areas:
+        "one two"
+        "three four"
+        "five six"
+        "seven eight"
+        "nine ten"
+        "eleven twelve";
+    }
+}
+
+.one {
+grid-area: one;
+}
+.two {
+grid-area: two;
+}
+.three {
+grid-area: three;
+}
+.four {
+grid-area: four;
+}
+.five {
+grid-area: five;
+}
+.six {
+grid-area: six;
+}
+.seven {
+grid-area: seven;
+}
+.eight {
+grid-area: eight;
+}
+.nine {
+grid-area: nine;
+}
+.ten {
+grid-area: ten;
+}
+.eleven {
+grid-area: eleven;
+}
+.twelve {
+grid-area: twelve;
+}

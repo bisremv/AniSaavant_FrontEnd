@@ -1,0 +1,68 @@
+<div class="w-full h-[100vh] flex items-center justify-center overflow-hidden">
+
+    <div class="wrapper h-full flex items-center flex-col  lg:flex-row justify-around  gap-44 w-full ">
+        <div class="img max-w-[35vw] hide-smaller-screen">
+            <img  src="images/userManagment/toppng.com-kakashi-sensei-png-kakashi-hatake-no-background-713x857.png" alt="">
+        </div>
+        <div class="divider divider-primary divider-horizontal hide-smaller-screen ">
+            <img src="images/S_logo.svg" alt="" class="min-w-72 ">
+        </div>
+        
+        <div class="form-container flex flex-col border lg:border-0 rounded-lg p-2  border-primary  gap-10">
+            <form class="Form  flex-col flex   justify-center items-center lg:items-start gap-5 self-center  "       (ngSubmit)="OnFormSubmit()" #signUpForm="ngForm" >
+                <div class="header text-4xl font-bold font-main "> Sign-In</div>
+                <div>
+                    <input type="text " class="input-style" placeholder="userEmail" name="userEmail" #userEmail="ngModel" ngModel email required>
+                    <div class="warning" *ngIf="userEmail.invalid && userEmail.touched">
+                        the email is empty or not correct format
+                    </div>
+                </div>
+                <div>
+                    <input 
+                    type="password" 
+                    class="input-style" 
+                    placeholder="Password" 
+                    name="password" 
+                    #password="ngModel" 
+                    ngModel 
+                    required 
+                    >
+                <div class=" warning" *ngIf="password.invalid && password.touched">
+                    Password must be at least 8 characters long and contain symbols,numbers, and both upper and lower case letters.
+                </div>
+                </div>
+                <button type="submit" class="btn submit-btn flex " [disabled]="signUpForm.invalid" [ngClass]="{'disabled-btn': signUpForm.invalid}">   
+                    <p *ngIf="!isLoading">Sign In </p> 
+                    <span *ngIf="isLoading" class="loading loading-dots loading-lg mb-2"></span>    
+                </button>
+
+            <div class="alert-message">
+                <div *ngIf="isError" role="alert" class="alert alert-error">
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        class="h-6 w-6 shrink-0 stroke-current"
+                        fill="none"
+                        viewBox="0 0 24 24">
+                        <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        stroke-width="2"
+                        d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <span>Error! {{ Message}}</span>
+                    </div>
+            </div>
+            </form>
+            <div class="flex gap-3">
+
+            <button class="btn  self-start " (click)="navigateToSignUp()">
+                Sign Up
+            </button>
+            <button class="btn  self-start " (click)="navigateToHome()">
+                Home
+            </button>
+            </div>
+        </div>  
+    </div>
+    
+</div>

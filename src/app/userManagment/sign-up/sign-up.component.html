@@ -1,0 +1,89 @@
+<div class="w-full h-[100vh] flex items-center justify-center overflow-hidden">
+
+    <div class="wrapper h-full flex items-center flex-col lg:flex-row justify-around   w-full ">
+        <div class="img hide-smaller-screen h-full">
+            <img  src="images/userManagment/toppng.com-kakashi-png-by-hidan-kakashi-869x1585.png" alt="">
+        </div>
+        <div class="divider divider-primary divider-horizontal hide-smaller-screen ">
+            <img src="images/S_logo.svg" alt="" class="min-w-72 ">
+        </div>
+        
+        <div class="form-container flex flex-col border lg:border-0 rounded-lg p-2  border-primary  gap-10">
+            <form class="Form flex-col flex   justify-center items-center lg:items-start gap-5 self-center  "       (ngSubmit)="OnFormSubmit()" #registerForm="ngForm" >
+            <div class="header text-4xl font-bold font-main "> Sign-Up</div>
+            <div class="input-wrraper">
+                <input type="text " class="input-style" placeholder="userName" name="userName" required #userName="ngModel" ngModel >
+            <div class="warning" *ngIf="userName.invalid && userName.touched">
+                userName can't be empty
+            </div>
+            </div>
+            <div>
+                <input type="text " class="input-style" placeholder="userEmail" name="userEmail" #userEmail="ngModel" ngModel email required>
+                <div class="warning" *ngIf="userEmail.invalid && userEmail.touched">
+                    the email is empty or not correct format
+                </div>
+            </div>
+            <div>
+                <input 
+                type="password" 
+                class="input-style" 
+                placeholder="Password" 
+                name="password" 
+                #password="ngModel" 
+                ngModel 
+                required 
+                pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$" 
+                >
+            <div class=" warning" *ngIf="password.invalid && password.touched">
+                Password must be at least 8 characters long and contain symbols,numbers, and both upper and lower case letters.
+            </div>
+            </div>
+            <button type="submit" class="btn submit-btn flex " [disabled]="registerForm.invalid" [ngClass]="{'disabled-btn': registerForm.invalid}">   
+                <p *ngIf="!isLoading">Sign Up </p> 
+                <span *ngIf="isLoading" class="loading loading-dots loading-lg mb-2"></span>    
+            </button>
+
+        <div class="alert-message">
+            <div *ngIf="isSuccess" role="alert" class="alert alert-success">
+                    <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-6 w-6 shrink-0 stroke-current"
+                    fill="none"
+                    viewBox="0 0 24 24">
+                    <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <span>{{Message}}</span>
+            </div>
+            <div *ngIf="isError" role="alert" class="alert alert-error">
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-6 w-6 shrink-0 stroke-current"
+                    fill="none"
+                    viewBox="0 0 24 24">
+                    <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <span>Error! {{ Message}}</span>
+                </div>
+        </div>
+        </form>
+        <div class="flex gap-3">
+            <button class="btn  self-start " (click)="navigateToSignIN()">
+                Sign In
+            </button>
+            <button class="btn  self-start " (click)="navigateToHome()">
+                Home
+            </button>
+        </div>
+
+        </div>   
+    </div>
+    
+</div>

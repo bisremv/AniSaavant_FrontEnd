@@ -1,0 +1,10 @@
+.menu-tabs{
+    @apply p-1 flex flex-row flex-nowrap gap-1 items-center xl:text-lg lg:text-xl cursor-pointer hover:text-secondary active:text-primary ;
+}
+
+.userSign{
+    @apply p-1  gap-2  font-bold bg-primary rounded-sm  items-center  text-sm cursor-pointer hover:bg-secondary active:bg-hover ;
+}
+.icon{
+    @apply size-8
+}

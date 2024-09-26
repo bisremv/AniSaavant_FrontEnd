@@ -1,0 +1,38 @@
+<div class="carousel-container relative w-full">
+    <div
+    class="inner-carousel flex overflow-x-auto snap-x snap-mandatory transition ease-in-out duration-100" #carousel >
+        <app-anime-hero
+        class="snap-centerw-full snap-center flex-shrink-0"
+        *ngFor="let anime of animeHeros; let i = index"
+        [anime]="anime"
+      ></app-anime-hero>
+    </div>
+  
+    <div class="absolute right-5 bottom-0 flex flex-col gap-3">
+      <!-- Next slide navigation -->
+      <a (click)="scrollNext()" class="btn arrow">❯</a>
+      <!-- Previous slide navigation -->
+      <a (click)="scrollPrev()" class="btn arrow">❮</a>
+    </div>
+  </div>
+
+
+  <div class="content">
+    <app-anime-grouping [animeList]="PopularList" [animeGroup]="'Popular'" class="content"></app-anime-grouping>
+  </div>
+  <div class="content">
+    <app-anime-group-horizontal 
+    [animeGroup]="'Trending'"
+    [animeList]="TrendingList"
+    ></app-anime-group-horizontal>
+  </div>
+  <div class="content">
+    <app-anime-grouping [animeList]="AnticipatedList" [animeGroup]="'Anticipated'" class="content"></app-anime-grouping>
+
+  </div>
+  <div class="content">
+    <app-anime-group-horizontal 
+    [animeGroup]="'MostWatched'"
+    [animeList]="MostWatchedList" class="content"></app-anime-group-horizontal>
+  </div>
+  

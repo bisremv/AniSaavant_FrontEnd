@@ -1,0 +1,21 @@
+<div class="carousel-container relative w-full">
+    <div
+    class="inner-carousel flex overflow-x-auto snap-x snap-mandatory transition ease-in-out duration-100" #carousel >
+        <app-manga-hero
+        class="snap-centerw-full snap-center flex-shrink-0"
+        *ngFor="let manga of mangaHeros; let i = index"
+        [manga]="manga"
+      ></app-manga-hero>
+    </div>
+  
+    <div class="absolute right-5 bottom-0 flex flex-col gap-3">
+      <!-- Next slide navigation -->
+      <a (click)="scrollNext()" class="btn arrow">❯</a>
+      <!-- Previous slide navigation -->
+      <a (click)="scrollPrev()" class="btn arrow">❮</a>
+    </div>
+  </div>
+<div class="extention-container">
+    <app-manga-sites class="" *ngFor="let ext of extInfo" [ext]="ext" ></app-manga-sites>
+    <!-- <app-manga-sites class="" ></app-manga-sites> -->
+</div>

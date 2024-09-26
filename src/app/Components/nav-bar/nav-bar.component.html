@@ -1,0 +1,134 @@
+<div class="flex  font-main flex-wrap justify-between items-center px-2  min-h-16 ">
+    <div class="absolute inset-0 -z-10  bg-background-100  bg-opacity-85  backdrop-blur-lg    ">
+        </div>
+    <div class=" flex items-center  ">
+    <div (click)="menuToggle()" class="menu relative hover:bg-background-200 active:bg-background-100 rounded  flex justify-center items-center md:hidden h-full">
+        <svg  class="size-10 p-2 flex justify-center items-centers" xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" >
+        <path  stroke-linecap="round"  class="stroke-text-grey-100 " stroke-linejoin="round" d="M3.75 5.25h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5m-16.5 4.5h16.5" />
+        </svg>
+    </div>
+    
+    <div class="search   rounded  ">
+        <div class="search-input relative hidden   lg:block">
+            <div class="search-icon absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+            <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
+            </svg>
+            <span class="sr-only">Search icon</span>
+            </div>
+            <input type="text" id="search-navbar" class="block  bg-background-100 max-w-60 p-2 ps-10  font-bold  rounded-lg  focus:border-text-grey-100  focus:bg-background-50 focus:outline-none border border-primary  text-text-grey-100" placeholder="Search...">
+        </div>
+            <div  class="lg:hidden p-2 rounded-md hover:bg-background-200 active:bg-background-100"(click)="Searchtoggle()" > 
+            <svg xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"  class="size-6">
+            <path stroke-linecap="round" class="stroke-text-grey-100"  stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
+            </svg>
+            </div>
+        </div>
+    </div>
+
+    <div class="logo-small  relative md:hidden  min-w-32  text-sm  p-1 text-center overflow-visible hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600">            
+        <img src="/images/logo.svg" class="absolute -top-4 text-sm" alt="">
+    </div>
+    
+    <ul class="tabs text-text-grey-100 hidden font-black md:flex  lg:gap-2 justify-between items-center text-lg lg:text-xl ">
+        <li class="Library menu-tabs">
+            <div class="icon-container">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="icon">
+                    <path stroke-linecap="round" stroke="#bbbbbb"  stroke-linejoin="round" d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0 1 11.186 0Z" />
+                    </svg>
+                    
+            </div>
+            <a href="#">
+                Library
+            </a>
+            </li>
+        <li class="Latest  menu-tabs">
+            <div class="icon-container">
+                <svg  xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="icon">
+                    <path stroke-linecap="round"stroke="#bbbbbb" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                    </svg>
+                    
+            </div>
+                
+            Latest</li>
+        <li class="relative  min-w-64  hidden md:block text-sm   text-center overflow-visible">            
+        <img src="images/logo.svg" class="absolute -top-6" alt="">
+        
+    </li>
+    <a routerLink="/discover">
+        <li class="Discover  menu-tabs ">
+                
+            <div class="icon-container">
+                <svg class="icon" fill="#bbbbbb" height="800px" width="800px" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" 
+	            viewBox="0 0 297 297" xml:space="preserve">
+        <g>
+            <path d="M218.542,65.321L42.861,135.612c-3.934,1.573-6.466,5.436-6.342,9.671c0.125,4.234,2.88,7.94,6.899,9.28l74.264,24.758
+                l24.753,74.286c1.34,4.02,5.046,6.775,9.281,6.901c0.1,0.002,0.199,0.004,0.299,0.004c4.118,0,7.837-2.507,9.373-6.348
+                l70.279-175.721c1.499-3.75,0.62-8.033-2.236-10.889C226.577,64.699,222.293,63.82,218.542,65.321z M152.878,221.068l-17.635-52.92
+                c-1.004-3.015-3.37-5.382-6.385-6.386l-52.911-17.64L204.17,92.821L152.878,221.068z"/>
+            <path d="M148.5,0C66.653,0,0.067,66.616,0.067,148.499C0.067,230.383,66.653,297,148.5,297s148.433-66.617,148.433-148.501
+                C296.933,66.616,230.347,0,148.5,0z M148.5,276.808c-70.712,0-128.24-57.56-128.24-128.309c0-70.748,57.528-128.307,128.24-128.307
+                s128.24,57.559,128.24,128.307C276.74,219.248,219.212,276.808,148.5,276.808z"/>
+            </g>
+            </svg>
+            </div>
+                Discover
+            </li>
+        </a>
+        <a href="/extension">
+        <li class="Extension  menu-tabs">
+            <div class="icon-container">
+                <svg fill="#bbbbbb"class="icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M3.111,23H8.667a1,1,0,0,0,1-1V19.9a1.316,1.316,0,0,1,1.009-1.323,1.224,1.224,0,0,1,1.435,1.2V22a1,1,0,0,0,1,1h3.334a2.113,2.113,0,0,0,2.111-2.111V17.444h1.222a3.224,3.224,0,0,0,3.179-3.756A3.314,3.314,0,0,0,19.659,11h-1.1V7.555a2.113,2.113,0,0,0-2.111-2.111H13V4.34a3.313,3.313,0,0,0-2.688-3.3A3.222,3.222,0,0,0,6.556,4.222V5.444H3.111A2.113,2.113,0,0,0,1,7.555V12a1,1,0,0,0,1,1H4.1a1.317,1.317,0,0,1,1.323,1.01,1.223,1.223,0,0,1-1.2,1.434H2a1,1,0,0,0-1,1v4.445A2.113,2.113,0,0,0,3.111,23ZM3,17.444H4.222A3.224,3.224,0,0,0,7.4,13.688,3.313,3.313,0,0,0,4.1,11H3V7.555a.111.111,0,0,1,.111-.111H7.556a1,1,0,0,0,1-1V4.222A1.223,1.223,0,0,1,9.99,3.017,1.316,1.316,0,0,1,11,4.34v2.1a1,1,0,0,0,1,1h4.445a.111.111,0,0,1,.111.111V12a1,1,0,0,0,1,1h2.1a1.317,1.317,0,0,1,1.324,1.01,1.225,1.225,0,0,1-1.205,1.434H17.556a1,1,0,0,0-1,1v4.445a.111.111,0,0,1-.111.111H14.111V19.778A3.222,3.222,0,0,0,10.355,16.6a3.313,3.313,0,0,0-2.688,3.3V21H3.111A.111.111,0,0,1,3,20.889Z"/>
+                    </svg>
+            </div>
+            
+                Extensions
+            </li>
+        </a>
+        </ul>
+    <div class="user  flex flex-col lg:flex-row gap-1 text-text-grey-100 lg:mr-3 xl:mr-8 cursor-pointer text-nowrap" > 
+        <div *ngIf="!isLogedIn">
+
+            <a routerLink="signIn" class="userSign">
+                Sign-In
+            </a>
+            <a routerLink="signUp" class="userSign">
+                Sign-up
+            </a>
+        </div>
+        <div *ngIf="isLogedIn">
+
+            <div class="avatar">
+                <div class="w-14 rounded-full h-full">
+                    <img src="images/userManagment/userAvatars/28.jpg" />
+                </div>
+                </div>
+                <!-- todo remove logout log out only in setting -->
+                <div (click)="logout()">
+                    logout
+                </div>
+        </div>
+        <!-- {{isLogedIn}} -->
+    </div>
+    
+</div>
+
+
+<ul *ngIf="isMenuOpen"   class="absolute w-full flex flex-col  items-start md:hidden   p-2 border border-text-grey-100   text-text-grey-100 gap-1 font-black text-lg lg:text-xl transition ease-in-out duration-150 bg-gradient-to-t from-background-50 to-background-200  rounded-md " 
+>
+<li class="Library menu-tabs ">Library</li>
+<li class="Latest  menu-tabs ">Latest</li>
+<li class="Discover menu-tabs " >Discover</li>
+<li class="Extension  menu-tabs ">Extensions</li>
+</ul>
+<div *ngIf="isSearchOpen" class="search-input relative block p-1  lg:hidden">
+    <div class="search-icon absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+    <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
+    </svg>
+    <span class="sr-only">Search icon</span>
+    </div>
+    <input  type="text" id="search-navbar" class="block  bg-background-100 w-full p-2 ps-10   font-bold  rounded-lg  focus:border-text-grey-100  focus:bg-background-50 focus:outline-none border-4 border-primary  text-text-grey-100" placeholder="Search...">
+</div>
+

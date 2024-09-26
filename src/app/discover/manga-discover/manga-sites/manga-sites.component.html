@@ -1,0 +1,11 @@
+<div class=" border-2 border-primary p-6 m-4 rounded-xl">
+    <div class=" bg-background-50 text-4xl inline-block py-3  px-8 font-main font-bold rounded-lg m-7  capitalize"> 
+        <h2>
+            {{ext.exName}}
+        </h2>
+    </div>
+    <div class="flex flex-col px-2 lg:px-8  gap-9">
+        <app-manga-group [mangaList]="PopularList" [ListName]="'Popular Manga'" >  </app-manga-group> 
+        <app-manga-group [mangaList]="LatestList" [ListName]="'Latest Manga'"> </app-manga-group>
+    </div>
+</div>

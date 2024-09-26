@@ -1,0 +1,21 @@
+.input-style{
+    @apply  border-b-2 border-text-grey-100 rounded-sm bg-transparent p-4 pl-0 outline-none  w-[75vw] lg:w-[35vw] font-bold; 
+}
+.submit-btn{
+    @apply bg-primary hover:bg-secondary p-4 border-secondary text-text-grey-50  w-full;
+}
+.hide-smaller-screen{
+    @apply hidden lg:flex;
+}
+.warning{
+    @apply text-error max-w-[35rem]  mt-2 font-bold font-main;
+}
+
+input.ng-invalid.ng-touched{
+
+    @apply border-b-2 border-error;
+}
+.disabled-btn {
+    @apply bg-background-50 cursor-not-allowed;
+      // Change cursor to indicate it's disabled
+    }

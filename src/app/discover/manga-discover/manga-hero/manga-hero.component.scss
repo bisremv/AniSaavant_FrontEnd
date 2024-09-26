@@ -3,7 +3,7 @@
     background-image: radial-gradient(transparent 0%,  #0e0e0e 90%) ;
 }
 .manga-info {
-    @apply z-0 mx-14 md:mx-20 lg:mx-24  flex flex-col gap-1 sm:gap-3 lg:gap-6  translate-x-[26rem] text-text-grey-50;
+    @apply z-0   flex flex-col gap-1 sm:gap-3 lg:gap-6  justify-center items-center md:items-start text-text-grey-50;
 }
 .detail-item{
     @apply  gap-1 hidden md:flex;

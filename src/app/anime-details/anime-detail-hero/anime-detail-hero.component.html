@@ -1,0 +1,71 @@
+<div class="wrapper w-[100vw] md:h-[80vh]  overflow-hidden relative flex flex-col gap-3 justify-center items-center md:flex-row md:justify-start  md:items-center text-text-grey-100  md:p-0">
+    <div class="image-backdrop absolute  inset-0   overflow-hidden">
+        <div>
+            <div class="dark-filter " >
+            </div>
+            <div class="dark-filter" >
+            </div>
+
+            <div class="absolute inset-0 backdrop-blur-sm" >
+            </div>
+            <div class="dark-filter" >
+            </div>
+        </div>
+        
+        <img [src]="animeInfo.backdropPath" alt="anime" class=" object-cover h-full w-full  ">
+
+    </div>
+    
+    
+    <img [src]="animeInfo.posterPath" alt="anime" class="  w-[50%] md:h-[60%] lg:h-[90%] md:w-[22%] m-5 my-2 rounded-md  z-0">
+    
+    <div class="anime-info ">
+        <div class="">
+            <div class="title m-2 md:m-0 text-4xl md:text-6xl lg:text-8xl capitalize font-black text-text-grey-50 font-header">
+                <h1>{{animeInfo.title}}</h1>
+            </div>
+        </div>
+        <div class="detail-item">
+            <div class="orginal-name">
+                <h4>original Name:{{animeInfo.originalName}}</h4>
+            </div>
+        </div>
+        <div class="detail-item">
+            <div class="rating detail-item" >
+                <span class="Rating detail-icon"> 
+                    <div class="relative size-16 bg-white rounded-full">
+                        <svg class="rotate-[135deg] size-full" viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg">
+                            <!-- Background Circle (Gauge) -->
+                            <circle cx="18" cy="18" r="16" fill="none" class="stroke-current text-purple-200 dark:text-neutral-700" stroke-width="1" stroke-dasharray="75 100"></circle>
+                            <!-- Gauge Progress -->
+                            <circle cx="18" cy="18" r="16" fill="none" class="stroke-current  text-purple-600 dark:text-purple-500" stroke-width="2"  stroke-dasharray="20 100"></circle>
+                            </svg>
+                        <!-- Value Text -->
+                        <div class="absolute top-1/2 start-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center">
+                            <span class="text-xl font-bold text-purple-600 dark:text-purple-500">{{animeInfo.voteAverage}}</span>
+                            <span class="text-purple-600 text-xs dark:text-purple-500 ">%</span>
+                        </div>
+                    </div> 
+                </span>
+                <span class="Votes "> {{animeInfo.voteCount}} Votes</span>
+            </div>
+        </div>
+        <div *ngIf="animeInfo.tagline"  class="detail-item capitalize text-2xl"  >
+        
+        {{animeInfo.tagline}}
+        </div>
+        <div class="detail-item ">
+            <h1 class="font-header text-4xl flex flex-col items-center justify-center md:inline-block">OverView</h1>
+            <p class="hidden md:inline-block">{{animeInfo.overview}}</p>
+            <p class="md:hidden">{{getOverviewForSmallScreen()}}</p>
+        </div>
+        <div class="detail-item">
+            <button class="btn call-to-action"> 
+                <svg class="w-4 md:w-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M4 12H20M12 4V20" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            Add To Library
+            </button>
+        </div>
+    </div>
+</div>

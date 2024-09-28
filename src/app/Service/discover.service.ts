@@ -1,6 +1,5 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { cp } from 'fs';
 import { tap } from 'rxjs';
 
 @Injectable({
@@ -31,11 +30,7 @@ export class DiscoverService {
       return response;
     }));
   }
-  getAnimeInfo(tmdbAnimeId: number, animeId: number) {
-    return this.http.get(this.url+"/api/anime/details?tmdbAnimeId="+tmdbAnimeId+"&animeId="+animeId).pipe(tap((response: any) => {
-      return response;
-    }));
-  }
+  
   getAnimeTrending(){
     return this.http.get(this.url+'/api/discover/trending/anime')
     .pipe(tap((response: any) => {

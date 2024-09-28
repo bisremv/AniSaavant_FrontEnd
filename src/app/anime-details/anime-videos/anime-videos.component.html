@@ -1,0 +1,33 @@
+<div class=" p-4 lg:w-[98vw] ">
+    <div>
+        <div class="header text-4xl text-text-grey-50 font-bold font-main mb-5">Medias</div>
+        <ul class="menu menu-vertical lg:menu-horizontal bg-secondary active:bg-primary rounded-box">
+            <li ><a (click)="changeActiveItem('video')" class="active:bg-primary capitalize text-lg text-text-grey-50 font-bold">Videos</a></li>
+            <li ><a (click)="changeActiveItem('backdrop')" class="active:bg-primary capitalize text-lg text-text-grey-50 font-bold">Backdrops</a></li>
+            <li ><a (click)="changeActiveItem('poster')" class="active:bg-primary capitalize text-lg text-text-grey-50 font-bold">Poster</a></li>
+            <li ><a (click)="changeActiveItem('logo')" class="active:bg-primary capitalize text-lg text-text-grey-50 font-bold">Logos</a></li>
+            </ul>
+    </div>
+    <div class="relative overflow-hidden flex items-center">
+      <div class="flex media-carousel lg:gap-10 md:gap-4 gap-2 p-4 rounded-lg overflow-x-scroll scroll-smooth snap-mandatory snap-x" (scroll)="onScroll($event)">
+        <ng-container *ngIf="isVideoActive">
+          <app-video-item class="snap-start" *ngFor="let video of trailerList" [video]="video"></app-video-item>
+        </ng-container>
+      
+        <ng-container *ngIf="isBackdropActive">
+          <app-image-item class="snap-start" *ngFor="let image of images.backdrops" [image]="image"></app-image-item>
+        </ng-container>
+      
+        <ng-container *ngIf="isLogoActive">
+          <app-image-item class="snap-start" *ngFor="let image of images.logos" [image]="image"></app-image-item>
+        </ng-container>
+      
+        <ng-container *ngIf="isPosterActive">
+          <app-image-item class="snap-start" *ngFor="let image of images.posters" [image]="image"></app-image-item>
+        </ng-container>
+      </div>
+      <app-next-carousel *ngIf="showNextArrow" class="right-0 Arrow-Direction"  [Direction]="next"  
+        (ArrowDirection)="onDirectionScroll($event)"  ></app-next-carousel>
+      <app-next-carousel  *ngIf="showPrevArrow" class="left-0  rotate-180 Arrow-Direction" [Direction]="prev" (ArrowDirection)="onDirectionScroll($event)"></app-next-carousel>
+    </div>
+    </div>

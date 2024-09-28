@@ -15,7 +15,7 @@ module.exports = {
         'primary': '#5a2e98',
         'secondary': '#6735ae',
         'hover': '#8258bd',
-        "link":'#c4a5d9',
+        "link":'#8258BD',
         "background": {
           50: '#242424',
           100: '#1c1c1c',

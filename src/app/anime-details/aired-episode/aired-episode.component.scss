@@ -1,0 +1,6 @@
+.info-item{
+    @apply xl:text-xl font-main flex gap-1 flex-nowrap font-bold m-1;
+}
+.Arrow-Direction{
+    @apply absolute inset-y-0 transition duration-200 ease-in-out;
+}

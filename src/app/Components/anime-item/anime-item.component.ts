@@ -4,6 +4,8 @@ import { DiscoverService } from '../../Service/discover.service';
 import { After } from 'v8';
 import { AnimeInfo } from '../../Models/animeInfo';
 import { Router, RouterModule } from '@angular/router';
+import { Episode } from '../../Models/episodes';
+import { AnimeService } from '../../Service/anime.service';
 
 @Component({
   selector: 'app-anime-item',
@@ -14,8 +16,10 @@ import { Router, RouterModule } from '@angular/router';
 })
 export class AnimeItemComponent implements OnInit {
   @Input() anime!: animeItem;
-  animeInfo:AnimeInfo=new AnimeInfo( 0,0,"","","","","","",0,false,"","",0,0,"","","","",0,0,[],[],[],[]);
-  discover:DiscoverService =inject(DiscoverService)
+  animeInfo: AnimeInfo = new AnimeInfo(
+    0, 0, "", "", "", "", "", "", 0, false, "", "", 0, 0, "", "", "", "", 0, 0, [], [], [], [], 
+    new Episode(0, "", 0, "", "", "", 0, 0, "", 0, 0, 0, "", false),new Episode(0, "", 0, "", "", "", 0, 0, "", 0, 0, 0, "", false));
+    animeService:AnimeService=inject(AnimeService)
   router:Router=inject(Router)
   ngOnInit(){
     this.getAnimeInfo()
@@ -27,7 +31,7 @@ export class AnimeItemComponent implements OnInit {
   }
   getAnimeInfo(){
     console.log(this.anime);
-    this.discover.getAnimeInfo(this.anime.tmdbId,this.anime.animeId).subscribe({
+    this.animeService.getAnimeInfo(this.anime.tmdbId,this.anime.animeId).subscribe({
       next:(res)=>{
         this.animeInfo = res;
         this.calculateAnimeInfo();

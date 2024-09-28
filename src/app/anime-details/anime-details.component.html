@@ -1,57 +1,21 @@
-<div class="h-[40vh] w-[100vw] md:h-[75vh]   relative flex flex-col gap-3 justify-center items-center md:flex-row md:justify-start  md:items-center text-text-grey-100 ">
-    <div class="image-backdrop absolute  inset-0   overflow-hidden">
-        <div>
-            <div class="dark-filter " >
-            </div>
-            <div class="dark-filter" >
-            </div>
+<app-anime-detail-hero [animeInfo]="animeInfo" ></app-anime-detail-hero>
+<div class="flex flex-col lg:flex-row items-center justify-center p-1 lg:p-5 m-4 gap-2">
+    <app-information class=""  [animeInfo]="animeInfo"></app-information>
+    <app-season-carousel class=" w-full" [seasons]="animeInfo.seasons"></app-season-carousel>
+</div>
+<div class="wrapper">
+    <app-aired-episode *ngIf="animeInfo.lastEpisodeToAir" [episode]="animeInfo.lastEpisodeToAir" [header]="'Last Episode To Air'" class="m-4 sm:m-0 "></app-aired-episode>
+    <img src="images/S_logo.svg"  class="max-h-72 w-1/6 ml-auto mr-auto  sm:inline-block hidden " >
+    <app-aired-episode *ngIf="animeInfo.nextEpisodeToAir" [episode]="animeInfo.nextEpisodeToAir" [backdropPath]="animeInfo.backdropPath" [header]="'Next Episode To Air'" class="h-fit"></app-aired-episode>
 
-            <div class="absolute inset-0 backdrop-blur-sm" >
-            </div>
-            <div class="dark-filter" >
-            </div>
-        </div>
-        
-        <img [src]="animeInfo.backdropPath" alt="anime" class=" object-cover h-full w-full  ">
+</div>
+<div class=" wrapper bg-background-100">
+    <app-production-company [productionCompanies]="animeInfo.productionCompanies"></app-production-company>
+</div>
 
-    </div>
-    
-    
-    <img [src]="animeInfo.posterPath" alt="anime" class="  h-[90%] md:w-[22%]  rounded-md  z-0">
-    
-    <div class="anime-info z-0  font-body">
-        <div class="detail-item">
-            <div class="title text-4xl lg:text-8xl capitalize font-black text-text-grey-50 font-header">
-                <h1>{{animeInfo.title}}</h1>
-            </div>
-        </div>
-        <div class="detail-item">
-            <div class="orginal-name">
-                <h4>original Name:{{animeInfo.originalName}}</h4>
-            </div>
-        </div>
-        <div class="detail-item">
-            <div class="rating detail-item" >
-                <span class="Rating detail-icon"> 
-                    <div class="relative size-16 bg-white rounded-full">
-                        <svg class="rotate-[135deg] size-full" viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg">
-                            <!-- Background Circle (Gauge) -->
-                            <circle cx="18" cy="18" r="16" fill="none" class="stroke-current text-purple-200 dark:text-neutral-700" stroke-width="1" stroke-dasharray="75 100"></circle>
-                            <!-- Gauge Progress -->
-                            <circle cx="18" cy="18" r="16" fill="none" class="stroke-current  text-purple-600 dark:text-purple-500" stroke-width="2"  stroke-dasharray="20 100"></circle>
-                            </svg>
-                        <!-- Value Text -->
-                        <div class="absolute top-1/2 start-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center">
-                            <span class="text-xl font-bold text-purple-600 dark:text-purple-500">{{animeInfo.voteAverage}}</span>
-                            <span class="text-purple-600 text-xs dark:text-purple-500 ">%</span>
-                        </div>
-                    </div> 
-                </span>
-                <span class="Votes "> {{animeInfo.voteCount}} Votes</span>
-            </div>
-        </div>
-        <div class="detail-item"></div>
-        <div class="detail-item"></div>
-        <div class="detail-item"></div>
-    </div>
+<div class="wrapper bg-background-100">
+    <app-anime-videos [tmdbId]="animeInfo.tmdbId"></app-anime-videos>
+</div>
+<div class="wrapper">
+    <app-anime-group-horizontal  [animeList]="similarList" [animeGroup]="'Similar Recommendation'"></app-anime-group-horizontal>
 </div>

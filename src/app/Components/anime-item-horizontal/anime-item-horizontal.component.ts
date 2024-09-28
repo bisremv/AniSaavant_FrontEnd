@@ -2,6 +2,9 @@ import { Component, inject, Input, OnInit } from '@angular/core';
 import { animeItem } from '../../Models/animeItem';
 import { DiscoverService } from '../../Service/discover.service';
 import { AnimeInfo } from '../../Models/animeInfo';
+import { Episode } from '../../Models/episodes';
+import { Router } from '@angular/router';
+import { AnimeService } from '../../Service/anime.service';
 
 @Component({
   selector: 'app-anime-item-horizontal',
@@ -13,23 +16,31 @@ import { AnimeInfo } from '../../Models/animeInfo';
 export class AnimeItemHorizontalComponent implements OnInit {
   @Input()
   anime:animeItem = new animeItem(0,0,'','',0,'',0);
-  animeInfo:AnimeInfo=new AnimeInfo( 0,0,"","","","","","",0,false,"","",0,0,"","","","",0,0,[],[],[],[]);
-discover:DiscoverService =inject(DiscoverService)
+  animeInfo: AnimeInfo = new AnimeInfo(
+  0, 0, "", "", "", "", "", "", 0, false, "", "", 0, 0, "", "", "", "", 0, 0, [], [], [], [], 
+  new Episode(0, "", 0, "", "", "", 0, 0, "", 0, 0, 0, "", false),new Episode(0, "", 0, "", "", "", 0, 0, "", 0, 0, 0, "", false));
+  animeService:AnimeService=inject(AnimeService)
+  router:Router=inject(Router)
+  ngOnInit(){
+    this.getAnimeInfo()
+    // this.calculateAnimeInfo()
+  }
+  
+  navigateToAnime() {
+    this.router.navigate(['/anime'], { queryParams: { animeId: this.anime.animeId,tmdbId:this.anime.tmdbId } });
+  }
 
-ngOnInit(){
-this.getAnimeInfo()
-// this.calculateAnimeInfo()
-}
-
-getAnimeInfo(){
-  console.log(this.anime);
-  this.discover.getAnimeInfo(this.anime.tmdbId,this.anime.animeId).subscribe({
-    next:(res)=>{
-      this.animeInfo = res;
-      this.calculateAnimeInfo();
-    }
-  })
-}
+  
+  getAnimeInfo(){
+    console.log("this.anime.tmdbId");
+    console.log(this.anime);
+    this.animeService.getAnimeInfo(this.anime.tmdbId,this.anime.animeId).subscribe({
+      next:(res)=>{
+        this.animeInfo = res;
+        this.calculateAnimeInfo();
+      }
+    })
+  }
 calculateAnimeInfo(){
   this.anime.season=this.animeInfo.numberOfSeasons;
   this.anime.img="https://image.tmdb.org/t/p/original"+this.animeInfo.backdropPath;

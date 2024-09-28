@@ -9,7 +9,7 @@
 </a>
 
     </div>
-    <div class="relative overflow-hidden flex items-center">
+<div class="relative overflow-hidden flex items-center">
     <div class="carousel-inner flex lg:gap-10 md:gap-4 gap-2  rounded-lg overflow-x-scroll  scroll-smooth snap-mandatory snap-x items-center" (scroll)="onScroll($event)">
         <div class="snap-start   " *ngFor="let anime of animeList">
             <app-anime-item  [anime]="anime"></app-anime-item>

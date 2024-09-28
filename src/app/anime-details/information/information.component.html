@@ -1,0 +1,51 @@
+<div class="grid grid-cols-1 w-full  sm:grid-cols-2  md:grid-cols-3 lg:grid-cols-1  border-2 border-primary rounded-lg p-3  lg:max-w-96 gap-2 ">
+    <div class="info-item">
+        <div class="info-names">Status  :</div>
+        <h6 class="info-content">{{animeInfo.status}}</h6>
+    </div>
+    <div class="info-item">
+        <div class="info-names">Episode Runtime : </div>
+        <h6 class="info-content">{{animeInfo.episodeRunTime}}</h6>
+    </div>
+    <div class="info-item">
+        <div class="info-names">First Air Date:</div>
+        <h6 class="info-content">{{animeInfo.firstAirDate}}</h6>
+    </div>
+    <div class="info-item">
+        <div class="info-names">Last Air Date:</div>
+        <h6 class="info-content">{{animeInfo.lastAirDate}}</h6>
+    </div>
+    <div class="info-item">
+        <div class="info-names">In Production:</div>
+        <h6 class="info-content">{{animeInfo.inProduction}}</h6>
+    </div>
+    <div class="info-item">
+        <div class="info-names">Languages: </div>
+        <h6 class="info-content">{{animeInfo.originalLanguage}}</h6>
+    </div>
+    <div class="info-item">
+        <div class="info-names">Origin Country:</div>
+        <h6 class="info-content">{{animeInfo.originalLanguage}}</h6>
+    </div>
+    <div class="info-item">
+        <div class="info-names">Number Of Seasons:</div>
+        <h6 class="info-content">{{animeInfo.numberOfSeasons}}</h6>
+    </div>
+    <div class="info-item">
+        <div class="info-names">Number  Of  Episodes:</div>
+        <h6 class="info-content">{{animeInfo.episodeRunTime}}</h6>
+    </div>
+    <div class="info-item">
+        <div class="info-names">Homepage:</div>
+        <a class="info-content" [href]="animeInfo.homepage" target="_blank" rel="noopener noreferrer">link</a>
+    </div>
+    <div class="info-item">
+        <div class="info-names">Type:</div>
+        <h6 class="info-content">{{animeInfo.type}}</h6>
+    </div>
+    <div class="info-item">
+        <h6 class="info-content ">
+        <div class="info-names inline">Genres :</div>
+        {{animeInfo.animeGener}}</h6>
+    </div>
+</div>

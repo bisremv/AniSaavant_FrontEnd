@@ -1,5 +1,6 @@
-import { Component, Input } from '@angular/core';
+import { Component, inject, Input } from '@angular/core';
 import { MangaItem } from '../../Models/MangaItem';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-manga-item',
@@ -21,6 +22,7 @@ export class MangaItemComponent {
     releaseDate: '',
     itemLink: ''
   }
+  router:Router=inject(Router)
   mangaTitle():string{
     if(this.manga.title.length>20){
       return this.manga.title.substring(0,23)+"...";
@@ -28,5 +30,9 @@ export class MangaItemComponent {
     else{ 
       return this.manga.title;
     }
+  }
+
+  navigateToManga() {
+    this.router.navigate(['/manga']);
   }
 }

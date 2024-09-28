@@ -1,3 +1,7 @@
+import { Episode } from "./episodes";
+import { ProductionCompany } from "./ProductionCompany";
+import { Season } from "./season";
+
 export class AnimeInfo{
     constructor(
         public animeId: number,
@@ -20,24 +24,13 @@ export class AnimeInfo{
         public backdropPath: string,
         public numberOfEpisodes: number,
         public numberOfSeasons: number,
-        public seasons: Array<{
-            seasonId: number,
-            airDate: string,
-            episodeCount: number,
-            name: string,
-            overview: string,
-            posterPath: string,
-            seasonNumber: number,
-            voteAverage: number
-        }>,
-        public productionCompanies: Array<{
-            productionCompanyId: number,
-            logoPath: string,
-            name: string,
-            originCountry: string
-        }>,
+        public seasons: Array<Season>,
+        public productionCompanies: Array<ProductionCompany>,
         public episodeRunTime: Array<number>,
         public animeGener: Array<string>, 
+        public lastEpisodeToAir: Episode,
+        public nextEpisodeToAir: Episode,
+        
     ){}
     
 }

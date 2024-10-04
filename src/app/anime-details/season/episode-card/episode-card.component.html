@@ -1,0 +1,65 @@
+<div class="border-2 m-8 border-primary rounded-lg">
+    <div class="header text-sm sm:text-base md:text-2xl text-text-grey-50 font-bold font-main  flex gap-2 justify-between bg-secondary items-center p-2">
+        <div class="flex gap-2 font-body">
+            <h1 class="">{{episode.episodeNumber}}</h1>
+            <h1 class="title  font-bold ">{{episode.name}} </h1>
+        </div> 
+        <div class="flex items-end gap-3">
+            <div class=" text-sm hidden md:flex">
+
+            <div
+            class="radial-progress  bg-text-grey-50 text-secondary border-text-grey-50 border-2 text-xs size-12"
+            [style]="getStyleRating()"
+            role="progressbar">
+            {{getRating()}}%
+            </div>
+            <div class="flex flex-col justify-between">
+                <h1 class="">Rating</h1>
+                <h1 class="">{{episode.voteCount}} votes</h1>
+            </div>
+        </div>    
+            <div class="checkbox-wrapper h-full gap-1  inline-flex items-center">
+                <h2 class="self-end font-body font-black"> Watched </h2>
+            <input type="checkbox" checked="checked" class="checkbox text-text-grey-50 checkbox-lg border-2 border-text-grey-50 rounded-full" />
+        </div>
+        </div>
+    </div>
+    
+    <div class="content flex w-full  min-h-60 flex-col lg:flex-row ">
+        <div class="  w-full lg:w-1/2 
+        sm:items-center flex flex-col sm:flex-row ">
+            <div class="   img max-w-80 h-44  m-3 border-4 border-primary rounded flex-grow   ">
+            <img [src]="episode.stillPath" alt="" class="object-fill w-full h-full  ">
+            </div>
+            <div class="info sm:flex-col m-3 sm:m-0 sm:flex gap-2 flex-grow ">
+                <div class="title info-item">
+                    <h1>Title :</h1>
+                    <span>{{getTitle()}}</span>
+                </div>
+                <div class="date info-item">
+                    <h1>Aired On :</h1>
+                    <span>{{episode.airDate}}</span>
+                </div>
+                <div class="episode info-item">
+                    <h1>Episode :</h1>
+                    <span>{{episode.episodeNumber}}</span>
+                    </div>
+                <div class="runtime info-item">
+                    <h1>Runtime :</h1>
+                    <span>{{episode.runtime}} min</span>
+                </div>
+                <div class="type info-item" >
+                    <h1>Type :</h1>
+                    <span>{{episode.episodeType}}</span>
+                </div>
+            </div>
+        </div>
+            
+        <div class="divider lg:divider-horizontal divider-primary"></div>
+        <div class="overview  lg:w-1/2 p-8  ">
+            <h1 class="subtitile text-2xl text-link font-bold">Overview</h1>
+            <p>{{episode.overview}}</p>
+        <div class="info"></div>
+    </div>
+</div>
+</div>

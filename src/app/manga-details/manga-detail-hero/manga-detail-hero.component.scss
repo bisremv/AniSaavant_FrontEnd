@@ -1,0 +1,9 @@
+.color-filter {
+    @apply  bg-[#020051]/60 absolute inset-0 backdrop-blur-md ;
+
+}
+.dark-filter{
+    @apply inset-0 absolute;
+    // bg-gradient-to-t from-background-200  via-background-200/30 to-transparent ;
+    background: linear-gradient(0deg,rgba(14, 14, 14, 1), rgba(14, 14, 14, 0.4), rgba(14, 14, 14, 0.3), transparent, transparent, transparent);
+}

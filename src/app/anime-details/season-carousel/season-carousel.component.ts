@@ -15,7 +15,8 @@ import { NextCarouselComponent } from "../../Components/anime-grouping/next-caro
 export class SeasonCarouselComponent {
 @Input()
 seasons:Season[]= [];
-
+@Input()
+tmdbId:number=0;
 next:number =Arrow.Next;
 prev:number =Arrow.Prev;
 

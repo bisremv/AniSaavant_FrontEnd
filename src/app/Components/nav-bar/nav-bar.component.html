@@ -1,5 +1,5 @@
 <div class="flex  font-main flex-wrap justify-between items-center px-2  min-h-16 ">
-    <div class="absolute inset-0 -z-10  bg-background-100  bg-opacity-85  backdrop-blur-lg    ">
+    <div class="absolute inset-0 -z-10  bg-background-200  bg-opacity-85  backdrop-blur-lg    ">
         </div>
     <div class=" flex items-center  ">
     <div (click)="menuToggle()" class="menu relative hover:bg-background-200 active:bg-background-100 rounded  flex justify-center items-center md:hidden h-full">
@@ -10,13 +10,28 @@
     
     <div class="search   rounded  ">
         <div class="search-input relative hidden   lg:block">
-            <div class="search-icon absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-            <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
-            </svg>
-            <span class="sr-only">Search icon</span>
+            <div class="search-icon  absolute inset-y-0 start-0 flex items-center ps-3 ">
+                <svg *ngIf="isSearchAnime" (click)="changeSearchType('tomanga')" class="size-6 fill-secondary text-gray-500 dark:text-gray-400" viewBox="-0.5 0 7 7" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                        <g id="Dribbble-Light-Preview" transform="translate(-347.000000, -3766.000000)" fill="#000000">
+                            <g id="icons" transform="translate(56.000000, 160.000000)">
+                                <path d="M296.494737,3608.57322 L292.500752,3606.14219 C291.83208,3605.73542 291,3606.25002 291,3607.06891 L291,3611.93095 C291,3612.7509 291.83208,3613.26444 292.500752,3612.85767 L296.494737,3610.42771 C297.168421,3610.01774 297.168421,3608.98319 296.494737,3608.57322" id="play-[#1003]" class="fill-secondary ">
+                
+                </path>
+                            </g>
+                        </g>
+                    </g>
+                </svg>
+                <svg *ngIf="!isSearchAnime" (click)="changeSearchType('toanime')"  class="size-6 fill-secondary text-gray-500 dark:text-gray-400" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M4 19V6.2C4 5.0799 4 4.51984 4.21799 4.09202C4.40973 3.71569 4.71569 3.40973 5.09202 3.21799C5.51984 3 6.0799 3 7.2 3H16.8C17.9201 3 18.4802 3 18.908 3.21799C19.2843 3.40973 19.5903 3.71569 19.782 4.09202C20 4.51984 20 5.0799 20 6.2V17H6C4.89543 17 4 17.8954 4 19ZM4 19C4 20.1046 4.89543 21 6 21H20M9 7H15M9 11H15M19 17V21" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                <span class="sr-only">Search icon</span>
             </div>
-            <input type="text" id="search-navbar" class="block  bg-background-100 max-w-60 p-2 ps-10  font-bold  rounded-lg  focus:border-text-grey-100  focus:bg-background-50 focus:outline-none border border-primary  text-text-grey-100" placeholder="Search...">
+            <input type="text" id="search-navbar" class="block  bg-background-100 max-w-60 p-2 ps-10  font-bold  rounded-lg    focus:bg-background-50 focus:outline-none focus:border-primary border border-primary  text-text-grey-100" placeholder="Search..."
+            (keydown.enter)="searchItem()"
+            [(ngModel)]="searchQuery"
+            >
+
         </div>
             <div  class="lg:hidden p-2 rounded-md hover:bg-background-200 active:bg-background-100"(click)="Searchtoggle()" > 
             <svg xmlns="http://www.w3.org/2000/svg"  fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"  class="size-6">

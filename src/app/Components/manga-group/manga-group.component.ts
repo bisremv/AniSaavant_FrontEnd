@@ -1,9 +1,10 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { MangaItemComponent } from "../manga-item/manga-item.component";
 import { NextCarouselComponent } from "../anime-grouping/next-carousel/next-carousel.component";
 import { Arrow } from '../anime-grouping/next-carousel/arrow';
 import { CommonModule } from '@angular/common';
 import { MangaItem } from '../../Models/MangaItem';
+import { Extension } from '../../Models/Extenison';
 @Component({
   selector: 'app-manga-group',
   standalone: true,
@@ -11,9 +12,12 @@ import { MangaItem } from '../../Models/MangaItem';
   templateUrl: './manga-group.component.html',
   styleUrl: './manga-group.component.scss'
 })
-export class MangaGroupComponent {
+export class MangaGroupComponent implements OnInit {
   @Input()
   mangaList:MangaItem[] | undefined;
+  @Input()
+  extObj:Extension=new Extension(0,"","","");
+  ext:number=0;
   @Input()
   ListName:string|undefined;
   next:number =Arrow.Next;
@@ -21,7 +25,9 @@ export class MangaGroupComponent {
   
   showNextArrow: boolean = true;
   showPrevArrow: boolean = false;
-  
+  ngOnInit(){
+    this.ext=this.extObj.exId
+  }
   onScroll(event: any): void {
     const element = event.target;
     const maxScrollLeft = element.scrollWidth - element.clientWidth;

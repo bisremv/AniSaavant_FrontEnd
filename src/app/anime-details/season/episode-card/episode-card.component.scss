@@ -1,0 +1,6 @@
+.info-item{
+    @apply flex  font-body text-base md:text-xl sm:text-lg text-nowrap justify-between;
+}
+.info-item >h1{
+    @apply font-bold text-link;   
+}

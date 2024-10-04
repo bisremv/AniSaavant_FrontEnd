@@ -5,7 +5,7 @@
         </h2>
     </div>
     <div class="flex flex-col px-2 lg:px-8  gap-9">
-        <app-manga-group [mangaList]="PopularList" [ListName]="'Popular Manga'" >  </app-manga-group> 
-        <app-manga-group [mangaList]="LatestList" [ListName]="'Latest Manga'"> </app-manga-group>
+        <app-manga-group [mangaList]="PopularList" [ListName]="'Popular Manga'" [extObj]="ext" >  </app-manga-group> 
+        <app-manga-group [mangaList]="LatestList" [ListName]="'Latest Manga'" [extObj]="ext"> </app-manga-group>
     </div>
 </div>

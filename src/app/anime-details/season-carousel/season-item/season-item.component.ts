@@ -1,31 +1,27 @@
-import { Component, Input } from '@angular/core';
+import { Component, inject, Input } from '@angular/core';
 import { Season } from '../../../Models/season';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-season-item',
   standalone: true,
-  imports: [],
+  imports: [RouterModule],
   templateUrl: './season-item.component.html',
   styleUrl: './season-item.component.scss'
 })
 export class SeasonItemComponent {
   @Input()
-  season:Season= new Season(0,"",0,"","","",0,0);
-  
+  season:Season= new Season(0,"",0,"","","",0,0,[]);
+  @Input()
+  tmdbId:number=0;
+  route:Router=inject(Router);
   getAirDate() {
     if(this.season.airDate === null) {
       return "N/A";
     }
     return this.season.airDate;
   }
-/* 
-seasonId: number, 
-airDate: string,
-episodeCount: number,
-name: string, 
-overview: string, 
-posterPath: string, 
-seasonNumber: number, 
-voteAverage: number
-*/
+  navigateToSeasons(){
+    this.route.navigate(['/anime/season'], { queryParams: { animeId: this.tmdbId, seasonNumber: this.season.seasonNumber } });
+}
 }

@@ -1,0 +1,216 @@
+<div class="filter  p-7 my-14 md:my-10">
+    <div class="header text-4xl font-main font-bold mb-4"> Filter</div>
+    <div class="controlls flex flex-col md:flex-row gap-2">
+        <div class="search">
+            <label class="input border-0 flex items-center gap-2" 
+            >
+            <!-- (keypress)="" -->
+                <input type="text"  class="grow " placeholder="Search" name="search" [(ngModel)]="search" 
+                (keydown.enter)="applyFilters()"
+
+                />
+                <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 16 16"
+                fill="currentColor"
+                class="h-4 w-4 opacity-70">
+                <path
+                    fill-rule="evenodd"
+                    d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z"
+                    clip-rule="evenodd" />
+                </svg>
+            </label>
+        </div>
+        <div class="filter-controls grid  grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 md:w-5/6">
+            <div class="year  controll-items w-full">
+                <div class="dropdown dropdown-bottom dropdown-hover">
+                    <div tabindex="0" role="button" class="btn bg-background-50 hover:bg-background-100 m-1 grid-dropdown grid-dropdown">  year  </div>
+                    <ul tabindex="0" class="dropdown-content w-full h-fit  overflow-scroll bg-background-50  z-[1] rounded p-4 shadow flex gap-1 flex-col md:flex-row justify-around">
+                        <li>
+                            <label> Min </label>
+                            <input type="number" placeholder="0" class="input block input-md bg-background-100
+                            my-2 focus:border-none focus:outline-none  w-full"
+                            [(ngModel)]="selectedMinYears"
+                            (ngModelChange)="onYearChange()"
+                            />
+                        </li>
+                        <li>
+                            <label> Max </label>
+                            <input type="number" placeholder="0" 
+                            [(ngModel)]="selectedMaxYears"
+                            (ngModelChange)="onYearChange()"
+                            
+                            class="input block input-md bg-background-100
+                            my-2 focus:border-none focus:outline-none  w-full "/>
+                        </li>
+                        </ul>
+                </div>
+        </div>
+            <div class="country controll-items">
+                <div class="dropdown dropdown-bottom dropdown-hover">
+                    <div tabindex="0" role="button" class="btn bg-background-50 hover:bg-background-100 m-1 grid-dropdown grid-dropdown">   country's  </div>
+                    <ul tabindex="0" class="dropdown-content  overflow-scroll w-full flex flex-col gap-3 bg-background-50  z-[1] rounded p-4 shadow">
+                        <label class="cursor-pointer label" *ngFor="let c of country">
+                            <span class="label-text">{{ c }}</span>
+                            <input
+                            type="checkbox"
+                            [checked]="isCountrySelected(c)"
+                            (change)="OnCountryChange($event, c)"
+                            class="checkbox checkbox-info" />
+                        </label>
+                    </ul>
+                </div>
+        
+            </div>
+            <div class="runtime controll-items">  <div class="dropdown dropdown-bottom dropdown-hover">
+                    <!-- <div tabindex="0" role="button" class="btn m-1">Click</div> -->
+                    <div tabindex="0" role="button" class="btn bg-background-50 hover:bg-background-100 m-1 grid-dropdown grid-dropdown">  Runtime  
+                    </div>
+                    <ul tabindex="0" class="dropdown-content w-full h-fit  overflow-scroll bg-background-50  z-[1] rounded p-4 shadow flex flex-col md:flex-row gap-1 justify-around">
+                        <li>
+                            <label> Min </label>
+                            <input type="number" placeholder="0" class="input block input-md bg-background-100
+                            my-2 focus:border-none focus:outline-none  w-full"
+                            [(ngModel)]="minValueRuntime"
+                            (ngModelChange)="checkRuntime()"
+                            min="0"/>
+                            
+                        </li>
+                        <li>
+                            <label> Max </label>
+                            <input type="number" placeholder="0" 
+                            [(ngModel)]="maxValueRuntime"
+                            (ngModelChange)="checkRuntime()"
+                            class="input block input-md bg-background-100
+                            my-2 focus:border-none focus:outline-none  w-full " min="0"/>
+                        </li>
+                        
+                        </ul>
+                </div>
+        </div>
+            <div class="studio controll-items">  
+                <div class="dropdown dropdown-bottom dropdown-hover">
+                    <div tabindex="0" role="button" class="btn bg-background-50 hover:bg-background-100 m-1 grid-dropdown grid-dropdown">  Studio  </div>
+                    <ul tabindex="0" class="dropdown-content gap-4 flex flex-col bg-background-50 w-full h-96 overflow-y-scroll rounded z-[1]  p-2 shadow">
+                        <li *ngFor="let studio of studios"> 
+                            <label class="cursor-pointer label">
+                                <span class="label-text">{{studio.studio}}</span>
+                                <input type="checkbox"  class="checkbox checked-secondary " 
+                            [checked]="isStudioSelected(studio)"
+                            (change)="OnStudioChange($event, studio)"
+                            class="checkbox checkbox-info" />
+                            </label>
+                        </li>
+                    </ul>
+                </div>
+        </div>
+            <div class="ageRating controll-items">  <div class="dropdown dropdown-bottom dropdown-hover">
+                    <!-- <div tabindex="0" role="button" class="btn m-1">Click</div> -->
+                    <div tabindex="0" role="button" class="btn bg-background-50 hover:bg-background-100 m-1 grid-dropdown grid-dropdown">  age rating  </div>
+                    <ul tabindex="0" class="dropdown-content h-fit w-full overflow-scroll flex flex-col gap-1 bg-background-50  z-[1] rounded p-4 shadow">
+                        <li *ngFor="let rate of ageRating">
+                            <label class="cursor-pointer label" >
+                                <span class="label-text">{{rate}}</span>
+                                <input type="checkbox" 
+                                [checked]="isRatingSelected(rate)"
+                                (change)="onRatingChange($event, rate)"  
+                                class="checkbox checkbox-info" />
+                            </label>
+                        </li>
+                        </ul>
+            </div>
+        </div>
+        <div class="tmdb-rating controll-items">  <div class="dropdown dropdown-bottom dropdown-hover">
+            <!-- <div tabindex="0" role="button" class="btn m-1">Click</div> -->
+            <div tabindex="0" role="button" class="btn bg-background-50 hover:bg-background-100 m-1 grid-dropdown"> IMDB Score  </div>
+        <ul tabindex="0" class="dropdown-content max-h-60 w-full overflow-scroll flex flex-col gap-1 bg-background-50  z-[1] rounded p-4 shadow">
+                <li>
+                    <label class="flex justify-between"> Max value <span>{{imdbRatingMax}}</span> </label>
+                    <input type="range"  min="0" max="10"  
+                    class="range range-xs range-primary"        
+                    [(ngModel)]="imdbRatingMax"
+                    (ngModelChange)="checkScoreRating()"
+                    step="0.5" />
+                </li>
+                <li>
+                    <input type="range"  min="0" max="10" value="0" class="range range-xs range-primary"
+                    [(ngModel)]="imdbRatingMin"
+                    (ngModelChange)="checkScoreRating()"
+                    step="0.5" />
+                    <label class="flex justify-between"> Min value <span>{{imdbRatingMin}}</span> </label>
+                </li>
+            </ul>
+            </div>
+        </div>
+        <div class="Tmdb-rating controll-items">  <div class="dropdown dropdown-bottom dropdown-hover">
+                <div tabindex="0" role="button" class="btn bg-background-50 hover:bg-background-100 m-1 grid-dropdown">  TMDB Score  </div>
+                <ul tabindex="0" class="dropdown-content max-h-60 w-full overflow-scroll flex flex-col gap-1 bg-background-50  z-[1] rounded p-4 shadow">
+                    <li>
+                        <label class="flex justify-between"> Max value <span>{{tmdbRatingMax}}</span> </label>
+                        <input type="range"  min="0" max="10"  class="range range-xs range-primary"
+                        [(ngModel)]="tmdbRatingMax"
+                        (ngModelChange)="checkScoreRating()"
+                        step="0.5" />
+                        
+                    </li>
+                    <li>
+                        <input type="range"  min="0" max="10" 
+                        [(ngModel)]="tmdbRatingMin"
+                        (ngModelChange)="checkScoreRating()"
+                        class="range range-xs range-primary" step="0.5" />
+                        <label class="flex justify-between"> Min value <span>{{tmdbRatingMin}}</span> </label>
+                        
+                    </li>
+                </ul>
+            </div>
+            </div>
+        <div class="Rotten-tomatoes controll-items">  
+                <div class="dropdown dropdown-bottom dropdown-hover">
+                    
+                    <div tabindex="0" role="button" class="btn bg-background-50 hover:bg-background-100 m-1 grid-dropdown">  Rotten Tomatoes score  </div>
+                    
+                    <ul tabindex="0" class="dropdown-content max-h-60 w-full overflow-scroll flex flex-col gap-1 bg-background-50  z-[1] rounded p-4 shadow">
+                        <li>
+                            <label class="flex justify-between"> Max value <span>{{rtRatingMax}}</span> </label>
+                            <input type="range"  min="0" max="10" 
+                            [(ngModel)]="rtRatingMax"
+                            (ngModelChange)="checkScoreRating()"
+                            class="range range-xs range-primary" 
+                            step="0.5" />
+                            
+                        </li>
+                        <li>
+                            <input type="range"  min="0" max="10" 
+                            [(ngModel)]="rtRatingMin"
+                            (ngModelChange)="checkScoreRating()"
+                            class="range range-xs range-primary" step="0.5" />
+                            <label class="flex justify-between"> Min value <span>{{rtRatingMin}}</span> </label>
+                            
+                        </li>
+                    </ul>
+                </div>
+        </div>
+        <div class="status controll-items">  
+            <div class="dropdown dropdown-bottom dropdown-hover">
+                
+                <div tabindex="0" role="button" class="btn bg-background-50 hover:bg-background-100 m-1 grid-dropdown">  status </div>
+                <ul tabindex="0" class="dropdown-content max-h-60 w-full overflow-scroll flex flex-col gap-1 bg-background-50  z-[1] rounded p-4 shadow">
+                    <li *ngFor="let stat of status"> 
+                        <label class="cursor-pointer label">
+                            <span class="label-text">{{stat}}</span>
+                            <input type="checkbox"  class="checkbox checked-secondary " 
+                        [checked]="isStatusSelected(stat)"
+                        (change)="OnStatusChange($event, stat)"
+                        class="checkbox checkbox-info" />
+                        </label>
+                    </li>
+                </ul>
+            </div>
+    </div>
+        <button class="filter-btn btn  controll-items bg-primary  -col-end-1" 
+        (click)="applyFilters()" >
+                filter
+        </button>
+        </div>
+    </div>
+</div>

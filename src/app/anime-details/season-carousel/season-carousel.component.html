@@ -3,7 +3,7 @@
   <div class="relative overflow-hidden flex items-center">
 
   <div class="flex  season-carousel   lg:gap-10 md:gap-4 gap-2  rounded-lg overflow-x-scroll  scroll-smooth snap-mandatory snap-x items-center" (scroll)="onScroll($event)">
-    <app-season-item class="snap-start"  *ngFor="let season of seasons" [season]="season"></app-season-item>
+    <app-season-item class="snap-start"  *ngFor="let season of seasons" [season]="season" [tmdbId]="tmdbId"></app-season-item>
   </div>
   <app-next-carousel *ngIf="showNextArrow" class="right-0 Arrow-Direction"  [Direction]="next"  
     (ArrowDirection)="onDirectionScroll($event)"  ></app-next-carousel>

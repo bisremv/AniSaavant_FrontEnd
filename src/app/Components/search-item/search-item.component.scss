@@ -1,0 +1,7 @@
+.item-subtitles{
+    @apply text-xs lg:text-sm  text-nowrap text-text-grey-100 font-bold ;
+
+}
+.anime-info{
+    @apply px-1 flex flex-col justify-between flex-grow font-bold my-2 mx-1 ;
+}

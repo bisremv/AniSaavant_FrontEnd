@@ -1,4 +1,29 @@
-<div class="wrapper
-">
-
+<div class="manga-wrapper w-full h-fit grid grid-cols-12   gap-4">
+    <app-manga-detail-hero [manga]="mangaInfo" class=" backdrop   col-span-full">   </app-manga-detail-hero>
+    
+    <div class="info-container  flex flex-col gap-4  mt-32 md:mt-0 row-start-3 md:row-start-2 col-span-full md:col-span-9  p-4 md:p-8">
+        <div class="title  font-body font-bold text-text-grey-50 "> 
+            <h1 class="text-4xl w-full  md:text-6xl">{{mangaInfo.title}}</h1>
+            <div class="gener flex  gap-4 py-4 ">
+                <span  *ngFor="let genre of mangaInfo.mangaGener" class="genre p-1 text-sm md:text-xl font-bold font-header capitalize bg-yellow-800 rounded">{{genre}}</span>
+                    
+            </div>
+        </div>
+    
+        <div class="description font- font-semibold text-text-grey-100"  >
+        {{mangaInfo.description}}    
+        </div>
+        <app-chapter-list [extId]="mangaInfo.extId" [itemLink]="mangaInfo.itemLink"></app-chapter-list>
+    </div>
+    <div class="image-wrapper hidden xl:m-5 md:inline-block row-start-2 col-start-4 col-end-11 md:col-start-10 md:col-end-13 relative">
+    <div class="poster-image absolute  h-[32vw]  -translate-y-64 border-2 border-primary rounded-md">
+        <img [src]="mangaInfo.itemImg" alt="backdrop" class="w-full h-full object-fill" />
+    </div>
+    <div class="info absolute  translate-y-[8vw] lg:translate-y-[17vw] xl:translate-y-[20vw] bg-background-50 p-4 rounded-lg w-full gap-3 lg:text-lg xl:text-xl font-normal capitalize font-body flex flex-col ">
+        <div class="flex gap-2 justify-between flex-wrap"> <span>Status :</span> <span >{{mangaInfo.status}}</span> </div>
+        <div class="flex gap-2 justify-between flex-wrap"> <span>Author :</span> <span >{{mangaInfo.author}}</span></div>
+        <!-- <div class="flex gap-2 justify-between flex-wrap"> <span>Release Date :</span> <span >{{mangaInfo.chapterNumber}}</span></div> -->
+    </div>
+</div>
+    
 </div>

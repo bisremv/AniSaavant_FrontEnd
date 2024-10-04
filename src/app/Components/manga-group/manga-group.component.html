@@ -12,7 +12,7 @@
     <div class="relative overflow-hidden flex items-center">
     <div class="carousel-manga-inner flex lg:gap-16 md:gap-8 gap-4  rounded-lg overflow-x-scroll  scroll-smooth snap-mandatory snap-x items-center" (scroll)="onScroll($event)">
         <div class="snap-start   " *ngFor="let manga of mangaList">
-            <app-manga-item [manga]="manga" ></app-manga-item>
+            <app-manga-item [manga]="manga" [extId]="ext" ></app-manga-item>
         </div>
     </div>
     

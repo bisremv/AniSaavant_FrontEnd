@@ -1,6 +1,7 @@
 import { Component, inject, Input } from '@angular/core';
 import { MangaItem } from '../../Models/MangaItem';
 import { Router } from '@angular/router';
+import { Extension } from '../../Models/Extenison';
 
 @Component({
   selector: 'app-manga-item',
@@ -10,6 +11,9 @@ import { Router } from '@angular/router';
   styleUrl: './manga-item.component.scss'
 })
 export class MangaItemComponent {
+  @Input()
+  extId:number=0;
+
   @Input()
   manga: MangaItem= {
     mangaId: 5844,
@@ -22,6 +26,7 @@ export class MangaItemComponent {
     releaseDate: '',
     itemLink: ''
   }
+
   router:Router=inject(Router)
   mangaTitle():string{
     if(this.manga.title.length>20){
@@ -33,6 +38,6 @@ export class MangaItemComponent {
   }
 
   navigateToManga() {
-    this.router.navigate(['/manga']);
+    this.router.navigate(['/manga'], { queryParams: { extId: this.extId,itemLink:this.manga.itemLink } });
   }
 }

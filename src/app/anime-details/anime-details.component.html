@@ -1,7 +1,7 @@
 <app-anime-detail-hero [animeInfo]="animeInfo" ></app-anime-detail-hero>
 <div class="flex flex-col lg:flex-row items-center justify-center p-1 lg:p-5 m-4 gap-2">
     <app-information class=""  [animeInfo]="animeInfo"></app-information>
-    <app-season-carousel class=" w-full" [seasons]="animeInfo.seasons"></app-season-carousel>
+    <app-season-carousel class=" w-full" [seasons]="animeInfo.seasons" [tmdbId]="animeInfo.tmdbId"></app-season-carousel>
 </div>
 <div class="wrapper">
     <app-aired-episode *ngIf="animeInfo.lastEpisodeToAir" [episode]="animeInfo.lastEpisodeToAir" [header]="'Last Episode To Air'" class="m-4 sm:m-0 "></app-aired-episode>

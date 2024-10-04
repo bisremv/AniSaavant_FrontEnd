@@ -89,7 +89,7 @@ export class MangaDiscoverComponent implements OnInit {
         console.log(error);
       },
       complete:()=>{
-        console.log(' list complete');
+
       }
     })
   }

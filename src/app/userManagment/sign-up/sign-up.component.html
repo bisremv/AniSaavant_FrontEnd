@@ -12,13 +12,13 @@
             <form class="Form flex-col flex   justify-center items-center lg:items-start gap-5 self-center  "       (ngSubmit)="OnFormSubmit()" #registerForm="ngForm" >
             <div class="header text-4xl font-bold font-main "> Sign-Up</div>
             <div class="input-wrraper">
-                <input type="text " class="input-style" placeholder="userName" name="userName" required #userName="ngModel" ngModel >
+                <input type="text" class="input-style" placeholder="userName" name="userName" required #userName="ngModel" ngModel >
             <div class="warning" *ngIf="userName.invalid && userName.touched">
                 userName can't be empty
             </div>
             </div>
             <div>
-                <input type="text " class="input-style" placeholder="userEmail" name="userEmail" #userEmail="ngModel" ngModel email required>
+                <input type="email" class="input-style" placeholder="userEmail" name="userEmail" #userEmail="ngModel" ngModel email required>
                 <div class="warning" *ngIf="userEmail.invalid && userEmail.touched">
                     the email is empty or not correct format
                 </div>

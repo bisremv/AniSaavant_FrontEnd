@@ -1,4 +1,4 @@
-<div class="grid grid-cols-1 w-full  sm:grid-cols-2  md:grid-cols-3 lg:grid-cols-1  border-2 border-primary rounded-lg p-3  lg:max-w-96 gap-2 ">
+<div class="grid grid-cols-1 w-full sm:h-64 lg:h-[27rem] sm:grid-cols-2  md:grid-cols-3 lg:grid-cols-1  border-2 border-primary rounded-lg p-3   gap-2 ">
     <div class="info-item">
         <div class="info-names">Status  :</div>
         <h6 class="info-content">{{animeInfo.status}}</h6>
@@ -43,9 +43,13 @@
         <div class="info-names">Type:</div>
         <h6 class="info-content">{{animeInfo.type}}</h6>
     </div>
-    <div class="info-item">
+    <div class="info-item ">
         <h6 class="info-content ">
-        <div class="info-names inline">Genres :</div>
-        {{animeInfo.animeGener}}</h6>
+        <div class="flex gap-2 flex-wrap">
+            <span *ngFor="let genre of animeInfo.animeGener" class="border text-xs border-primary rounded p-1">
+                {{ genre }}
+            </span>          
+        </div>
+    </h6>
     </div>
 </div>

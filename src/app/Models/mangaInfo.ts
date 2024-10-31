@@ -14,10 +14,6 @@ export class MangaInfo{
         public description:string,
         public extId:number,
         public mangaGener:Array<string>
-
-
-        
-
-    ){}
+            ){}
     
 }

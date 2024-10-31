@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Router, RouterModule } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { UserManagmentService } from '../../Service/user-managment.service';
 import { FormsModule } from '@angular/forms';
 
@@ -17,10 +17,13 @@ export class NavBarComponent {
   isSearchOpen:boolean=false;
   isLogedIn: boolean=false;
   userService: UserManagmentService=inject(UserManagmentService);
+  activeRoute:ActivatedRoute=inject(ActivatedRoute);
+  router:Router=inject(Router);
   searchQuery: string = '';
   routes:Router=inject(Router);
   searchType: string = 'anime';
   isSearchAnime: boolean = true;
+  profilePic:string="";
   menuToggle(){
     if(this.isSearchOpen){
       this.isSearchOpen=false;
@@ -41,6 +44,9 @@ export class NavBarComponent {
 
 ngOnInit() {
   this.isLogedIn = this.userService.isLoggedIn();
+  let picIndex =this.userService.user.value.profilePic as number
+  console.log(picIndex);
+  this.profilePic = `images/userManagment/userAvatars/${picIndex}.png`;
 }
 searchItem(){
   this.routes.navigate(['/search/'+this.searchType], { queryParams: { search: this.searchQuery } });
@@ -58,4 +64,9 @@ if(type=='toanime'){
       this.searchType="anime"
   }
 }
+isActiveTab(tabRoute: string): boolean {
+  return this.router.url.includes(tabRoute);
+}
+
+
 }

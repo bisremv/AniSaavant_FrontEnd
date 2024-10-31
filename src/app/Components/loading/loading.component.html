@@ -1,0 +1,66 @@
+
+
+<div *ngIf="type=='car'"  class="play  ">
+<div class="wrap">
+    <div class="angle"></div>
+    <div class="angle"></div>
+    <div class="angle"></div>
+    <div class="angle"></div>
+    </div>
+    <svg version="1.1" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+        <filter id="goo">
+        <feGaussianBlur in="SourceGraphic" result="blur" stdDeviation="12"></feGaussianBlur>
+        <feColorMatrix in="blur" mode="matrix" result="goo" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9"></feColorMatrix>
+        <feComposite in="SourceGraphic" in2="goo" operator="atop"></feComposite>
+        </filter>
+    </defs>
+    </svg>
+</div>
+
+<div *ngIf="type=='spinner'" class="absolute rocket-man">
+
+    <div class="rocket">
+        <span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </span>
+        <div class="base">
+            <span></span>
+            <div class="face"></div>
+        </div>
+    </div>
+    
+    <div class="longfazers">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+    
+</div>
+
+<div *ngIf="type=='delete'" class="absolute cont">
+    <div class="paper"></div>
+    <button><div class='loader font-main font-thin'>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    </div>Deleting</button>
+    <div class="g-cont">
+    <div class="garbage"></div>
+    <div class="garbage"></div>
+    <div class="garbage"></div>
+    <div class="garbage"></div>
+    <div class="garbage"></div>
+    <div class="garbage"></div>
+    <div class="garbage"></div>
+    <div class="garbage"></div>
+    </div>
+</div>

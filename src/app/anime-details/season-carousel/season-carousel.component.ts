@@ -4,6 +4,7 @@ import { SeasonItemComponent } from "./season-item/season-item.component";
 import { CommonModule } from '@angular/common';
 import { Arrow } from '../../Components/anime-grouping/next-carousel/arrow';
 import { NextCarouselComponent } from "../../Components/anime-grouping/next-carousel/next-carousel.component";
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-season-carousel',
@@ -17,11 +18,22 @@ export class SeasonCarouselComponent {
 seasons:Season[]= [];
 @Input()
 tmdbId:number=0;
+@Input()
+animeId:number=0;
 next:number =Arrow.Next;
 prev:number =Arrow.Prev;
-
+@Input()   isAnimeLoading:boolean=false;
 showNextArrow: boolean = true;
 showPrevArrow: boolean = false;
+ngOnChanges(){
+  if(this.seasons.length < 5){
+    this.showNextArrow=false;
+  }
+  else{
+    this.showNextArrow=true;
+  }
+
+}
 
 onScroll(event: any): void {
   const element = event.target;
@@ -42,7 +54,6 @@ onScroll(event: any): void {
   }
 }
 
-// todo use render here to reference the element in the DOM the above wont work with multiple anime group
 onDirectionScroll(direction: number): void {
   const carousel = document.querySelector('.season-carousel');
   if (carousel) {

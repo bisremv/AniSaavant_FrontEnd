@@ -1,0 +1,9 @@
+<div class="h-full ">
+    
+    <div role="tablist" class="tabs capitalize  tabs-bordered w-1/2">
+        <a role="tab" [ngClass]="{'tab-active':isAccount}" routerLink="account" (click)="isAccount=true" class="tab">Account</a>
+        <a role="tab" [ngClass]="{'tab-active':!isAccount}" routerLink="stats" (click)="isAccount=false" class="tab">User Statistics</a>
+    </div>
+    <div class="divider "></div>
+    <router-outlet></router-outlet>
+</div>

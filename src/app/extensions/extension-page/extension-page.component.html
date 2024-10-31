@@ -1,0 +1,52 @@
+<div class="mt-16 mx-4">
+    <div class="header rounded-lg bg-background-100 p-4 flex gap-2 flex-col">
+        <h1 class="text-xl font-bold mx-2">{{ext.exName}}</h1>
+        <div class="flex flex-col md:w-2/6">
+            <div class="input input-bordered  bg-background-100 flex items-center gap-2">
+                <input type="text" class="grow focus:outline-none focus:border-transparent" placeholder="Search..." 
+                (keydown.enter)="setActiveTab(Tab.Search)"
+                [(ngModel)]="searchQuery"
+                />
+                <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 16 16"
+                fill="currentColor"
+                class="h-4 w-4 ">
+                <path
+                fill-rule="evenodd"
+                d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z"
+                clip-rule="evenodd" />
+            </svg>
+            </div>
+            <div role="tablist" class="tabs mt-2 tabs-bordered">
+                <a 
+                role="tab" 
+                class="tab text-link" 
+                [ngClass]="{ 'tab-active': activeTab === Tab.Search }"
+                (click)="setActiveTab(Tab.Search)">
+                Search
+            </a>
+            
+            <!-- Popular Tab -->
+            <a 
+            role="tab" 
+            class="tab text-link" 
+            [ngClass]="{ 'tab-active': activeTab === Tab.Popular }"
+            (click)="setActiveTab(Tab.Popular)">
+            Popular
+            </a>
+        
+            <!-- Latest Tab -->
+            <a 
+            role="tab" 
+            class="tab text-link" 
+            [ngClass]="{ 'tab-active': activeTab === Tab.Latest }"
+            (click)="setActiveTab(Tab.Latest)">
+            Latest
+            </a>
+            </div>
+        </div>
+
+    </div>
+</div>
+<app-latest [mangaList]="mangaList" [isLoading]="isLoading" ></app-latest>

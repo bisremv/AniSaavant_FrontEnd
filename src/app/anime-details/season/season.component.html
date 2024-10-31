@@ -19,8 +19,28 @@
         </div>
     </div>
     <div class="page-control border-b-2 border-primary p-2 flex justify-between">
-        <div class="next flex gap-2 h-8 w-fit justify-center items-center"> 
-            <svg class="rotate-180 h-4/5 " viewBox="0 -2 12 12" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+        <div  (click)="changeSeason(previousSeason)" class="prev flex gap-2 h-8 w-fit justify-center items-center"> 
+            <div *ngIf="previousSeason" class="flex gap-2 h-8 w-fit justify-center items-center">
+                <svg  class="rotate-180 h-4/5 hover:scale-90 active:scale-100 transform duration-200" viewBox="0 -2 12 12" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                        <g id="Dribbble-Light-Preview" transform="translate(-144.000000, -3805.000000)" fill="#ffffff">
+                            <g id="icons" transform="translate(56.000000, 160.000000)">
+                                <path d="M99.684,3649.69353 L95.207,3652.82453 C94.571,3653.25353 94,3652.84553 94,3652.13153 L94,3650.14053 L89.78,3652.82453 C89.145,3653.25353 88,3652.84553 88,3652.13153 L88,3645.86853 C88,3645.15453 89.145,3644.74653 89.78,3645.17453 L94,3647.85953 L94,3645.86853 C94,3645.15453 94.571,3644.74653 95.207,3645.17453 L99.516,3648.30653 C100.03,3648.65353 100.198,3649.34653 99.684,3649.69353" id="next-[#998]">
+                                    
+                                </path>
+                            </g>
+                        </g>
+                    </g>
+                </svg>
+                Season 
+                {{previousSeason}}
+            </div>
+        </div>
+        <div  (click)="changeSeason(nextSeason)" class=" next flex gap-2 h-8 w-fit justify-center items-center"> 
+            <div *ngIf="nextSeason" class="flex gap-2 h-8 w-fit justify-center items-center">
+            Season 
+            {{nextSeason}}
+            <svg class=" h-4/5 hover:scale-90 active:scale-100 transform duration-200" viewBox="0 -2 12 12" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                 <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                     <g id="Dribbble-Light-Preview" transform="translate(-144.000000, -3805.000000)" fill="#ffffff">
                         <g id="icons" transform="translate(56.000000, 160.000000)">
@@ -30,27 +50,31 @@
                         </g>
                     </g>
                 </g>
-            </svg>
-            Season 2
-        </div>
-        <div class="prev flex gap-2 h-8 w-fit justify-center items-center"> 
-            Season 2
-            <svg class=" h-4/5 " viewBox="0 -2 12 12" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-                <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                    <g id="Dribbble-Light-Preview" transform="translate(-144.000000, -3805.000000)" fill="#ffffff">
-                        <g id="icons" transform="translate(56.000000, 160.000000)">
-                            <path d="M99.684,3649.69353 L95.207,3652.82453 C94.571,3653.25353 94,3652.84553 94,3652.13153 L94,3650.14053 L89.78,3652.82453 C89.145,3653.25353 88,3652.84553 88,3652.13153 L88,3645.86853 C88,3645.15453 89.145,3644.74653 89.78,3645.17453 L94,3647.85953 L94,3645.86853 C94,3645.15453 94.571,3644.74653 95.207,3645.17453 L99.516,3648.30653 C100.03,3648.65353 100.198,3649.34653 99.684,3649.69353" id="next-[#998]">
-            
-            </path>
-                        </g>
-                    </g>
-                </g>
-            </svg>
+            </svg>        
         </div>
         </div>
-    <div class="Season-content">
-        <app-episode-card *ngFor="let episode of season.episodes" [episode]="episode"></app-episode-card>
-
+        </div>
+    <div class="Season-content p-4 min-h-96">
+        <ng-container *ngFor="let episode of season.episodes">
+            <app-episode-card  [episode]="episode" [animeId]="animeId"></app-episode-card>
+        </ng-container>
+        <ng-container *ngIf="isLoading ">
+            <div class="flex flex-col gap-5">
+                <div *ngFor="let episode of [1,1,11]" class="flex w-full items-center gap-4">
+                    <div class="skeleton h-44 w-1/4"></div>
+                    <div class="flex w-3/4 flex-col gap-4">
+                        <div class="skeleton h-4 w-52"></div>
+                        <div class="skeleton h-4 w-96"></div>
+                        <div class="skeleton h-4 w-3/4"></div>
+                        <div class="skeleton h-4 w-full"></div>
+                        <div class="skeleton h-4 w-full"></div>
+                    </div>
+                </div>
+            </div>
+        </ng-container>
+        <ng-container *ngIf="!isLoading && season.episodes.length <= 0">
+            <app-empty-page></app-empty-page>
+        </ng-container>
     </div>
 
 </div>

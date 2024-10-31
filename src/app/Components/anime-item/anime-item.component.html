@@ -1,19 +1,18 @@
 
-<div (click)="navigateToAnime()" class="anime-item drop-shadow-lg  overflow-hidden  bg-primary flex flex-col rounded-lg w-36 h-64 sm:w-44 sm:h-64 md:w-56 md:h-80 lg:h-96 lg:w-72    font-main  active:scale-100  transition duration-500 ease-in-out ">
-    <div class="absolute z-20 group overflow-hidden w-8 md:w-10  ">
-        <svg viewBox="0 0 36 49" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect width="36" height="37" rx="5"  class=" fill-text-grey-100 group-hover:fill-text-grey-50"/>
-            <path fill-rule="evenodd" clip-rule="evenodd" d="M0 4.59375V49L18 38.2812L36 49V4.59375C36 2.05666 33.9853 0 31.5 0H4.5C2.01469 0 0 2.05666 0 4.59375ZM20.1304 17.4651H25.516C26.1769 17.4651 26.7128 17.962 26.7128 18.5747V19.6843C26.7128 20.297 26.1769 20.7939 25.516 20.7939H20.1304V25.7871C20.1304 26.3998 19.5944 26.8967 18.9336 26.8967H17.7368C17.0759 26.8967 16.54 26.3998 16.54 25.7871V20.7939H11.1543C10.4935 20.7939 9.95752 20.297 9.95752 19.6843V18.5747C9.95752 17.962 10.4935 17.4651 11.1543 17.4651H16.54V12.4719C16.54 11.8592 17.0759 11.3623 17.7368 11.3623H18.9336C19.5944 11.3623 20.1304 11.8592 20.1304 12.4719V17.4651Z"  class=" fill-primary group-hover:fill-secondary"/>
+<div  class="anime-item drop-shadow-purble  overflow-hidden relative    flex flex-col  w-36 h-64 sm:w-52 sm:h-80     font-main  active:scale-100  transition duration-500 ease-in-out ">
+    <div (click)="addAnimeToLibrary()" class="absolute z-20 group shadow-lg hover:shadow-xl  overflow-hidden w-8 md:w-10  ">
+        <svg class="size-10 active:scale-95" (click)="addAnimeToLibrary()"   viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path opacity="0.5" d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" class="fill-text-grey-100"/>
+            <path d="M16 14.0455V11.5488C16 9.40445 16 8.3323 15.4142 7.66615C14.8284 7 13.8856 7 12 7C10.1144 7 9.17157 7 8.58579 7.66615C8 8.3323 8 9.40445 8 11.5488V14.0455C8 15.5937 8 16.3679 8.32627 16.7062C8.48187 16.8675 8.67829 16.9688 8.88752 16.9958C9.32623 17.0522 9.83855 16.5425 10.8632 15.5229C11.3161 15.0722 11.5426 14.8469 11.8046 14.7875C11.9336 14.7583 12.0664 14.7583 12.1954 14.7875C12.4574 14.8469 12.6839 15.0722 13.1368 15.5229L13.1368 15.5229C14.1615 16.5425 14.6738 17.0522 15.1125 16.9958C15.3217 16.9688 15.5181 16.8675 15.6737 16.7062C16 16.3679 16 15.5937 16 14.0455Z" class="fill-background-200"/>
             </svg>
     </div>
-    <div class="img-container  rounded-lg overflow-hidden h-4/5 md:h-5/6 relative ">
-        <img class="w-full h-full " [src]="anime.img" alt="anime">
+    <div (click)="navigateToAnime()" class="img-container  rounded-md overflow-hidden h-4/5 md:h-5/6 relative ">
+        <img class="w-full h-full " [src]="anime.img" alt="anime"  (error)="onImageError($event)">
         <div class="absolute inset-0 w-full h-full flex justify-center items-center group ">
             <!-- Background overlay with opacity 50% on hover -->
             <div class="absolute inset-0 z-10 bg-black opacity-0 transition ease-in-out duration-300 group-hover:opacity-50 "></div>
-        
             <!-- SVG icon with opacity transition -->
-            <svg class="h-1/3 w-1/3  z-10 opacity-0 group-hover:opacity-100 transition ease-in-out duration-500 " 
+            <svg class="h-1/3 w-1/3  z-10 opacity-0 group-hover:opacity-100 transition ease-in-out duration-500"
                 viewBox="-0.5 0 7 7" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                 <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                     <g id="Dribbble-Light-Preview" transform="translate(-347.000000, -3766.000000)" class="fill-text-grey-100">
@@ -28,7 +27,10 @@
     </div>
     <div class="anime-info">
         <div class="row-1 flex justify-between  align-bottom ">
-            <div class="title  text-sm lg:text-base  font-bold  text-text-grey-50 ">{{anime.title}}</div>
+            <div (click)="navigateToAnime()" class="title cursor-pointer  text-xs lg:text-sm  font-bold  text-text-grey-50 ">    
+                <span class="hidden md:inline-block">{{anime.title}}</span>
+                <span class="inline-block md:hidden">{{smallScreenTitle}}</span>
+            </div>
             <div class="episode  self-end item-subtitles">{{anime.episode}} Eps</div>
         </div>
         <div class="row-2 flex justify-between ">

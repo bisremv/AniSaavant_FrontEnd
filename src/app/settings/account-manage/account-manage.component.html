@@ -1,0 +1,56 @@
+<div class="flex flex-col relative sm:flex-row">
+    <div class="flex    font-bold sm:flex-col gap-3 md:pl:32 lg:pl-44 p-4">
+        <div class="cursor-pointer text-link text-nowrap"  (click)="tab='account'" >Account Management</div>
+        <div class="cursor-pointer text-nowrap text-link"  (click)="tab='profile'" >Profile</div>
+        <div class="cursor-pointer text-link text-nowrap"  (click)="tab='about'">About Us</div>
+        <div (click)="logOut() " class="cursor-pointer text-error">Log out</div>
+    </div>
+    <div class="flex-grow h-[88vh]">
+        <div *ngIf="tab=='account'" class="user setting flex flex-col w-full h-full p-8 gap-10">
+            <kbd class="kbd w-44">Update Account</kbd>
+            <form #formUpdate="ngForm" (ngSubmit)="OnSubmit()">
+                <div class="sm:w-1/2 lg:w-1/4  flex flex-col gap-4">
+                    <label class="input input-bordered flex items-center gap-2">
+                        <input type="text" name="username" ngModel class="grow placeholder:text-sm"  [placeholder]="this.userManagment.user.value.userName" />
+                    </label>
+                    <label class="input input-bordered flex items-center gap-2">
+                        <input disabled type="text" name="email" ngModel class="grow placeholder:text-sm" [placeholder]="this.userManagment.user.value.userEmail" />
+                    </label>
+                </div>
+                </form>
+                <div  class="flex gap-2 flex-col sm:flex-row sm:justify-between"> 
+                    <div class="flex gap-2 w-full justify-between sm:w-fit "> 
+                    <button (click)="OnSubmit()" type="submit" class="btn btn-sm btn-outline">
+                        Save changes
+                    </button>
+                <button (click)="clear()"  class="btn btn-sm btn-outline">
+                        Cancel
+                </button>
+                </div>
+                <div class="flex gap-2 md:mr-64 lg:mr-96">
+                <div class="tooltip tooltip-bottom" data-tip="currently under maintenance">
+                    <button disabled class="btn relative btn-sm  font-normal btn-primary">
+                        Change Password   
+                    </button>
+                </div>
+                    <button (click)="deleteAccount()" class="btn btn-sm font-normal btn-error">
+                        Delete Account
+                    </button>
+                </div>
+            </div>
+            </div>
+        <app-aboutus *ngIf="tab=='about'">
+        </app-aboutus>
+        <app-profileselection *ngIf="tab=='profile'" ></app-profileselection>
+    </div>
+    
+    <div class="absolute  flex items-center justify-center   pointer-events-none inset-0">
+        
+        <app-loading 
+        *ngIf="loading"
+          [type]="loadingType" 
+          class="z-20  pointer-events-none " 
+          >
+        </app-loading>
+      </div>      
+</div>

@@ -1,38 +1,59 @@
 <div class="carousel-container relative w-full">
     <div
     class="inner-carousel flex overflow-x-auto snap-x snap-mandatory transition ease-in-out duration-100" #carousel >
+    <ng-container *ngIf="animeHeros && animeHeros.length > 0; else emptyList">
         <app-anime-hero
         class="snap-centerw-full snap-center flex-shrink-0"
         *ngFor="let anime of animeHeros; let i = index"
         [anime]="anime"
       ></app-anime-hero>
-    </div>
-  
-    <div class="absolute right-5 bottom-0 flex flex-col gap-3">
+      </ng-container>
+      <ng-template #emptyList>
+        <div class="snap-start p-6" >
+          <div class="flex w-[90vw] justify-between md:items-end gap-8">
+            <div class="skeleton  h-[30] md:h-[55vh] w-1/4"></div>
+            <div class="flex  flex-col  gap-7 w-full">
+              <div class="skeleton h-24 rounded-full w-24"></div>
+              <div class="skeleton h-4 w-4/5"></div>
+              <div class="skeleton h-4 w-3/6"></div>
+              <div class="skeleton h-4 w-4/5"></div>
+              <div class="skeleton hidden md:inline-block  h-4 w-4/6"></div>
+              <div class="skeleton hidden md:inline-block  h-4 w-5/6"></div>
+              <div class="skeleton hidden md:inline-block  h-4 w-4/6"></div>
+              <div class="skeleton  hidden md:inline-block h-4 w-5/6"></div>
+              </div>
+          </div>
+        </div>
+      </ng-template>
+    <div class="absolute right-5 bottom-8 flex flex-col gap-3">
       <!-- Next slide navigation -->
       <a (click)="scrollNext()" class="btn arrow">❯</a>
       <!-- Previous slide navigation -->
       <a (click)="scrollPrev()" class="btn arrow">❮</a>
     </div>
   </div>
+</div>
 
 
-  <div class="content">
-    <app-anime-grouping [animeList]="PopularList" [animeGroup]="'Popular'" class="content"></app-anime-grouping>
-  </div>
-  <div class="content">
-    <app-anime-group-horizontal 
-    [animeGroup]="'Trending'"
-    [animeList]="TrendingList"
-    ></app-anime-group-horizontal>
-  </div>
-  <div class="content">
-    <app-anime-grouping [animeList]="AnticipatedList" [animeGroup]="'Anticipated'" class="content"></app-anime-grouping>
-
-  </div>
+<div class="content">
+  <app-anime-grouping 
+  [animeGroup]="'Trending'"
+  [animeList]="TrendingList" class="content"></app-anime-grouping>
+</div>
   <div class="content">
     <app-anime-group-horizontal 
     [animeGroup]="'MostWatched'"
     [animeList]="MostWatchedList" class="content"></app-anime-group-horizontal>
   </div>
-  
+
+
+  <div class="content">
+    <app-anime-grouping [animeList]="PopularList" [animeGroup]="'Popular'" class="content"></app-anime-grouping>
+  </div>
+
+
+  <div class="content">
+    <app-anime-group-horizontal 
+    [animeList]="AnticipatedList" [animeGroup]="'Anticipated'"
+    ></app-anime-group-horizontal>
+  </div>

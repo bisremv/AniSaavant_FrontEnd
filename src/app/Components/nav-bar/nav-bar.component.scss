@@ -3,11 +3,14 @@
 }
 
 .userSign{
-    @apply p-1  gap-2  font-bold bg-primary rounded-sm  items-center  text-sm cursor-pointer hover:bg-secondary active:bg-hover ;
+    @apply  btn  bg-primary rounded-md   btn-xs hover:bg-secondary active:bg-hover ;
 }
 .icon{
     @apply size-8
 }
 .search-icon{
     cursor: pointer;
+}
+.active-tab{
+    @apply text-secondary;
 }

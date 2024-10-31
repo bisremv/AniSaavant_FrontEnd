@@ -1,0 +1,25 @@
+<div class="md:w-[45vw] py-8">
+<div class="md:text-xl  font-bold font-main px-8">
+    Latest Manga Updates
+</div>
+<div class="manga-latest  flex flex-col  p-4">
+    
+    <ng-container *ngIf="mangaList && mangaList.length > 0">
+        <app-latest-manga-item *ngFor="let manga of mangaList" [latestManga]="manga"></app-latest-manga-item>
+    </ng-container>
+    <ng-container *ngIf="isLoading">
+        <div class="m-2 w-full" *ngFor="let anime of [1,2,3,2,3,2,3,2,3,2,3];">
+            <div class="flex items-center  gap-4">
+                <div class="skeleton h-20 w-20 shrink-0 "></div>
+                    <div class="flex flex-col gap-4">
+                    <div class="skeleton h-4 w-20"></div>
+                    <div class="skeleton h-4 w-44 md:w-72 lg:w-96"></div>
+                    </div> 
+            </div>
+        </div>
+    </ng-container>
+    <ng-container *ngIf="!isLoading && mangaList.length == 0 ">
+        <app-empty-page></app-empty-page>
+    </ng-container>
+</div>
+</div>

@@ -17,6 +17,7 @@ export class MangaDetailsComponent implements OnInit {
   mangaService:MangaService=inject(MangaService);
   mangaInfo:MangaInfo=new MangaInfo(0,0,0,"","","","","","","",0,[]);
   activeRoute:ActivatedRoute=inject(ActivatedRoute);
+  mangaLoaded:boolean=false;
   ngOnInit(){
     this.activeRoute.queryParams.subscribe(params => {
       this.mangaInfo.itemLink = params['itemLink'];
@@ -24,12 +25,12 @@ export class MangaDetailsComponent implements OnInit {
       this.getMangaInfo();
     });
 
-    // this.getAnimeInfo()
   }
   getMangaInfo() {
     this.mangaService.getMangaInfo(this.mangaInfo.itemLink, this.mangaInfo.extId).subscribe({
       next:(response: any) => {
         this.mangaInfo = response;
+        this.mangaLoaded = true;
       } 
     });
   }

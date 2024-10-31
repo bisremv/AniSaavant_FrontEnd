@@ -14,6 +14,8 @@ export class SeasonItemComponent {
   season:Season= new Season(0,"",0,"","","",0,0,[]);
   @Input()
   tmdbId:number=0;
+  @Input()
+  animeId:number=0;
   route:Router=inject(Router);
   getAirDate() {
     if(this.season.airDate === null) {
@@ -22,6 +24,12 @@ export class SeasonItemComponent {
     return this.season.airDate;
   }
   navigateToSeasons(){
-    this.route.navigate(['/anime/season'], { queryParams: { animeId: this.tmdbId, seasonNumber: this.season.seasonNumber } });
+    this.route.navigate(['/anime/season'], { queryParams: { tmdbId: this.tmdbId,animeId: this.animeId, seasonNumber: this.season.seasonNumber } });
 }
+
+onImageError(event: Event) {
+  const element = event.target as HTMLImageElement;
+  element.src = 'images/S_logo.svg';
+}
+
 }

@@ -1,35 +1,44 @@
-<div class="chapter-wrapper bg-background-100 border  border-primary/40 rounded-lg "  >
-    <div class="search max-w-72 ml-auto ">
-            <label class="input flex m-1 items-center gap-2 bg-secondary/20 rounded-full">
-            <input type="text" class="grow" placeholder="Search" />
-            <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 16 16"
-            fill="currentColor"
-            class="h-4 w-4 opacity-70">
-            <path
-                fill-rule="evenodd"
-                d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z"
-                clip-rule="evenodd" />
-            </svg>
-        </label>
-    </div>
-    <div class="overflow-x-auto bg-background-200/5 ">
-            <table class="table border border-primary/40">
-                <!-- head -->
-                <thead>
-                <tr class="border-primary/40">
-                    <th></th><th>Chapter</th> <th>Title</th><th>Date</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr class="border-primary/40 hover:bg-background-200/30" *ngFor="let chap of chapters">
-                    <th></th>
-                    <th>{{chap.ChapterNumber}}</th>
-                    <td>{{chap.ChapterTitle}}</td>
-                    <td>{{chap.ChapterDate}}</td>
-                </tr>
-                </tbody>
-            </table>
+    <div class="chapter-wrapper bg-background-100 border  border-primary/40 rounded-lg "  >
+        <div class="search max-w-72 ml-auto ">
+                <div  class="input flex m-1 items-center gap-2 bg-secondary/20 rounded-full">
+                <input type="text"  class="grow" placeholder="Search" />
+                <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 16 16"
+                fill="currentColor"
+                class="h-4 w-4 opacity-70">
+                <path
+                    fill-rule="evenodd"
+                    d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z"
+                    clip-rule="evenodd" />
+                </svg>
             </div>
         </div>
+        <div class="overflow-x-auto bg-background-200/5 ">
+                <table class="table border border-primary/40">
+                    <!-- head -->
+                    <thead>
+                    <tr class="border-primary/40  text-sm md:text-lg ">
+                        <th id="" >Chapter</th> <th id="" ></th><th id=""  class="text-center">Date</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="border-primary/40 hover:bg-background-200/30  transition-all duration-300 ease-in-out cursor-pointer group" (click)="navigateToPage(chap.ChapterLink)" *ngFor="let chap of chapters">
+                            <th id="" class="text-purple-400 flex gap-2 items-center font-main transition-all duration-300 ease-in-out group-hover:scale-110 translate-x-3">
+                                <!-- SVG Icon -->
+                                <svg class="scale-0  transition duration-300 ease-in-out group-hover:scale-100" width="16px" height="16px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M21.4086 9.35258C23.5305 10.5065 23.5305 13.4935 21.4086 14.6474L8.59662 21.6145C6.53435 22.736 4 21.2763 4 18.9671L4 5.0329C4 2.72368 6.53435 1.26402 8.59661 2.38548L21.4086 9.35258Z" fill="#1C274C"/>
+                                </svg>
+                        
+                                <!-- Chapter Number -->
+                                <span >
+                                    {{chap.ChapterNumber}}
+                                </span>
+                            </th>
+                        <td class="font-body">{{getChapterTitle(chap.ChapterTitle)}}</td>
+                        <td class="font-body text-center">{{chap.ChapterDate}}</td>
+                    </tr>
+                    </tbody>
+                </table>
+                </div>
+            </div>

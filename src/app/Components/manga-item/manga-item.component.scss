@@ -1,6 +1,7 @@
 .item-subtitles{
-    @apply text-xs lg:text-lg   text-text-grey-100 font-bold ;
-
+    @apply text-sm font-body  text-text-grey-100 font-bold ;
+    // font-size: 0.75rem /* 12px */;
+    // line-height: 1rem
 }
 .manga-info{
     @apply px-1 flex flex-col justify-between flex-grow font-bold my-2 mx-1 ;

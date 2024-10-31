@@ -1,0 +1,17 @@
+.mid {
+    @apply h-full;
+    background: linear-gradient(to bottom, #867CF5,#867CF5, #DF67F4, #DF67F4 , #867CF5);
+}
+.time{
+    background: linear-gradient(to bottom,#867CF5, #DF67F4);
+}
+
+.last{
+    @apply h-1/2 self-start -translate-y-5;
+    background: linear-gradient(to bottom, #867CF5, #7f74fa,#867CF5);
+}
+.first{
+    @apply h-1/2 self-end translate-y-5;
+    background: linear-gradient(to bottom, #DF67F4,#867CF5);
+}
+

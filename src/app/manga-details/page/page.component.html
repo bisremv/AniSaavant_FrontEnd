@@ -1,0 +1,47 @@
+<!-- <div [ngClass]="{ 'h-0': !isNavOpen,'': !isNavOpen}" class="transition-all  duration-500" >
+    <app-nav-bar></app-nav-bar>
+</div> -->
+
+<div class="min-h-full ">
+    <!-- Side Navigation -->
+<app-page-controls class="z-50 fixed top-0 left-0 w-full"  (navToggle)="NavToggle($event)" (sideToggle)="SideToggle($event)" (pageViewControl)="changePageView($event)" (imageFitControl)="changeImageFit($event)"  (directionControl)="toggleDirection($event)" (progressControl)="changeProgress($event)"     [itemLink]="itemLink" [extId]="extId" [chapterLink]="chapterLink" [pageNumberView]="pageNumber" (pageNumber)="changePageNumber($event)"
+[pages]="pages"
+></app-page-controls>
+
+<!-- Main Content -->
+<div [ngClass]="{'md:mr-80': isSideMenuOpen, 'mr-10 mx-10': !isSideMenuOpen}" class="transition-all relative duration-500 ">
+<div class="flex relative  px-4 md:px-10  lg:px-14 z-0  overflow-y-scroll" [ngClass]="{'h-[91vh]':isNavOpen,
+    'h-[100vh]':!isNavOpen,'flex-col items-center':pageView=='long Strip','justify-center ':pageView!='long Strip'}">
+    <div *ngIf="pageView=='long Strip'">
+        <div [ngClass]="{'w-full':imageFit=='w','w-[30rem]':imageFit=='no','h-full':imageFit=='h','w-full h-full':imageFit=='both'}" *ngFor="let page of pages"  >
+            <img [src]="page.pageImg" alt=""  class="h-full w-full"   >
+        </div>
+    </div>    
+    <div [ngClass]="{'w-full':imageFit=='w','h-full  ':imageFit=='h','w-full h-full':imageFit=='both','hidden':loading}" *ngIf="pageView=='single'">        
+        <img  [src]="pages[pageNumber].pageImg" class=" w-full" alt=""  [ngClass]="{'h-full ':imageFit=='h'}"    (load)="onImageLoad()">
+    </div>
+    <div  class="" *ngIf="pageView=='double'" class="flex" [ngClass]="{'w-full ':imageFit=='w','h-full':imageFit=='h','w-full h-full':imageFit=='both'}">
+        <img  [src]="pages[pageNumber].pageImg" class=" w-1/2 " alt=""  (load)="onImageLoad()" [ngClass]="{'hidden':loading}" >
+        <img  [src]="pages[page2Number].pageImg" class=" w-1/2 " alt="" (load)="onImageLoad()" [ngClass]="{'hidden':loading}" >
+
+</div>
+<div class="abs-controls   ">
+ <div *ngIf="loading" class="fixed m-auto flex justify-center items-center" [ngClass]="{'md:mr-80': isSideMenuOpen, 'mr-10 mx-10': !isSideMenuOpen}" >
+    <div class="loader">
+    <span class="loading loading-bars loading-lg"></span>
+    </div>
+    </div>
+<div class="right fixed left-0 inset-y-0    w-1/6 " (click)="changePage(true)" ></div>
+<div class="left fixed right-0 inset-y-0   w-1/6 " (click)="changePage(false)" [ngClass]="{'md:right-[21rem] ': isSideMenuOpen, 'right-14': !isSideMenuOpen}"   ></div>
+</div>
+</div> 
+<div  *ngIf="pageView!='long Strip' && progress" class="flex gap-0.5 h-4 hover:h-6 absolute bottom-0 w-full border transform duration-300 border-primary/30 " >
+    
+    <div class="h-full relative  flex-grow   group hover:bg-background-100 "  *ngFor="let p of pages; let i = index"  [ngClass]="{'bg-primary':i<=pageNumber,'bg-background-100/50':i>pageNumber, }" (click)="changeByProgress(i)" >
+        <span class="hidden group-hover:inline-block group-hover:absolute text-center  p-1  bg-link rounded  -translate-y-10 text-sm">
+            {{i}}
+            </span>
+    </div>
+</div>
+</div>
+</div>

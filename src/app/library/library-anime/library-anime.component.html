@@ -1,0 +1,47 @@
+<div class="flex flex-col gap-4">
+    <div class="header m-4 mt-0 flex flex-col gap-4"> 
+        <h1 class="text-lg font-bold font-main">Anime Library</h1>
+        <div role="tablist" class="tabs tabs-bordered">
+            <a (click)="setActiveTab(Tab.All)" 
+            [ngClass]="{'tab-active': activeTab == Tab.All}"
+            role="tab" class="tab text-link ">All</a>
+            <a (click)="setActiveTab(Tab.OnGoing)" 
+            [ngClass]="{'tab-active': activeTab == Tab.OnGoing}"
+            role="tab" class="tab  text-link">On-going</a>
+            <a (click)="setActiveTab(Tab.Planned)" 
+            [ngClass]="{'tab-active': activeTab == Tab.Planned}"
+            role="tab" class="tab text-link ">Planned</a>
+            <a (click)="setActiveTab(Tab.Canceled)" 
+            [ngClass]="{'tab-active': activeTab == Tab.Canceled}"
+            role="tab" class="tab text-link ">Canceled</a>
+            <a (click)="setActiveTab(Tab.Ended)" 
+            [ngClass]="{'tab-active': activeTab == Tab.Ended}"
+            role="tab" class="tab text-link ">Ended</a>
+        </div>
+    </div>
+    <div class="m-4 p-6 min-h-[70vh] bg-background-100 rounded-lg   ">
+    <div class=" grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5  grid xl:grid-cols-6 gap-3">
+        
+        <ng-container *ngIf="filterList && filterList.length > 0 && !isLoading">
+            <div *ngFor="let anime of filterList">
+                <app-search-item [anime]="anime" 
+                (deleted)="onAnimeDelete($event)" 
+                [inLibrary]="true"></app-search-item>
+            </div>
+            </ng-container>
+            <ng-template *ngIf="isLoading">
+                <div class="snap-start" *ngFor="let anime of [1,2,3,2,3,2,3,2,3,2,3,23,2,3,2,3,2,3,2,3,2,3];">
+                    <div class="flex w-52 flex-col gap-4">
+                        <div class="skeleton h-32 w-full"></div>
+                        <div class="skeleton h-4 w-28"></div>
+                        <div class="skeleton h-4 w-full"></div>
+                        <div class="skeleton h-4 w-full"></div>
+                    </div>
+                </div>
+                </ng-template>
+    </div>
+    <ng-container *ngIf="!isLoading && filterList.length == 0">
+        <app-empty-page></app-empty-page>
+    </ng-container>
+    </div>
+</div>

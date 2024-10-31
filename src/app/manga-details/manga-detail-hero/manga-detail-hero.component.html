@@ -1,25 +1,20 @@
 <div class="relative">
-
-
-<div class="backdrop   relative h-[55vh]">
+<div class="backdrop mb-[30vw] sm:m-0  relative h-[55vw] sm:h-[45vh]">
     <img [src]="manga.itemImg" alt="backdrop" class="object-cover object-top m-auto  w-[70vw] h-full absolute inset-0" />
     <div>
         <div class="dark-filter" >
         </div>
-
         <div class="color-filter" >
         </div>
         <div class="dark-filter" >
         </div>
     </div>
 </div>
-
-<div class="image-wrapper absolute top-2 left-1/2 transform -translate-x-1/2 md:hidden inline-block">
-        <div class="poster-image  md:m-6 h-[55vh]  border-2 border-primary rounded-md">
+<div class="image-wrapper absolute top-7 sm:top-2 left-1/2 transform -translate-x-1/2 md:hidden inline-block">
+        <div class="poster-image   sm:h-[55vw]  border-2 border-primary rounded-md">
         <img [src]="manga.itemImg" alt="backdrop" class="w-full h-full object-fill" />
     </div>
-</div> 
-
+</div>
 <div class="info absolute w-[90vw] m-[5vw] bg-background-50/30 p-4 rounded-lg  gap-3 lg:text-lg xl:text-xl font-normal capitalize font-body flex md:hidden flex-col ">
     <div class="flex gap-2 justify-between flex-wrap"> <span>Status :</span> <span >{{manga.status}}</span> </div>
     <div class="flex gap-2 justify-between flex-wrap"> <span>Author :</span> <span >{{manga.author}}</span></div>

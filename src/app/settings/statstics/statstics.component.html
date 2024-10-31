@@ -1,0 +1,180 @@
+<div class="flex flex-col gap-8">
+    
+<div class=" rounded-md border-style p-0.5 m-5 md:mx-40">
+    <div class="h-full w-full  bg-background-200 p-3 rounded-md">
+    <div class="header">Anime Statistics</div>
+        <div class=" w-full grid sm:grid-cols-3  gap-2 md:gap-8">
+            <div class="text-text-grey-50  w-full rounded-md border-style p-0.5 ">
+                <div class="h-full w-full flex flex-col gap-2 justify-center items-center  bg-background-200 p-3 rounded-md">
+                <svg class="size-14 icon" viewBox="0 0 32 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+                    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+                        <g id="Icon-Set-Filled" sketch:type="MSLayerGroup" transform="translate(-362.000000, -517.000000)" class=" icon" >
+                            <path d="M387,535 C385.343,535 384,533.657 384,532 C384,530.343 385.343,529 387,529 C388.657,529 390,530.343 390,532 C390,533.657 388.657,535 387,535 L387,535 Z M389,542 L385,542 C384.447,542 384,541.553 384,541 C384,540.447 384.447,540 385,540 L389,540 C389.553,540 390,540.447 390,541 C390,541.553 389.553,542 389,542 L389,542 Z M389,545 L385,545 C384.447,545 384,544.553 384,544 C384,543.447 384.447,543 385,543 L389,543 C389.553,543 390,543.447 390,544 C390,544.553 389.553,545 389,545 L389,545 Z M382,543 C382,544.104 381.104,545 380,545 L368,545 C366.896,545 366,544.104 366,543 L366,531 C366,529.896 366.896,529 368,529 L380,529 C381.104,529 382,529.896 382,531 L382,543 L382,543 Z M390,525 L380.746,525 L389.518,518.965 C389.981,518.646 390.113,517.988 389.813,517.496 C389.514,517.004 388.895,516.863 388.431,517.182 C388.431,517.182 378.821,523.817 378.009,524.307 L367.569,517.182 C367.106,516.863 366.486,517.004 366.187,517.496 C365.887,517.988 366.019,518.646 366.482,518.965 L375.254,525 L366,525 C363.791,525 362,526.791 362,529 L362,545 C362,547.209 363.791,549 366,549 L390,549 C392.209,549 394,547.209 394,545 L394,529 C394,526.791 392.209,525 390,525 L390,525 Z M386,533 L388,533 L388,531 L386,531 L386,533 Z M379,531 L369,531 C368.447,531 368,531.448 368,532 L368,542 C368,542.553 368.447,543 369,543 L379,543 C379.553,543 380,542.553 380,542 L380,532 C380,531.448 379.553,531 379,531 L379,531 Z" id="tv-television" sketch:type="MSShapeGroup">
+                
+                </path>
+                        </g>
+                    </g>
+                </svg>
+                <p>You've seen a total of</p>
+                <h1 class="text-main">{{userStats.totalEpisode}}</h1>
+                <p>Episodes</p>
+                <div>
+                    <p class="text-main">.</p>
+                    <p class="text-main">.</p>
+                </div>
+                <h1>in exact</h1>
+                <div class="deatalis flex  gap-1 w-5/6 justify-around">
+                    <div class="flex items-center flex-col md:gap-1"> 
+                        <span class=" text-main">{{userStats.totalAnime}}</span>
+                        <span class="subtitle">Anime's</span>
+                    </div>
+                    <div class="divider divider-horizontal m-0 "></div>   
+                        <div class="flex items-center flex-col md:gap-1"> 
+                        <span class="text-main">{{userStats.totalSeasons}}</span>
+                        <span class="subtitle">Seasons</span>
+                    </div>
+                </div>
+            </div>
+            </div> 
+            <div class="text-text-grey-50 h-[370px] w-full rounded-md border-style p-0.5">
+                <div class="h-full w-full flex flex-col gap-2 justify-center items-center  bg-background-200 p-3 rounded-md">
+                    <div class="bg-gradient-to-r from-blue-600 via-green-500 to-indigo-400 inline-block text-transparent bg-clip-text">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-16 icon-stroke">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                        </svg>                      
+                    </div>
+                <p> Total time spent watching Anime series </p>
+                <h1 class="text-main">{{userStats.totalTimeOnAnime}}</h1>
+                <p>Minutes</p>
+                <div>
+                    <p class="text-main">.</p>
+                    <p class="text-main">.</p>
+                </div>
+                <h1>Which is exactly</h1>
+                <div class="deatalis flex  gap-1 w-5/6 justify-around">
+                    <div class="flex items-center flex-col md:gap-1"> 
+                        <span class=" text-main">{{changeMinToYears().years}}</span>
+                        <span class="subtitle">Years</span>
+                    </div>
+                    <div class="divider divider-horizontal m-0 "></div>   
+                        <div class="flex items-center flex-col md:gap-1"> 
+                        <span class="text-main">{{changeMinToYears().months}}</span>
+                        <span class="subtitle">months</span>
+                    </div>
+                    <div class="divider divider-horizontal m-0 "></div>   
+                        <div class="flex items-center flex-col md:gap-1"> 
+                        <span class="text-main">
+                            {{changeMinToYears().days}}
+                        </span>
+                        <span class="subtitle">Days</span>
+                    </div>
+                </div>
+                </div>
+            </div>
+            <div class="text-text-grey-50 h-[370px] w-full rounded-md border-style p-0.5">
+                <div class="h-full w-full flex flex-col gap-2 justify-around items-center  bg-background-200 p-3 rounded-md">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-14 icon-stroke">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09ZM18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 0 0-2.456 2.456ZM16.894 20.567 16.5 21.75l-.394-1.183a2.25 2.25 0 0 0-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 0 0 1.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 0 0 1.423 1.423l1.183.394-1.183.394a2.25 2.25 0 0 0-1.423 1.423Z" />
+                        </svg>  
+                    
+                <p> It looks like your favorite genres are </p>
+                <h1 class="text-main">{{sortAnimeGenresByPopularity(1)}}</h1>
+                <div>
+                    <p class="text-main text-5xl">.</p>
+                </div>
+                <span class=" text-main">{{sortAnimeGenresByPopularity(2)}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="divider">
+    <img src="images/S_logo.svg" alt="">
+</div>
+<div class=" rounded-md border-style   p-0.5 m-5 md:mx-40">
+    <div class="h-full w-full  bg-background-200 p-3 rounded-md">
+    <div class="header">Manga Statistics</div>
+        <div class=" w-full grid sm:grid-cols-3  gap-2 md:gap-8">
+            <div class="text-text-grey-50 h-[370px] w-full rounded-md border-style p-0.5 flex flex-col gap-2 justify-center items-center">
+                <div class="h-full w-full flex flex-col gap-2 justify-center items-center  bg-background-200 p-3 rounded-md">
+                    <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><g data-name="2-Book"><path d="M7 26h2v2H7z"/><path d="M29 0H7a4.91 4.91 0 0 0-3.52 1.47A4.92 4.92 0 0 0 2 5v22a5 5 0 0 0 5 5h22a1 1 0 0 0 1-1V1a1 1 0 0 0-1-1zm-1 30H7a3 3 0 0 1-3-3 3 3 0 0 1 3-3h18a3 3 0 0 1 2.82 2H11v2h17zm0-7a5 5 0 0 0-3-1H7a4.9 4.9 0 0 0-3 1V5a3 3 0 0 1 .89-2.12A2.94 2.94 0 0 1 7 2h2v11a1 1 0 0 0 1.55.83L13 12.2l2.45 1.63A1 1 0 0 0 17 13V2h11z"/><path d="M25 10V6a1 1 0 0 0-1-1h-4v2h3v2h-3v2h4a1 1 0 0 0 1-1zM19 14h6v2h-6z"/></g></svg>
+                <p>You've read a total of</p>
+                <h1 class="text-main">{{userStats.totalChapter}}</h1>
+                <p>Chapters</p>
+                <div>
+                    <p class="text-main">.</p>
+                    <p class="text-main">.</p>
+                </div>
+                <h1>in exact</h1>
+                <div class="deatalis flex  gap-1 w-5/6 justify-around">
+                    <div class="flex items-center flex-col md:gap-1"> 
+                        <span class=" text-main">{{userStats.totalManga}}</span>
+                        <span class="subtitle">Manga's</span>
+                    </div>
+                </div>
+
+                </div>
+            </div> 
+            <div class="text-text-grey-50 h-[370px] w-full rounded-md border-style p-0.5 flex flex-col gap-2 justify-center items-center">
+                <div class="h-full w-full flex flex-col gap-2 justify-center items-center  bg-background-200 p-3 rounded-md">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-16 icon-stroke">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                    </svg>                 <p> Total time spent reading Manga </p>
+                <h1 class="text-main">{{userStats.totalTimeOnManga}}</h1>
+                <p>Minutes</p>
+                <div>
+                    <p class="text-main">.</p>
+                    <p class="text-main">.</p>
+                </div>
+                <h1>Which is exactly</h1>
+                <div class="deatalis flex  gap-1 w-5/6 justify-around">
+                    <div class="flex items-center flex-col md:gap-1"> 
+                        <span class=" text-main">{{changeMangaMinToYears().years}}</span>
+                        <span class="subtitle">Years</span>
+                    </div>
+                    <div class="divider divider-horizontal m-0 "></div>   
+                        <div class="flex items-center flex-col md:gap-1"> 
+                        <span class="text-main">{{changeMangaMinToYears().months}}</span>
+                        <span class="subtitle">months</span>
+                    </div>
+                    <div class="divider divider-horizontal m-0 "></div>   
+                        <div class="flex items-center flex-col md:gap-1"> 
+                        <span class="text-main">
+                            {{changeMangaMinToYears().days}}
+                        </span>
+                        <span class="subtitle">Days</span>
+                    </div>
+                </div>
+                </div>
+            </div>
+            <div class="text-text-grey-50 h-[370px] w-full rounded-md border-style p-0.5 flex flex-col gap-2 justify-between items-center">
+                <div class="h-full w-full flex flex-col gap-2 justify-center items-center  bg-background-200 p-3 rounded-md">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-14 icon-stroke">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904 9 18.75l-.813-2.846a4.5 4.5 0 0 0-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 0 0 3.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 0 0 3.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 0 0-3.09 3.09ZM18.259 8.715 18 9.75l-.259-1.035a3.375 3.375 0 0 0-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 0 0 2.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 0 0 2.456 2.456L21.75 6l-1.035.259a3.375 3.375 0 0 0-2.456 2.456ZM16.894 20.567 16.5 21.75l-.394-1.183a2.25 2.25 0 0 0-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 0 0 1.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 0 0 1.423 1.423l1.183.394-1.183.394a2.25 2.25 0 0 0-1.423 1.423Z" />
+                        </svg>  
+                <p> It looks like your favorite genres are </p>
+                <h1 class="text-main capitalize">{{sortMangaGenresByPopularity(1)}}</h1>
+                <div>
+                    <p class="text-main text-5xl">.</p>
+                </div>
+                <span class=" text-main capitalize">{{sortMangaGenresByPopularity(2)}}</span>   
+            </div>
+            </div>
+        </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+    <!-- icon gradient style -->
+    <svg style="width:0;height:0;position:absolute;" aria-hidden="true" focusable="false">
+        <linearGradient id="my-cool-gradient" x2="1" y2="1">
+          <stop offset="0%" stop-color="#DF67F4" />
+          <stop offset="100%" stop-color="#867CF5" />
+        </linearGradient>
+      </svg>

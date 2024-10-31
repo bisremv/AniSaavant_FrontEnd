@@ -4,13 +4,13 @@ import { inject } from '@angular/core';
 import { exhaustMap, take } from 'rxjs/operators';
 
 export const authTokenInterceptor: HttpInterceptorFn = (req, next) => {
+  const userService=inject(UserManagmentService);
   
   const noAuthUrls = ['/signIn', '/singUp']; 
   const isNoAuthRequest = noAuthUrls.some(url => req.url.includes(url));
-  if (isNoAuthRequest) {
+  if (isNoAuthRequest || !userService.isLoggedIn()) {
     return next(req);
   }
-  const userService=inject(UserManagmentService);
   return userService.user.pipe(take(1), exhaustMap(user => {
             const authReq = req.clone({
                 // todo add token to headers

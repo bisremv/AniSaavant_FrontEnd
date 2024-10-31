@@ -8,6 +8,7 @@ import { DiscoverService } from '../../Service/discover.service';
 import { MangaHero } from '../../Models/MangaHero';
 import { ExtensionService } from '../../Service/extension.service';
 import { Extension } from '../../Models/Extenison';
+import { MangaItem } from '../../Models/MangaItem';
 
 
 @Component({
@@ -21,18 +22,19 @@ export class MangaDiscoverComponent implements OnInit {
   @ViewChild('carousel') carousel!: ElementRef;
   Extension:ExtensionService=inject(ExtensionService)
   Discover:DiscoverService=inject(DiscoverService);
+  extInfo:Extension[]=[];
+  mangaHeros:MangaItem[] = []
   ngOnInit() {
     this.getMangaHeros();
     this.getExternalMangaSites();
   }
   
-  // todo use render here
   // Scroll to the next item in the carousel
   scrollNext() {
     const carousel: HTMLElement = this.carousel.nativeElement;
     const scrollAmount = carousel.clientWidth;
     const currentScroll = carousel.scrollLeft;
-    const maxScroll = scrollAmount * (this.mangaHeros.length - 1); // Total width minus the width of one item
+    const maxScroll = scrollAmount * (5); // Total width minus the width of one item
     
     if (currentScroll + scrollAmount >= maxScroll) {
       // If reached the end, loop back to the first item
@@ -50,7 +52,7 @@ export class MangaDiscoverComponent implements OnInit {
     
     if (currentScroll - scrollAmount < 0) {
       // If reached the beginning, loop forward to the last item
-      const maxScroll = scrollAmount * (this.mangaHeros.length - 1);
+      const maxScroll = scrollAmount * (5);
       carousel.scrollTo({ left: maxScroll, behavior: 'smooth' });
     } else {
       // Otherwise, scroll by one item width in the reverse direction
@@ -58,35 +60,29 @@ export class MangaDiscoverComponent implements OnInit {
     }
   }
   
-  
-  
-  
   // todo change with service by geting manga
-  extInfo:Extension[]=[];
-  mangaHeros:MangaHero[] = []
   
   getMangaHeros() {
     this.Discover.getMangaList().subscribe(
       {
         next: (res) => {
-          console.log(res);
-          this.mangaHeros = (res as MangaHero[]);
+          console.log("ss",res)
+          this.mangaHeros = (res as MangaItem[]);
+          console.log("as",this.mangaHeros)
+
         },
         error: (error: any) => {
-          console.log(error);
         },
         complete: () => {
-          console.log(' manga hero complete');
         }
       })
   }
   getExternalMangaSites() {
-    this.Extension.getExtensionList().subscribe({
+    this.Extension.getExtension().subscribe({
       next:(extList)=>{
         this.extInfo=(extList as Extension[]);
       },
       error:(error)=>{
-        console.log(error);
       },
       complete:()=>{
 

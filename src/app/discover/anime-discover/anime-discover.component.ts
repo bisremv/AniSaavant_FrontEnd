@@ -23,14 +23,13 @@ export class AnimeDiscoverComponent implements OnInit {
   TrendingList=[]
   AnticipatedList=[]
   MostWatchedList=[]
-  // todo use render here
   // Scroll to the next item in the carousel
   scrollNext() {
     const carousel: HTMLElement = this.carousel.nativeElement;
     const scrollAmount = carousel.clientWidth;
     const currentScroll = carousel.scrollLeft;
     const maxScroll = scrollAmount * (this.animeHeros.length - 1); // Total width minus the width of one item
-  
+
     if (currentScroll + scrollAmount >= maxScroll) {
       // If reached the end, loop back to the first item
       carousel.scrollTo({ left: 0, behavior: 'smooth' });
@@ -39,12 +38,11 @@ export class AnimeDiscoverComponent implements OnInit {
       carousel.scrollBy({ left: scrollAmount, behavior: 'smooth' });
     }
   }
-  
   scrollPrev() {
     const carousel: HTMLElement = this.carousel.nativeElement;
     const scrollAmount = carousel.clientWidth;
     const currentScroll = carousel.scrollLeft;
-  
+
     if (currentScroll - scrollAmount < 0) {
       // If reached the beginning, loop forward to the last item
       const maxScroll = scrollAmount * (this.animeHeros.length - 1);
@@ -62,9 +60,8 @@ export class AnimeDiscoverComponent implements OnInit {
       this.getMostWatched();
       this.getPopularAnime();
     }
-  
   getAnimeHero(){
-    this.discover.getAnimeHero().subscribe({
+    this.discover.getAnimeHero(1).subscribe({
       next:(heroList)=>{
         // map the heroList to the hero array map each property for every loop
         this.animeHeros = heroList.map((heroItem :any) => ({
@@ -78,7 +75,6 @@ export class AnimeDiscoverComponent implements OnInit {
           votes: heroItem.voteCount || heroItem.vote_count,          // Mapping voteCount
           date: heroItem.firstAirDate || heroItem.first_air_date // Mapping firstAirDate
         }));
-        console.log('Hero list:', this.animeHeros);
       },
       error: (err) => {
         console.error('Error fetching hero list:', err);
@@ -86,7 +82,7 @@ export class AnimeDiscoverComponent implements OnInit {
     });
   }
   getPopularAnime(){
-    this.discover.getPopularAnime().subscribe({
+    this.discover.getPopularAnime(1).subscribe({
       next:(PopularList)=>{
         this.PopularList = PopularList;
         this.PopularList = PopularList.map((anticipatedItem :any) => ({
@@ -96,10 +92,10 @@ export class AnimeDiscoverComponent implements OnInit {
         }));
       }
   });
-  
+
   }
   getMostWatched(){
-    this.discover.getMostWatchedAnime().subscribe({
+    this.discover.getMostWatchedAnime(1).subscribe({
       next:(MostWatchedList)=>{
         this.MostWatchedList= MostWatchedList;
         this.MostWatchedList= MostWatchedList.map((anticipatedItem :any) => ({
@@ -109,10 +105,10 @@ export class AnimeDiscoverComponent implements OnInit {
         }));
       }
   });
-  
+
   }
   getAnimeTrending(){
-    this.discover.getAnimeTrending().subscribe({
+    this.discover.getAnimeTrending(1).subscribe({
         next:(trendingList)=>{
           this.TrendingList = trendingList;
           this.TrendingList= trendingList.map((trendingItem :any) => ({
@@ -129,18 +125,18 @@ export class AnimeDiscoverComponent implements OnInit {
     }
     );
   }
-getAnticipated(){
-  this.discover.getAnticipatedAnime().subscribe({
-    next:(anticipatedList)=>{
-      this.AnticipatedList= anticipatedList;
-      this.AnticipatedList= anticipatedList.map((anticipatedItem :any) => ({
-        animeId: anticipatedItem.ids.trakt,        // Mapping animeId (or use `id` if not available)
-        tmdbId: anticipatedItem.ids.tmdb,          // Mapping tmdbId
-        title: anticipatedItem.title,  
-      }));
-    }
-});
+  getAnticipated(){
+    this.discover.getAnticipatedAnime(1).subscribe({
+      next:(anticipatedList)=>{
+        this.AnticipatedList= anticipatedList;
+        this.AnticipatedList= anticipatedList.map((anticipatedItem :any) => ({
+          animeId: anticipatedItem.ids.trakt,        // Mapping animeId (or use `id` if not available)
+          tmdbId: anticipatedItem.ids.tmdb,          // Mapping tmdbId
+          title: anticipatedItem.title,  
+        }));
+      }
+  });
 
-}
+  }
 
 }

@@ -1,5 +1,5 @@
 <div class="flex  font-main flex-wrap justify-between items-center px-2  min-h-16 ">
-    <div class="absolute inset-0 -z-10  bg-background-200  bg-opacity-85  backdrop-blur-lg    ">
+    <div class="absolute inset-0 -z-10  bg-background-200  bg-opacity-85  backdrop-blur-sm    ">
         </div>
     <div class=" flex items-center  ">
     <div (click)="menuToggle()" class="menu relative hover:bg-background-200 active:bg-background-100 rounded  flex justify-center items-center md:hidden h-full">
@@ -11,7 +11,7 @@
     <div class="search   rounded  ">
         <div class="search-input relative hidden   lg:block">
             <div class="search-icon  absolute inset-y-0 start-0 flex items-center ps-3 ">
-                <svg *ngIf="isSearchAnime" (click)="changeSearchType('tomanga')" class="size-6 fill-secondary text-gray-500 dark:text-gray-400" viewBox="-0.5 0 7 7" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                <svg *ngIf="isSearchAnime" (click)="changeSearchType('tomanga')" class="size-4 fill-secondary text-gray-500 dark:text-gray-400" viewBox="-0.5 0 7 7" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                     <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
                         <g id="Dribbble-Light-Preview" transform="translate(-347.000000, -3766.000000)" fill="#000000">
                             <g id="icons" transform="translate(56.000000, 160.000000)">
@@ -27,10 +27,20 @@
                     </svg>
                 <span class="sr-only">Search icon</span>
             </div>
-            <input type="text" id="search-navbar" class="block  bg-background-100 max-w-60 p-2 ps-10  font-bold  rounded-lg    focus:bg-background-50 focus:outline-none focus:border-primary border border-primary  text-text-grey-100" placeholder="Search..."
-            (keydown.enter)="searchItem()"
-            [(ngModel)]="searchQuery"
-            >
+            <div class="join">
+                <div>
+                <div>
+                    <input type="text" id="search-navbar" class="block  bg-background-100 max-w-44  p-2   ps-10 font-bold input input-bordered text-xs  focus:outline-none focus:border-primary border border-primary join-item  text-text-grey-100" placeholder="Search..."    (keydown.enter)="searchItem()"  [(ngModel)]="searchQuery">
+                </div>
+                </div>
+                <select class="select select-bordered border-primary focus:border-primary bg-background-100 focus:outline-none  active:outline-none hover:outline-none join-item"
+                    [(ngModel)]="isSearchAnime">
+                    <option [ngValue]="null" disabled selected>Filter</option>
+                    <option [ngValue]="true">Anime</option>
+                    <option [ngValue]="false">Manga</option>
+                </select>
+                <button (click)="searchItem()" class="btn join-item border  border-primary bg-background-100 hover:bg-background-100 ">Search</button>
+            </div>
 
         </div>
             <div  class="lg:hidden p-2 rounded-md hover:bg-background-200 active:bg-background-100"(click)="Searchtoggle()" > 
@@ -42,35 +52,39 @@
     </div>
 
     <div class="logo-small  relative md:hidden  min-w-32  text-sm  p-1 text-center overflow-visible hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600">            
-        <img src="/images/logo.svg" class="absolute -top-4 text-sm" alt="">
+        <img src="/images/logo.svg" class="absolute -top-4  text-sm" alt="">
     </div>
     
     <ul class="tabs text-text-grey-100 hidden font-black md:flex  lg:gap-2 justify-between items-center text-lg lg:text-xl ">
-        <li class="Library menu-tabs">
+        <li [ngClass]="{'active-tab': isActiveTab('/library')}" class="Library menu-tabs">
             <div class="icon-container">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="icon">
                     <path stroke-linecap="round" stroke="#bbbbbb"  stroke-linejoin="round" d="M17.593 3.322c1.1.128 1.907 1.077 1.907 2.185V21L12 17.25 4.5 21V5.507c0-1.108.806-2.057 1.907-2.185a48.507 48.507 0 0 1 11.186 0Z" />
                     </svg>
                     
             </div>
-            <a href="#">
+            <a routerLink="/library">
                 Library
             </a>
             </li>
-        <li class="Latest  menu-tabs">
-            <div class="icon-container">
-                <svg  xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="icon">
-                    <path stroke-linecap="round"stroke="#bbbbbb" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+            <a [ngClass]="{'active-tab': isActiveTab('/latest')}" routerLink="/latest">
+            <li class="Latest  menu-tabs">
+                <div class="icon-container">
+                    <svg  xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="icon">
+                        <path stroke-linecap="round"stroke="#bbbbbb" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
                     </svg>
                     
             </div>
                 
             Latest</li>
+        </a>
         <li class="relative  min-w-64  hidden md:block text-sm   text-center overflow-visible">            
         <img src="images/logo.svg" class="absolute -top-6" alt="">
         
     </li>
-    <a routerLink="/discover">
+
+
+    <a [ngClass]="{'active-tab': isActiveTab('/discover')}" routerLink="/discover">
         <li class="Discover  menu-tabs ">
                 
             <div class="icon-container">
@@ -90,7 +104,7 @@
                 Discover
             </li>
         </a>
-        <a href="/extension">
+        <a [ngClass]="{'active-tab': isActiveTab('/extension')}" routerLink="/extension">
         <li class="Extension  menu-tabs">
             <div class="icon-container">
                 <svg fill="#bbbbbb"class="icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -102,8 +116,8 @@
             </li>
         </a>
         </ul>
-    <div class="user  flex flex-col lg:flex-row gap-1 text-text-grey-100 lg:mr-3 xl:mr-8 cursor-pointer text-nowrap" > 
-        <div *ngIf="!isLogedIn">
+    <div class="user   text-text-grey-100 mr-2  cursor-pointer text-nowrap" > 
+        <div *ngIf="!isLogedIn" class="flex flex-col gap-1">
 
             <a routerLink="signIn" class="userSign">
                 Sign-In
@@ -112,38 +126,64 @@
                 Sign-up
             </a>
         </div>
-        <div *ngIf="isLogedIn">
-
-            <div class="avatar">
-                <div class="w-14 rounded-full h-full">
-                    <img src="images/userManagment/userAvatars/28.jpg" />
+        <div *ngIf="isLogedIn" routerLink="setting">
+            <div class="avatar m-2 ml-0">
+                <div class="w-14 rounded-full h-full border border-primary hover:scale-105 active:scale-100 transform duration-300">
+                    <img [src]="profilePic" class="object-contain"/>
                 </div>
                 </div>
-                <!-- todo remove logout log out only in setting -->
-                <div (click)="logout()">
-                    logout
-                </div>
-        </div>
-        <!-- {{isLogedIn}} -->
+            </div>
     </div>
     
 </div>
 
 
-<ul *ngIf="isMenuOpen"   class="absolute w-full flex flex-col  items-start md:hidden   p-2 border border-text-grey-100   text-text-grey-100 gap-1 font-black text-lg lg:text-xl transition ease-in-out duration-150 bg-gradient-to-t from-background-50 to-background-200  rounded-md " 
+<ul *ngIf="isMenuOpen"   class="absolute w-full flex flex-col  items-start md:hidden   p-2 backdrop-blur-sm   text-text-grey-100 gap-1 font-black text-lg lg:text-xl transition ease-in-out duration-150 bg-background-200/20  rounded-md " 
 >
-<li class="Library menu-tabs ">Library</li>
-<li class="Latest  menu-tabs ">Latest</li>
-<li class="Discover menu-tabs " >Discover</li>
-<li class="Extension  menu-tabs ">Extensions</li>
+<li [ngClass]="{'active-tab': isActiveTab('/library')}" routerLink="/library" class="Library menu-tabs">Library</li>
+  <li [ngClass]="{'active-tab': isActiveTab('/latest')}" routerLink="/latest" class="Latest menu-tabs">Latest</li>
+  <li [ngClass]="{'active-tab': isActiveTab('/discover')}" routerLink="/discover" class="Discover menu-tabs">Discover</li>
+  <li [ngClass]="{'active-tab': isActiveTab('/extension')}" routerLink="/extension" class="Extension menu-tabs">Extensions</li>
 </ul>
 <div *ngIf="isSearchOpen" class="search-input relative block p-1  lg:hidden">
-    <div class="search-icon absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-    <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
-    </svg>
-    <span class="sr-only">Search icon</span>
-    </div>
-    <input  type="text" id="search-navbar" class="block  bg-background-100 w-full p-2 ps-10   font-bold  rounded-lg  focus:border-text-grey-100  focus:bg-background-50 focus:outline-none border-4 border-primary  text-text-grey-100" placeholder="Search...">
+    <div class="search small-screen bg-transparent ">
+        <div class="search-input relative w-full   lg:hidden">
+            <div class="search-icon  absolute inset-y-0 start-0 flex items-center ps-3 ">
+                <svg *ngIf="isSearchAnime" (click)="changeSearchType('tomanga')" class="size-4 fill-secondary text-gray-500 dark:text-gray-400" viewBox="-0.5 0 7 7" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                        <g id="Dribbble-Light-Preview" transform="translate(-347.000000, -3766.000000)" fill="#000000">
+                            <g id="icons" transform="translate(56.000000, 160.000000)">
+                                <path d="M296.494737,3608.57322 L292.500752,3606.14219 C291.83208,3605.73542 291,3606.25002 291,3607.06891 L291,3611.93095 C291,3612.7509 291.83208,3613.26444 292.500752,3612.85767 L296.494737,3610.42771 C297.168421,3610.01774 297.168421,3608.98319 296.494737,3608.57322" id="play-[#1003]" class="fill-secondary ">
+                
+                </path>
+                            </g>
+                        </g>
+                    </g>
+                </svg>
+                <svg *ngIf="!isSearchAnime" (click)="changeSearchType('toanime')"  class="size-6 fill-secondary text-gray-500 dark:text-gray-400" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M4 19V6.2C4 5.0799 4 4.51984 4.21799 4.09202C4.40973 3.71569 4.71569 3.40973 5.09202 3.21799C5.51984 3 6.0799 3 7.2 3H16.8C17.9201 3 18.4802 3 18.908 3.21799C19.2843 3.40973 19.5903 3.71569 19.782 4.09202C20 4.51984 20 5.0799 20 6.2V17H6C4.89543 17 4 17.8954 4 19ZM4 19C4 20.1046 4.89543 21 6 21H20M9 7H15M9 11H15M19 17V21" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                <span class="sr-only">Search icon</span>
+            </div>
+            <div class="join">
+                <div>
+                <div>
+                    <input type="text" id="search-navbar" class="block  bg-background-100/10 max-w-52  p-2  ps-10 font-bold input input-bordered text-xs  focus:outline-none focus:border-primary border border-primary join-item  text-text-grey-100" placeholder="Search..."    (keydown.enter)="searchItem()"  [(ngModel)]="searchQuery">
+                </div>
+                </div>
+                <select class="select select-bordered border-primary focus:border-primary bg-background-100/10 focus:outline-none  active:outline-none hover:outline-none join-item"
+                    [(ngModel)]="isSearchAnime">
+                    <option [ngValue]="null" disabled selected>Filter</option>
+                    <option [ngValue]="true">Anime</option>
+                    <option [ngValue]="false">Manga</option>
+                </select>
+                <button (click)="searchItem()" class="btn join-item border  border-primary bg-background-100/10 hover:bg-background-100 ">Search</button>
+            </div>
+
+        </div>
+            
+        </div>
+    <!-- </div> -->
+
 </div>
 

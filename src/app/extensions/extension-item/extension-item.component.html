@@ -1,0 +1,24 @@
+<div class="flex flex-col  md:flex-row ">
+<div class="flex flex-col md:flex-row justify-between border-secondary border flex-grow rounded-lg  p-2">
+<div class="flex flex-col sm:flex-row  items-center gap-2">
+    <div (click)="navigateToExtension()" class="avatar cursor-pointer">
+        <div class="w-8 sm:w-12 rounded-full">
+            <img [src]="ext.exArt" alt="" />
+        </div>
+    </div>
+    <div (click)="navigateToExtension()" class="name cursor-pointer text-text-grey-50 text-[9px] text-xs md:text-sm lg:text-base">
+        {{ext.exName}}
+    </div>
+</div>
+<div class="flex flex-col  gap-2 p-2">
+    <button (click)="RemoveExtension()"  *ngIf="isActiveList"  class="button-ext btn btn-xs  btn-error btn-outline">
+        Remove
+    </button>
+    <button (click)="ActivateExtension()" *ngIf="!isActiveList" class="button-ext btn btn-xs btn-success btn-outline">
+        Activate
+    </button>
+    
+
+</div>
+</div>
+</div>

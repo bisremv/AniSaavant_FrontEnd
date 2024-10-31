@@ -16,7 +16,7 @@ export class MangaSitesComponent implements OnInit{
   discover:DiscoverService=inject(DiscoverService);
   @Input()
   ext:Extension=new Extension(0,"","","");
-  PopularList:MangaItem[]=[  ]
+  PopularList:MangaItem[]=[ ]
   LatestList:MangaItem[]=[];
 ngOnInit(){
   this.getLatest();
@@ -24,14 +24,16 @@ ngOnInit(){
 }
 
   getLatest(){
-    this.discover.getLatestManga(this.ext.exId)?.subscribe({
+    console.log(this.ext.exId);
+    this.discover.getLatestManga(this.ext.exId).subscribe({
       next:(latest)=>{
         this.LatestList=(latest as MangaItem[]);
       }
     })
   }
   getPopular(){
-    this.discover.getPopularManga(this.ext.exId)?.subscribe({
+    console.log(this.ext.exId);
+    this.discover.getPopularManga(this.ext.exId).subscribe({
       next:(popular)=>{
         this.PopularList=(popular as MangaItem[]);
       }

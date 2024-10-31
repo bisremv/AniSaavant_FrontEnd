@@ -33,12 +33,10 @@ sendUserInfo(data: {userName: string, userEmail: string, password: string}) {
   
   this.userManagementService.createUser(data).subscribe({
     next:(response) => {
-      console.log(response);
       this.Message= response;
 
       },
     error:(error) => {
-      console.log('error');
       this.isLoading = false;
       this.isError=true;
       this.Message = error.error;

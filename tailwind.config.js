@@ -37,7 +37,8 @@ module.exports = {
       },
       dropShadow: {
         'purple': '0 2px 3px rgba(90, 46, 152, 0.8)',
-      }
+      'light-white': '0 4px 6px rgba(255, 255, 255, 0.2)', // Light white shadow
+      },
     },
   },
   plugins: [

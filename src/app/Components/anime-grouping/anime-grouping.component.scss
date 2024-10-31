@@ -1,7 +1,8 @@
-.carousel-inner::-webkit-scrollbar {
-    width: 0px; /* Width of the scrollbar */
-    height: 0px; /* Height of the scrollbar (for horizontal scrolling) */
+
+.carousel-inner{
+    -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
 }
 .Arrow-Direction{
-    @apply absolute inset-y-0 transition duration-200 ease-in-out;
+    @apply absolute  my-auto transition duration-200 ease-in-out;
 }

@@ -1,0 +1,57 @@
+<div class="relative container mx-auto p-0.5 bg-gradient-to-b from-indigo-600 to-purple-500 rounded-lg shadow-xl">
+    <div class="w-full h-full py-11 px-7 rounded-lg bg-background-200">
+        
+<!-- Title -->
+<h2 class="text-4xl font-extrabold mb-10 text-center text-gray-50">
+    Choose Your Profile Picture
+</h2>
+
+<!-- Avatar Grid -->
+<div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-8 justify-center">
+    <div
+    *ngFor="let avatar of avatars"
+    (click)="selectAvatar(avatar)"
+    class="relative cursor-pointer group transform hover:scale-105 transition-transform duration-300"
+    >
+    <div
+        class="w-32 h-32 relative rounded-full border-4 transition-all duration-300 ease-in-out overflow-hidden shadow-lg"
+        [ngClass]="{
+        'border-primary scale-110 ring-2 ring-link shadow-xl': selectedAvatar === avatar,
+        'border-gray-200 shadow-md hover:shadow-lg': selectedAvatar !== avatar
+        }"
+    >
+        <img
+        [src]="getAvatarUrl(avatar)"
+        [alt]="'Avatar ' + avatar"
+        class="w-full h-full object-cover rounded-full"
+        />
+
+        <!-- Checkmark Overlay for Selected Avatar -->
+        <div
+        *ngIf="selectedAvatar === avatar"
+        class="absolute inset-0 bg-link bg-opacity-20 flex items-center justify-center transition-opacity duration-300 ease-in-out"
+        >
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+        </svg>
+        </div>
+    </div>
+    </div>
+</div>
+
+<!-- Selected Avatar Info -->
+<div class="text-center mt-12">
+    <p *ngIf="selectedAvatar" class="text-2xl text-gray-50 font-bold">
+    You selected avatar <span class="text-link">#{{ selectedAvatar }}</span>
+    </p>
+    <button (click)="changeProfile()" class="btn bg-gradient-to-r text-text-grey-50 from-indigo-600 to-purple-500">
+        change Profile Picture
+    </button>
+    <p *ngIf="!selectedAvatar" class="text-xl text-gray-300">
+    Please select an avatar.
+    </p>
+</div>
+</div>
+
+
+</div>

@@ -1,4 +1,4 @@
-<div class=" p-4 lg:w-[98vw] ">
+<div class=" p-4  w-[98vw] ">
     <div>
         <div class="header text-4xl text-text-grey-50 font-bold font-main mb-5">Medias</div>
         <ul class="menu menu-vertical lg:menu-horizontal bg-secondary active:bg-primary rounded-box">
@@ -15,15 +15,15 @@
         </ng-container>
       
         <ng-container *ngIf="isBackdropActive">
-          <app-image-item class="snap-start" *ngFor="let image of images.backdrops" [image]="image"></app-image-item>
+          <app-image-item class="snap-start" *ngFor="let image of images.backdrops" [type]="'backDrop'" [image]="image"></app-image-item>
         </ng-container>
       
         <ng-container *ngIf="isLogoActive">
-          <app-image-item class="snap-start" *ngFor="let image of images.logos" [image]="image"></app-image-item>
+          <app-image-item class="snap-start" *ngFor="let image of images.logos" [image]="image" [type]="'logo'"></app-image-item>
         </ng-container>
       
         <ng-container *ngIf="isPosterActive">
-          <app-image-item class="snap-start" *ngFor="let image of images.posters" [image]="image"></app-image-item>
+          <app-image-item class="snap-start" *ngFor="let image of images.posters" [type]="'poster'" [image]="image"></app-image-item>
         </ng-container>
       </div>
       <app-next-carousel *ngIf="showNextArrow" class="right-0 Arrow-Direction"  [Direction]="next"  

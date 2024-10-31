@@ -27,7 +27,31 @@ export class AnimeVideosComponent {
   isBackdropActive=false;
   trailerList:Videos[]= [];
   images: {posters: Image[], backdrops: Image[], logos: Image[] }={posters: [],backdrops: [],logos: []}
+  next:number =Arrow.Next;
+  prev:number =Arrow.Prev;
   
+  showNextArrow: boolean = true;
+  showPrevArrow: boolean = false;
+  ngOnChanges(){
+    if(this.isVideoActive){
+    if(this.trailerList.length < 2){
+      this.showNextArrow=false;
+    }}
+    else if (this.isBackdropActive){
+      if(this.images.backdrops.length < 2){
+        this.showNextArrow=false;
+      }
+    }else if (this.isLogoActive){
+      if(this.images.logos.length < 2){
+        this.showNextArrow=false;
+      }
+    }else if (this.isPosterActive){
+      if(this.images.posters.length < 4){
+        this.showNextArrow=false;
+      }
+    }
+  
+  }
   ngOnInit(){
     this.activeRoute.queryParams.subscribe(params => {
       this.tmdbId = params['tmdbId'];
@@ -42,7 +66,8 @@ export class AnimeVideosComponent {
       this.isVideoActive=true;
       this.isLogoActive=false;
       this.isPosterActive=false;
-      this.isBackdropActive=false;}
+      this.isBackdropActive=false;
+    }
     else if(active=="logo"){
       this.isVideoActive=false;
       this.isLogoActive=true;
@@ -66,11 +91,7 @@ export class AnimeVideosComponent {
   getVideoList(){
     this.animeService.getAnimeVideos(this.tmdbId).subscribe({
       next:(res)=>{
-        console.log(res);
         this.trailerList = res
-        console.log("this.trailer List");
-        console.log(this.trailerList);
-        console.log("this.trailer List");
 
       }
     })
@@ -78,22 +99,11 @@ export class AnimeVideosComponent {
   getImageList(){
     this.animeService.getAnimeImages(this.tmdbId).subscribe({
       next:(res)=>{
-        console.log(res);
         this.images = res
-
-      console.log("this.image List");
-      console.log(this.images);
-      console.log("this.images List");
-
       }
     })
   }
 
-  next:number =Arrow.Next;
-  prev:number =Arrow.Prev;
-  
-  showNextArrow: boolean = true;
-  showPrevArrow: boolean = false;
   
   onScroll(event: any): void {
     const element = event.target;

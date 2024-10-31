@@ -1,21 +1,37 @@
 <div class="carousel font-main flex flex-col gap-4 md:gap-10  font-bold  ">
-    <div class="header flex justify-between  items-center gap-2 my-3">
-        <h2 class="text-3xl font-black text-text-grey-50 capitalize font-body">{{animeGroup}}</h2>
-        <a href="/anime" class="flex px-5 justify-center  items-center gap-2 group hover:scale-110   ">
-            <h4 class="group-hover:text-secondary text-text-grey-100 ">See All</h4> 
+    <div class="header flex justify-between  items-center gap-2 ">
+        <h2 class="text-3xl flex font-black text-text-grey-50 capitalize font-body"> 
+            <div class="w-2 h-10 rounded bg-white mr-2"></div>
+        {{animeGroup}}</h2>
+        <a (click)="navigateToExplore()"  class="flex px-5 justify-center cursor-pointer  items-center gap-2 group hover:scale-110  transform duration-200  ">
+            <h4  class="group-hover:text-secondary text-text-grey-100 ">See All</h4> 
         <svg width="16" height="14" viewBox="0 0 16 14" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M8.06236 7.8566L2.67508 13.447C2.30272 13.8334 1.70062 13.8334 1.33222 13.447L0.436982 12.518C0.0646259 12.1316 0.0646259 11.5068 0.436982 11.1245L4.25561 7.16192L0.436982 3.19934C0.0646259 2.81295 0.0646259 2.18814 0.436982 1.80586L1.32826 0.868652C1.70062 0.482259 2.30272 0.482259 2.67112 0.868652L8.05839 6.45901C8.43471 6.8454 8.43471 7.47021 8.06236 7.8566ZM15.6679 6.45901L10.2806 0.868652C9.90829 0.482259 9.30618 0.482259 8.93779 0.868652L8.04255 1.79764C7.67019 2.18403 7.67019 2.80883 8.04255 3.19112L11.8612 7.15369L8.04255 11.1163C7.67019 11.5027 7.67019 12.1275 8.04255 12.5098L8.93779 13.4387C9.31014 13.8251 9.91225 13.8251 10.2806 13.4387L15.6679 7.84838C16.0403 7.47021 16.0403 6.8454 15.6679 6.45901Z" class=" fill-text-grey-100 group-hover:fill-secondary "/>
         </svg>
 </a>
     </div>
 <div class="relative overflow-hidden flex items-center">
-    <div class="carousel-inner flex lg:gap-10 md:gap-4 gap-2  rounded-lg overflow-x-scroll  scroll-smooth snap-mandatory snap-x items-center" (scroll)="onScroll($event)">
-        <div class="snap-start   " *ngFor="let anime of animeList">
+    <div #carousel class="carousel-inner flex  md:gap-4 gap-2  rounded-lg overflow-x-scroll  scroll-smooth snap-mandatory snap-x items-center" (scroll)="onScroll($event)">
+        
+        <ng-container *ngIf="animeList && animeList.length > 0; else emptyList">
+        <div class="snap-start" *ngFor="let anime of animeList">
             <app-anime-item  [anime]="anime"></app-anime-item>
         </div>
+        </ng-container>
+        <ng-template #emptyList>
+            <div class="snap-start" *ngFor="let anime of [1,2,3,4,5,6,7,8,9,10,11,12,13];">
+                <div class="flex w-52 flex-col gap-4">
+                    <div class="skeleton h-32 w-full"></div>
+                    <div class="skeleton h-4 w-28"></div>
+                    <div class="skeleton h-4 w-full"></div>
+                    <div class="skeleton h-4 w-full"></div>
+                </div>
+            </div>
+            </ng-template>
+            
     </div>
-    <app-next-carousel *ngIf="showNextArrow" class="right-0 Arrow-Direction"  [Direction]="next"  
+    <app-next-carousel *ngIf="showNextArrow" class="right-0  z-20 Arrow-Direction"  [Direction]="next"  
     (ArrowDirection)="onDirectionScroll($event)"  ></app-next-carousel>
-    <app-next-carousel  *ngIf="showPrevArrow" class="left-0  rotate-180 Arrow-Direction" [Direction]="prev" (ArrowDirection)="onDirectionScroll($event)"></app-next-carousel>
+    <app-next-carousel  *ngIf="showPrevArrow" class="left-0 z-20   rotate-180 Arrow-Direction" [Direction]="prev" (ArrowDirection)="onDirectionScroll($event)"></app-next-carousel>
 </div>
 </div>

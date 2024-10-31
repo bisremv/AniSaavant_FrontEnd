@@ -6,10 +6,10 @@
         </div> 
         <div class="flex items-end gap-3">
             <div class=" text-sm hidden md:flex">
-
             <div
-            class="radial-progress  bg-text-grey-50 text-secondary border-text-grey-50 border-2 text-xs size-12"
+            class="radial-progress  bg-text-grey-50 text-secondary border-text-grey-50 border-2 text-xs size-14"
             [style]="getStyleRating()"
+            style=" --size:12rem; --thickness: 2px;"
             role="progressbar">
             {{getRating()}}%
             </div>
@@ -18,18 +18,29 @@
                 <h1 class="">{{episode.voteCount}} votes</h1>
             </div>
         </div>    
-            <div class="checkbox-wrapper h-full gap-1  inline-flex items-center">
-                <h2 class="self-end font-body font-black"> Watched </h2>
-            <input type="checkbox" checked="checked" class="checkbox text-text-grey-50 checkbox-lg border-2 border-text-grey-50 rounded-full" />
-        </div>
         </div>
     </div>
     
     <div class="content flex w-full  min-h-60 flex-col lg:flex-row ">
         <div class="  w-full lg:w-1/2 
         sm:items-center flex flex-col sm:flex-row ">
-            <div class="   img max-w-80 h-44  m-3 border-4 border-primary rounded flex-grow   ">
+            <div (click)="navigateToStream()"  class=" relative  img max-w-80 h-44  m-3 border-4 border-primary rounded flex-grow   ">
             <img [src]="episode.stillPath" alt="" class="object-fill w-full h-full  ">
+            <div class="absolute inset-0 w-full h-full flex justify-center items-center group ">
+                <!-- Background overlay with opacity 50% on hover -->
+                <div class="absolute inset-0 z-10 bg-black opacity-0 transition ease-in-out duration-300 group-hover:opacity-50 "></div>
+                <!-- SVG icon with opacity transition -->
+                <svg class="h-1/3 w-1/3  z-10 opacity-0 group-hover:opacity-100 transition ease-in-out duration-500"
+                    viewBox="-0.5 0 7 7" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                        <g id="Dribbble-Light-Preview" transform="translate(-347.000000, -3766.000000)" class="fill-text-grey-100">
+                            <g id="icons" transform="translate(56.000000, 160.000000)">
+                                <path d="M296.494737,3608.57322 L292.500752,3606.14219 C291.83208,3605.73542 291,3606.25002 291,3607.06891 L291,3611.93095 C291,3612.7509 291.83208,3613.26444 292.500752,3612.85767 L296.494737,3610.42771 C297.168421,3610.01774 297.168421,3608.98319 296.494737,3608.57322" id="play-[#1003]"></path>
+                            </g>
+                        </g>
+                    </g>
+                </svg>
+            </div>
             </div>
             <div class="info sm:flex-col m-3 sm:m-0 sm:flex gap-2 flex-grow ">
                 <div class="title info-item">

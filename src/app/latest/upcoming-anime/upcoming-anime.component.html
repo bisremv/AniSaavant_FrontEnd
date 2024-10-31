@@ -1,0 +1,28 @@
+<div class="md:w-[45vw] py-8">
+    <div class="md:text-xl  font-bold font-main px-6 ">
+        Upcoming Anime
+    </div>
+    <div class="anime-latest  flex flex-col  p-4">
+        
+        <ng-container *ngIf="upcomingEpisode && upcomingEpisode.length > 0">
+            <app-latest-anime-item *ngFor="let episode of upcomingEpisode ; let i = index"  
+            [episode]="episode" [activeOrder]="(i === 0) ? Order.First : (i === upcomingEpisode.length - 1) ? Order.Last : Order.Mid" >
+        </app-latest-anime-item>
+    </ng-container>
+    <ng-container *ngIf="!isLoading && upcomingEpisode.length == 0 ">
+        <app-empty-page></app-empty-page>
+    </ng-container>
+    <ng-container *ngIf="isLoading">
+        <div class="m-2 w-full" *ngFor="let anime of [1,2,3,2,3,2,3,2,3,2,3];">
+            <div class="flex items-center justify-around gap-4">
+                <div class="skeleton h-20 w-20 shrink-0 rounded-full"></div>
+                <div class="flex flex-col gap-4">
+                    <div class="skeleton h-4 w-20"></div>
+                    <div class="skeleton h-4 w-44 md:w-72 lg:w-96"></div>
+                </div>
+                <div class="skeleton h-16 w-16 shrink-0 rounded-full"></div>  
+            </div>
+        </div>
+    </ng-container>
+</div>  
+</div>

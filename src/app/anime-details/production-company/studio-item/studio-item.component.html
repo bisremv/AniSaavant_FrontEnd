@@ -1,6 +1,5 @@
-<div class=" w-[20rem] lg:w-[28rem] h-40 overflow-hidden  lg:h-64 border-2  flex  flex-col gap-2  justify-center items-center border-secondary relative rounded-md">
+<div class=" w-[20rem] lg:w-[28rem] h-40 overflow-hidden  lg:h-64 border-2  flex  flex-col gap-2  justify-center items-center border-secondary shadow-2xl relative rounded-md">
     <img [src]="company.logoPath" class="absolute object-contain p-3 h-full w-full inset-0" alt="" 
-    (error)="setPlaceholder($event)"
-    >
+    (error)="setPlaceholder($event)">
 </div>
 <span class="font-bold text-2xl capitalize font-header text-link translate-x-2">{{company.name}}</span>

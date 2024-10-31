@@ -1,3 +1,8 @@
+
+.media-carousel{
+    -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
 .Arrow-Direction{
-    @apply absolute inset-y-0 transition duration-200 ease-in-out;
+    @apply absolute  my-auto transition duration-200 ease-in-out;
 }

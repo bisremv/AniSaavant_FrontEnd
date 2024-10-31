@@ -1,0 +1,18 @@
+<dialog id="my_modal" class="modal" #modal>
+<div class="modal-box capitalize text-text-grey-50" 
+>
+<h3 class="text-lg font-bold">{{ title }}</h3>
+<p class="py-4"
+[ngClass]="{ 'text-error': !isSuccess, 'text-green-500': isSuccess }"
+    >{{ message }}</p>
+    <div *ngIf="isLoading" class="full flex m-4 justify-center">
+        <span class=" loading size-20 loading-spinner  loading-lg"></span>
+    </div>
+    <p>Press <kbd class="kbd">ESC</kbd> key or click the button below to close</p>
+    <div class="modal-action">
+        <button class="btn btn-outline"
+    [ngClass]="{ 'btn-error': !isSuccess, 'btn-success': isSuccess }"
+    (click)="close()">Close</button>
+    </div>
+</div>
+</dialog>

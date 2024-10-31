@@ -1,0 +1,28 @@
+<div class="anime-item  flex  md:w-[45vw] flex-row items-center shadow-lg hover:shadow-2xl relative  gap-4 p-4 rounded-lg ">
+    <!-- Image Container -->
+    <div class="max-h-24 max-w-24 rounded-xl overflow-hidden relative ">
+        <img [src]="latestManga.manga.itemImg" class="h-full w-full object-cover" alt="manga" (error)="onImageError($event)" />
+    </div>
+    <!-- Info Container -->
+    <div class="info-container grid grid-cols-2 gap-4 text-white flex-grow">
+        <!-- Title -->
+        <div class="title col-span-2 md:text-xl  font-bold text-gray-100 text-xs sm:text-sm lg:text-lg">
+            {{latestManga.manga.title}}
+        </div>
+        <div class="title col-span-2 md:text-xl font-bold text-gray-100 text-xs sm:text-sm ">
+            {{latestManga.chapter.ChapterTitle}}
+        </div>
+        <!-- Date -->
+        <div class="date text-xs md:text-sm text-gray-400">
+            {{latestManga.chapter.ChapterDate}}
+        </div>
+        <div class="date text-xs md:text-sm text-gray-400">
+            {{latestManga.order}}
+        </div>
+        
+        <!-- Episode Info -->
+        <div class="episode-info text-xs sm:flex gap-2 md:text-sm text-gray-300">
+            <span>Chapter</span> <span class="font-semibold">{{latestManga.chapter.ChapterNumber}}</span>
+        </div>
+    </div>
+</div>

@@ -39,8 +39,15 @@ export class ProductionCompanyComponent {
       this.showNextArrow = true;
     }
   }
+  ngOnChanges(){
+    if(this.productionCompanies.length < 5){
+      this.showNextArrow=false;
+    }
+    else{
+      this.showNextArrow=true;
+    }
   
-  // todo use render here to reference the element in the DOM the above wont work with multiple anime group
+  }
   onDirectionScroll(direction: number): void {
     const carousel = document.querySelector('.production-carousel');
     if (carousel) {

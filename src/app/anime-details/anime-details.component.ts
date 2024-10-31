@@ -24,8 +24,11 @@ export class AnimeDetailsComponent implements OnInit {
   animeInfo: AnimeInfo = new AnimeInfo(
     0, 0, "", "", "", "", "", "", 0, false, "", "", 0, 0, "", "", "", "", 0, 0, [], [], [], [], 
     new Episode(0, "", 0, "", "", "", 0, 0, "", 0, 0, 0, "", false),new Episode(0, "", 0, "", "", "", 0, 0, "", 0, 0, 0, "", false));
-    similarList=[];
-    anime:AnimeService =inject(AnimeService)
+  similarList=[];
+  isLoading:boolean=false;
+  isSimilarLoading:boolean=false;
+  isAnimeLoading:boolean=false;
+  anime:AnimeService =inject(AnimeService)
   activeRoute:ActivatedRoute=inject(ActivatedRoute);
 ngOnInit(){
   this.activeRoute.queryParams.subscribe(params => {
@@ -34,14 +37,21 @@ ngOnInit(){
     // Fetch the data or update the view with new params
     this.getAnimeInfo();
     this.getSimilarAnime();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   });
   }
 getAnimeInfo(){
+  this.isAnimeLoading=true;
   this.anime.getAnimeInfo(this.animeInfo.tmdbId,this.animeInfo.animeId).subscribe({
     next:(res)=>{
       this.animeInfo = res;
-      
       this.calculateAnimeInfo();
+    },
+    error:(err)=>{
+      this.isAnimeLoading=false;
+    },
+    complete:()=>{
+      this.isAnimeLoading=false;
     }
   }) 
 }
@@ -53,6 +63,7 @@ calculateAnimeInfo(){
 
 
 getSimilarAnime(){
+  this.isSimilarLoading=true;
   this.anime.getSimilarAnime(this.animeInfo.animeId).subscribe({
     next:(res)=>{
       this.similarList = res.map((anticipatedItem :any) => ({
@@ -60,6 +71,12 @@ getSimilarAnime(){
       tmdbId: anticipatedItem.ids.tmdb,          // Mapping tmdbId
       title: anticipatedItem.title,  
     }));
+    },
+    error:()=>{
+      this.isSimilarLoading=false;
+    },
+    complete:()=>{
+      this.isSimilarLoading=false;
     }
   });
 }

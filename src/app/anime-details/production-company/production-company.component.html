@@ -3,7 +3,7 @@
       <h2 class="text-3xl font-black text-text-grey-50 capitalize font-body">Production Companies </h2>
   </div>
 <div class="relative overflow-hidden flex items-center">
-  <div class="production-carousel flex lg:gap-10 md:gap-4 gap-2  rounded-lg overflow-x-scroll  scroll-smooth snap-mandatory snap-x items-center" (scroll)="onScroll($event)">
+  <div class="production-carousel flex lg:gap-12 md:gap-4 gap-2  rounded-lg overflow-x-scroll  scroll-smooth snap-mandatory snap-x items-center" (scroll)="onScroll($event)">
       <div class="snap-start  " *ngFor="let company of productionCompanies">
           <app-studio-item [company]="company"  ></app-studio-item>
       </div>

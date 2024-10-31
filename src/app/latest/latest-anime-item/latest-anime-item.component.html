@@ -1,0 +1,32 @@
+<div class="anime-item  flex flex-col sm:flex-row items-center shadow-lg hover:shadow-2xl relative  gap-4 p-4 rounded-lg ">
+    <!-- Image Container -->
+    <div class=" max-w-28 min-h-32   rounded-lg overflow-hidden relative">
+        <img [src]="anime.posterPath" class="h-full w-full object-cover" alt="anime" (error)="onImageError($event)" />
+    </div>
+    <!-- Info Container -->
+    <div class="info-container flex flex-col text-text-grey-100 justify-center flex-grow space-y-1">
+        <div class="title text-text-grey-50  md:text-lg font-bold w-5/6">
+        {{anime.title}}
+        </div>
+        <div class="episode-info text-sm md:flex gap-2 ">
+        <span>Episode : </span>
+        <span class="font-semibold  ">S0{{episode.season}} E{{episode.number}}</span>
+        <span class="episode-title  block  italic">{{episode.title}}</span>
+        </div>
+        <div class="date">{{getEpisodeDate()}}</div>
+    </div>
+    <!-- Time Circle -->
+    <div [ngClass]="{'text-wrap text-sm text-center': countdown.includes('Episode'),' md:text-xl text-nowrap': !countdown.includes('Episode'),}" class="time z-10 flex flex-col absolute top-1 md:top-20 right-10 md:right-3  shadow-2xl md:shadow-none text-white rounded-full h-16 w-16 md:h-24 md:w-24  justify-center items-center font-bold" >
+    <span> 
+        {{countdown }}
+    </span> 
+    <div>{{countDownSefix}}</div>
+    </div>
+    <div class=" line hidden md:inline-block absolute  w-2 right-10 md:right-14 z-0"
+    [ngClass]="{'mid': activeOrder== Order.Mid,
+                'first': activeOrder== Order.First ,
+                'last': activeOrder== Order.Last  
+                }">
+    
+    </div>
+</div>

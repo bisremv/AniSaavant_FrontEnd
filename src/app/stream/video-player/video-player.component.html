@@ -1,0 +1,62 @@
+<div class="video-Container " [ngClass]="{'md:w-[63vw]':!isExpanded}">
+    <div class="video aspect-video  w-full rounded-lg overflow-hidden">
+      <iframe
+    *ngIf="selectedSource==Sources.Source2"
+      class="w-full h-full rounded-lg"
+      [src]="sanitizer.bypassSecurityTrustResourceUrl(Source2VideoUrl)"
+      scrolling="no"
+      title="Video Player"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen>
+    </iframe>
+    <iframe
+    *ngIf="selectedSource==Sources.Source1"
+      class="w-full h-full rounded-lg"
+      [src]="sanitizer.bypassSecurityTrustResourceUrl(Source1VideoUrl)"
+      scrolling="no"
+      title="Video Player"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen>
+    </iframe>
+    </div>
+    <div class="w-full p-2 md:p-4 flex justify-between">
+      <div class="video-Info  text-base font-body capitalize font-semibold">
+        <div class="anime-Title text-xl">{{animeInfo.title}}</div>
+        <div class="episode-title">Season {{seasonNumber}}  Episode {{episodeNumber}}</div>
+      </div> 
+      <span class="flex gap-1">
+        <div class="expand flex hover:scale-105 active:scale-95 transform duration-200">
+          <svg *ngIf="isExpanded" (click)="toggleExpanded()" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-8">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M9 9V4.5M9 9H4.5M9 9 3.75 3.75M9 15v4.5M9 15H4.5M9 15l-5.25 5.25M15 9h4.5M15 9V4.5M15 9l5.25-5.25M15 15h4.5M15 15v4.5m0-4.5 5.25 5.25" />
+          </svg>
+          <svg *ngIf="!isExpanded" (click)="toggleExpanded()" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-8">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 3.75v4.5m0-4.5h4.5m-4.5 0L9 9M3.75 20.25v-4.5m0 4.5h4.5m-4.5 0L9 15M20.25 3.75h-4.5m4.5 0v4.5m0-4.5L15 9m5.25 11.25h-4.5m4.5 0v-4.5m0 4.5L15 15" />
+          </svg>
+                    
+        </div>
+        <div *ngIf="previousEpisode" class="prev hover:scale-105 active:scale-95 transform duration-200" (click)="navigateToStream(previousEpisode)">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-8">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M21 16.811c0 .864-.933 1.406-1.683.977l-7.108-4.061a1.125 1.125 0 0 1 0-1.954l7.108-4.061A1.125 1.125 0 0 1 21 8.689v8.122ZM11.25 16.811c0 .864-.933 1.406-1.683.977l-7.108-4.061a1.125 1.125 0 0 1 0-1.954l7.108-4.061a1.125 1.125 0 0 1 1.683.977v8.122Z" />
+          </svg>
+          
+        </div>
+        <div *ngIf="nextEpisode" class="next hover:scale-105 active:scale-95 transform duration-200" (click)="navigateToStream(nextEpisode)"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-8">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3 8.689c0-.864.933-1.406 1.683-.977l7.108 4.061a1.125 1.125 0 0 1 0 1.954l-7.108 4.061A1.125 1.125 0 0 1 3 16.811V8.69ZM12.75 8.689c0-.864.933-1.406 1.683-.977l7.108 4.061a1.125 1.125 0 0 1 0 1.954l-7.108 4.061a1.125 1.125 0 0 1-1.683-.977V8.69Z" />
+        </svg>
+        </div>
+      </span>
+    </div>
+    <div class="divider"></div>
+    <div class="server-container flex flex-col md:flex-row  gap-2">
+      <div class="server-info font-semibold font-main flex-grow flex flex-col gap-2 p-4 text-sm md:text-base items-center bg-background-50/30 rounded">
+        <span>You are Watching</span>
+        <span>Season {{seasonNumber}} Episode {{episodeNumber}}</span>
+        <span class="text-center">If current server doesn't work please try other servers beside.</span>
+      </div>
+      <div class="servers flex gap-1 p-2 sm:p-4 md:gap-4 flex-grow justify-center items-center bg-background-50/30 rounded">
+        <div class="bg-background-200 p-2 text-xs sm:text-sm text-text-grey-50 rounded-lg font-bold font-main">servers :</div>
+        <div (click)="selectedSource=Sources.Source1" class="btn btn-sm    text-xs sm:text-sm text-text-grey-50 rounded-lg font-bold font-main" [ngClass]="{'bg-link text-black hover:bg-secondary':selectedSource==Sources.Source1}">source 1</div>
+        <div (click)="selectedSource=Sources.Source2" [ngClass]="{'bg-link text-black hover:bg-secondary':selectedSource==Sources.Source2}" class="btn btn-sm   text-xs sm:text-sm text-text-grey-50 rounded-lg font-bold font-main">source 2</div>
+      </div>
+    </div>
+  </div>

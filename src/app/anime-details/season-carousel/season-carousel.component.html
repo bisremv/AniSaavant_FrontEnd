@@ -1,9 +1,22 @@
-<div class=" p-4 lg:w-[78vw] border-2 border-primary rounded-md">
+<div class="h-[27rem] p-4  w-full  border-2 border-primary rounded-md">
   <div class="header text-4xl font-bold font-main mb-5">Seasons</div>
   <div class="relative overflow-hidden flex items-center">
-
-  <div class="flex  season-carousel   lg:gap-10 md:gap-4 gap-2  rounded-lg overflow-x-scroll  scroll-smooth snap-mandatory snap-x items-center" (scroll)="onScroll($event)">
-    <app-season-item class="snap-start"  *ngFor="let season of seasons" [season]="season" [tmdbId]="tmdbId"></app-season-item>
+  <div class="flex  season-carousel   lg:gap-6 md:gap-4 gap-2  rounded-lg overflow-x-scroll  scroll-smooth snap-mandatory snap-x items-center" (scroll)="onScroll($event)">
+    <ng-container *ngIf="seasons && seasons.length > 0 && !isAnimeLoading; else emptyList">
+      <app-season-item class="snap-start"  *ngFor="let season of seasons" [season]="season" [tmdbId]="tmdbId"
+      [animeId]="animeId"
+      ></app-season-item>
+      </ng-container>
+      <ng-template #emptyList>
+          <div class="snap-start" *ngFor="let anime of [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15];">
+            <div class="flex w-52 flex-col gap-4">
+              <div class="skeleton h-32 w-full"></div>
+              <div class="skeleton h-4 w-28"></div>
+              <div class="skeleton h-4 w-full"></div>
+              <div class="skeleton h-4 w-full"></div>
+            </div>
+          </div>
+          </ng-template>
   </div>
   <app-next-carousel *ngIf="showNextArrow" class="right-0 Arrow-Direction"  [Direction]="next"  
     (ArrowDirection)="onDirectionScroll($event)"  ></app-next-carousel>

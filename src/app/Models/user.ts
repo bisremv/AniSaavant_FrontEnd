@@ -5,8 +5,8 @@ export class User {
             public userEmail?: string,
             public id?: number,
             private _token?: string,
-            private _expirationData?: Date
-
+            private _expirationData?: Date,
+            public profilePic?:number,
             ){}
 
 
@@ -18,5 +18,11 @@ export class User {
             }
             set token(token: string) {
                 this._token = token;
+            }
+            
+            get expirationData() {
+
+            return this._expirationData;
+
             }
         }

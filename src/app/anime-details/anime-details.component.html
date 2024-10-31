@@ -1,21 +1,43 @@
-<app-anime-detail-hero [animeInfo]="animeInfo" ></app-anime-detail-hero>
-<div class="flex flex-col lg:flex-row items-center justify-center p-1 lg:p-5 m-4 gap-2">
-    <app-information class=""  [animeInfo]="animeInfo"></app-information>
-    <app-season-carousel class=" w-full" [seasons]="animeInfo.seasons" [tmdbId]="animeInfo.tmdbId"></app-season-carousel>
+
+<ng-container *ngIf="!isAnimeLoading; else emptyList">
+    <app-anime-detail-hero [animeInfo]="animeInfo" ></app-anime-detail-hero>
+    </ng-container>
+    <ng-template #emptyList>
+    <div class="snap-start p-6" >
+        <div class="flex w-[90vw] justify-between md:items-end gap-8">
+        <div class="skeleton  h-[30vh] md:h-[55vh] w-1/4"></div>
+        <div class="flex  flex-col  gap-7 w-full">
+            <div class="skeleton h-24 rounded-full w-24"></div>
+            <div class="skeleton h-4 w-4/5"></div>
+            <div class="skeleton h-4 w-3/6"></div>
+            <div class="skeleton h-4 w-4/5"></div>
+            <div class="skeleton hidden md:inline-block  h-4 w-4/6"></div>
+            <div class="skeleton hidden md:inline-block  h-4 w-5/6"></div>
+            <div class="skeleton hidden md:inline-block  h-4 w-4/6"></div>
+            <div class="skeleton  hidden md:inline-block h-4 w-5/6"></div>
+            </div>
+        </div>
+    </div>
+    </ng-template>
+
+<div class="flex flex-col   lg:flex-row items-center justify-between  m-4  gap-2">
+    <app-information class=" w-full lg:w-fit"  [animeInfo]="animeInfo"></app-information>
+    <app-season-carousel class="flex-grow w-full" [seasons]="animeInfo.seasons" [tmdbId]="animeInfo.tmdbId" 
+    [animeId]="animeInfo.animeId" [isAnimeLoading]="isAnimeLoading"></app-season-carousel>
 </div>
 <div class="wrapper">
     <app-aired-episode *ngIf="animeInfo.lastEpisodeToAir" [episode]="animeInfo.lastEpisodeToAir" [header]="'Last Episode To Air'" class="m-4 sm:m-0 "></app-aired-episode>
-    <img src="images/S_logo.svg"  class="max-h-72 w-1/6 ml-auto mr-auto  sm:inline-block hidden " >
-    <app-aired-episode *ngIf="animeInfo.nextEpisodeToAir" [episode]="animeInfo.nextEpisodeToAir" [backdropPath]="animeInfo.backdropPath" [header]="'Next Episode To Air'" class="h-fit"></app-aired-episode>
+    <img src="images/S_logo.svg"  class="max-h-72 w-1/6 ml-auto mr-auto  sm:inline-block hidden " alt="" >
+    <app-aired-episode *ngIf="animeInfo.nextEpisodeToAir" [episode]="animeInfo.nextEpisodeToAir" [backdropPath]="animeInfo.backdropPath" [posterPath]="animeInfo.posterPath" [header]="'Next Episode To Air'" class="h-fit"></app-aired-episode>
 
 </div>
-<div class=" wrapper bg-background-100">
+<div class=" wrapper ">
     <app-production-company [productionCompanies]="animeInfo.productionCompanies"></app-production-company>
 </div>
 
-<div class="wrapper bg-background-100">
+<div class="wrapper ">
     <app-anime-videos [tmdbId]="animeInfo.tmdbId"></app-anime-videos>
 </div>
-<div class="wrapper">
-    <app-anime-group-horizontal  [animeList]="similarList" [animeGroup]="'Similar Recommendation'"></app-anime-group-horizontal>
+<div class="m-6">
+    <app-anime-group-horizontal  [animeList]="similarList" [animeGroup]="'Related Recommendation'"></app-anime-group-horizontal>
 </div>

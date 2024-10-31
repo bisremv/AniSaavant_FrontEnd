@@ -1,0 +1,56 @@
+<div class="border border-secondary smp-8 p-2 m-4 sm:m-8 rounded-lg">
+    <div class="text-sm sm:text-lg font-bold font-main text-text-grey-50 my-5">
+        {{Name}}
+    </div>
+    
+    <div class="flex w-full justify-between flex-col sm:flex-row   sm:items-start" >
+        <div class="flex flex-col gap-3 flx-grow sm:w-1/2" >
+            <ng-container *ngIf="extensions && extensions.length > 0; else emptyList">
+                <ng-container *ngFor="let ext of extensions; let i = index" >
+                    <app-extension-item [isActiveList]="isActiveList"
+                    [ext]="ext"
+                    *ngIf="i % 2 === 0" ></app-extension-item>
+                </ng-container>
+                </ng-container>
+                <ng-template #emptyList>
+                    <div class="snap-start" *ngFor="let extensions of [1,2,3];">
+                    <div class="flex w-52 flex-col gap-4">
+                        <div class="flex items-center gap-4">
+                            <div class="skeleton h-16 w-16 shrink-0 rounded-full"></div>
+                            <div class="flex flex-col gap-4">
+                            <div class="skeleton h-4 w-20"></div>
+                            <div class="skeleton h-4 w-28"></div>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                    </ng-template>
+        </div>
+        <div class="divider divider-horizontal w-1/2">
+            <img src="/images/S_logo.svg" alt="">
+        </div>
+        <div class="flex flex-col gap-3 flx-grow sm:w-1/2" >
+            
+            <ng-container *ngIf="extensions && extensions.length > 0; else emptyList">
+                <ng-container *ngFor="let ext of extensions; let i = index" >
+                    <app-extension-item [isActiveList]="isActiveList"
+                    [ext]="ext"
+                    *ngIf="i % 2 !== 0" ></app-extension-item>
+                </ng-container>
+                </ng-container>
+                <ng-template #emptyList>
+                    <div class="snap-start" *ngFor="let extensions of [1,2,3];">
+                        <div class="flex w-52 flex-col gap-4">
+                        <div class="flex items-center gap-4">
+                            <div class="skeleton h-16 w-16 shrink-0 rounded-full"></div>
+                            <div class="flex flex-col gap-4">
+                            <div class="skeleton h-4 w-20"></div>
+                            <div class="skeleton h-4 w-28"></div>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                    </ng-template>
+        </div>
+    </div>
+</div>

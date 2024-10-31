@@ -1,79 +1,66 @@
-<div class="border-2 border-primary rounded-lg   bg-background-100 ">
-    
+<div class="relative  border-primary rounded-lg bg-background-100 group">
     <div class="header bg-primary flex justify-between p-2 items-center text-text-grey-50">
-        <div class=" md:text-3xl font-main font-bold ">{{header}}</div>
+        <div class="md:text-3xl font-main font-bold">{{header}}</div>
         <div class="detail-item hidden lg:inline-block">
-            <div class="rating detail-item " >
-                <span class="Rating detail-icon"> 
-                    <div class="relative size-12 bg-white rounded-full">
-                        <svg class="rotate-[135deg] size-full" viewBox="0 0 36 36" xmlns="http://www.w3.org/2000/svg">
-                            <!-- Background Circle (Gauge) -->
-                            <circle cx="18" cy="18" r="16" fill="none" class="stroke-current text-purple-200 dark:text-neutral-700" stroke-width="1" stroke-dasharray="75 100"></circle>
-                            <!-- Gauge Progress -->
-                            <circle cx="18" cy="18" r="16" fill="none" class="stroke-current  text-purple-600 dark:text-purple-500" stroke-width="2"  stroke-dasharray="20 100"></circle>
-                            </svg>
-                        <!-- Value Text -->
-                        <div class="absolute top-1/2 start-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center">
-                            <span class="text-sm font-bold text-purple-600 dark:text-purple-500">
-                                {{getRating()}}
-                            </span>
-                            <span class="text-purple-600 absolute text-xs dark:text-purple-500 ">%</span>
+            <div class="rating detail-item">
+                <span class="Rating detail-icon">
+                    <div class=" text-sm hidden md:flex">
+                        <div
+                        class="radial-progress  bg-text-grey-50 text-secondary border-text-grey-50 border-2 text-xs size-14"
+                        [style]="getStyleRating()"
+                        style=" --size:12rem; --thickness: 2px;"
+                        role="progressbar">
+                        {{getRating()}}%
                         </div>
                     </div> 
                 </span>
                 <div class="flex flex-col h-full gap-8 items-start justify-start">
-                    <span class="text-xs font-bold">
-                        User Score
-                    </span>
-                    <span class="Votes text-xs text-text-grey-100 "> 
-                        {{episode.voteCount}}
-                        Votes</span>
-                    </div>
-            </div>
-        </div>
-        
-    </div>
-    <div class="p-5">
-            
-    <div class="detail flex flex-row md:items-center  sm:flex-col md:flex-row items-start">
-        <div class="image-wrapper lg:min-w-60 max-w-60  border-2 flex items-center justify-center rounded-lg border-link">
-            <img [src]="episode.stillPath" alt="Episode Image" class="rounded-lg" (error)="setPlaceholder($event)">
-        </div>
-        <div class="info-wrapper p-2 flex-grow  ">
-            <div class="info-item">
-                <div>
-                    <div class="item-name text-secondary">Aired On :
-                        <span >{{episode.airDate}}</span>
-                    </div>
+                    <span class="text-xs font-bold">User Score</span>
+                    <span class="Votes text-xs text-text-grey-100">{{episode.voteCount}} Votes</span>
                 </div>
             </div>
-            <div class="info-item">
-                <div class="item-name text-text-grey-50">{{episode.name}}</div>
-            </div>
-            <div class="flex justify-between gap-3 w-full sm:flex-col md:flex-row">
-                <div class="info-item text-text-grey-50">
-                    <div class="item-name text-text-grey-50">Season {{episode.seasonNumber}} </div>
-                </div>
-                <div class="info-item">
-                    <div class="item-name text-text-grey-50">Episode {{episode.episodeNumber}}</div>
-                </div>
-            </div>
-            <div class="flex justify-between sm:flex-col md:flex-row">
-                <div class="info-item">
-                    <div class="item-name text-text-grey-50">{{episode.runtime}} min</div>
-                </div>
-                <div class="info-item">
-                    <div class="item-name text-text-grey-50"> {{episode.episodeType}}</div>
-                </div>
-            </div>
-        
         </div>
     </div>
-    <div class="overView ">
-        <div class="item-name info-item text-text-grey-50">overview
-        </div>
-        <div class="text-sm max-w-[25rem] ">{{episode.overview}}</div>
-        </div>
 
+    <div class="p-5">
+        <div class="detail flex flex-row md:items-center sm:flex-col md:flex-row items-start">
+            <div class="image-wrapper lg:min-w-60 max-w-60 overflow-hidden border-2 flex items-center justify-center rounded-lg border-link" ngClass="{'h-44':imgError}">
+                <img [src]="episode.stillPath" alt="Episode" class="rounded-lg object-cover" (error)="setPlaceholder($event)">
+            </div>
+            <div class="info-wrapper p-2 flex-grow">
+                <div class="info-item">
+                    <div>
+                        <div class="item-name text-secondary">Aired On: <span>{{episode.airDate}}</span></div>
+                    </div>
+                </div>
+                <div class="info-item">
+                    <div class="item-name text-text-grey-50 text-wrap max-w-96">{{episode.name}}</div>
+                </div>
+                <div class="flex justify-between gap-3 w-full sm:flex-col md:flex-row">
+                    <div class="info-item text-text-grey-50">
+                        <div class="item-name text-text-grey-50">Season {{episode.seasonNumber}}</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="item-name text-text-grey-50">Episode {{episode.episodeNumber}}</div>
+                    </div>
+                </div>
+                <div class="flex justify-between sm:flex-col md:flex-row">
+                    <div class="info-item">
+                        <div class="item-name text-text-grey-50">{{episode.runtime}} min</div>
+                    </div>
+                    <div class="info-item">
+                        <div class="item-name text-text-grey-50">{{episode.episodeType}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Overview hover card with viewport adjustment -->
+    <div *ngIf="episode.overview" class="absolute top-0 left-full w-80 p-4 bg-background-100 border border-secondary rounded-lg shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform group-hover:-translate-x-4"
+         [ngClass]="{'left-auto right-0': isNearEdge}">
+        <div class="item-name font-bold text-secondary">Overview</div>
+        <div class="text-sm text-text-grey-50">{{episode.overview}}</div>
     </div>
 </div>

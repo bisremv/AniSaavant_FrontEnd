@@ -1,8 +1,8 @@
 .info-item{
-    @apply text-xl font-main flex gap-1 flex-nowrap;
+    @apply  font-main flex gap-1 justify-between flex-nowrap;
 }
 .info-names{
-@apply text-link font-bold  text-nowrap;
+@apply text-lg lg:text-sm  text-link font-bold  ;
 }
 .info-content{
     // @apply text-nowrap;

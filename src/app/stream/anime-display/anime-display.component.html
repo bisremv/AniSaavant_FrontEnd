@@ -1,0 +1,21 @@
+<div class="anime-info md:w-[70vw] p-4 pt-0 ">
+    <div class="  shadow-md">
+      <div class="hero-content justify-start flex-col lg:flex-row items-start lg:items-center gap-6">
+        <img [src]="animeInfo.posterPath" class="max-w-52  rounded-lg shadow-lg" alt="My Hero Academia" />
+        
+        <div class="space-y-3 text-text-grey font-medium">
+          <h2 class="text-3xl font-bold text-text-grey-50">{{animeInfo.title}}</h2>
+          <p class="text-sm">Type: <span class="font-semibold text-text-grey-100/70 text-xs">ANIME</span></p>
+          <p class="text-sm">Episodes: <span class="font-semibold text-text-grey-100/70 text-xs">{{animeInfo.numberOfEpisodes}}</span></p>
+          <p class="text-sm">Original Name : <span class="font-semibold text-text-grey-100/70 text-xs">{{animeInfo.originalName}}</span></p>
+          <p class="text-sm">Duration: <span class="font-semibold text-text-grey-100/70 text-xs">{{animeInfo.episodeRunTime}} min</span></p>
+          <p class="text-sm flex gap-1"><span class="font-semibold text-xs text-text-grey-50 flex gap-2">
+            <span *ngFor="let g of animeInfo.animeGener" class="p-2  border border-primary rounded"> {{g}} </span>
+          </span></p>
+        </div>
+      </div>
+    </div>
+    <div class="p-4 mx-4 bg-background-50/30 rounded-lg">
+      {{animeInfo.overview}}
+    </div>
+    </div>

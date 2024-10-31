@@ -33,18 +33,13 @@ export class SignInComponent {
   this.userManagementService.signIn(data).subscribe(
     {
       next:(response) => {
-        console.log('next');
-      console.log(response);
     },
     error:(error) => {
-    console.log('error');
-    console.log(error);
     this.Message = "Invalid Credentials";
     this.isError = true;
       this.isLoading = false;
     },
     complete:() => {
-    console.log('complete');
     this.isSuccess = true;
     this.isLoading = false;
     this.route.navigate(['discover']);

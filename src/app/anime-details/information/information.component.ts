@@ -1,11 +1,12 @@
 import { Component, Input } from '@angular/core';
 import { AnimeInfo } from '../../Models/animeInfo';
 import { Episode } from '../../Models/episodes';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-information',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './information.component.html',
   styleUrl: './information.component.scss'
 })

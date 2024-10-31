@@ -3,14 +3,14 @@
         <div class="w-2 h-10 rounded bg-white mr-2"></div>
     Explore Anime</h2>
 <div class="flex justify-between flex-wrap">
-    <div role="tablist" class="tabs tabs-bordered z-20 mb-4 md:w-1/3 ">
-        <a (click)="changeTab(Tap.Trending)"     [ngClass]="{'tab-active': activeTab==Tap.Trending}" role="tab" class="tab">Trending</a>
-        <a (click)="changeTab(Tap.Anticipated)"  [ngClass]="{'tab-active': activeTab== Tap.Anticipated}" role="tab" class="tab">Anticipated</a>
-        <a (click)="changeTab(Tap.Popular)"      [ngClass]="{'tab-active': activeTab==Tap.Popular}" role="tab" class="tab">Popular</a>
-        <a  (click)="changeTab(Tap.MostWatched)" [ngClass]="{'tab-active': activeTab==Tap.MostWatched}" role="tab" class="tab">Most Watched</a>
-        <a (click)="changeTab(Tap.AiringToday)"  [ngClass]="{'tab-active': activeTab==Tap.AiringToday}" role="tab" class="tab">AiringToday</a>
+    <div role="tablist" class="md:tabs tabs-bordered z-20 mb-4 md:w-1/3  flex-wrap">
+        <a (click)="changeTab(Tap.Trending)"     [ngClass]="{'tab-active': activeTab==Tap.Trending}" role="tab" class="tab md:text-base text-xs">Trending</a>
+        <a (click)="changeTab(Tap.Anticipated)"  [ngClass]="{'tab-active': activeTab== Tap.Anticipated}" role="tab" class="tab md:text-base text-xs">Anticipated</a>
+        <a (click)="changeTab(Tap.Popular)"      [ngClass]="{'tab-active': activeTab==Tap.Popular}" role="tab" class="tab md:text-base text-xs">Popular</a>
+        <a  (click)="changeTab(Tap.MostWatched)" [ngClass]="{'tab-active': activeTab==Tap.MostWatched}" role="tab" class="tab md:text-base text-xs text-nowrap">Most Watched</a>
+        <a (click)="changeTab(Tap.AiringToday)"  [ngClass]="{'tab-active': activeTab==Tap.AiringToday}" role="tab" class="tab md:text-base text-xs">AiringToday</a>
     </div>
-    <div class="join self-end mx-4 ">
+    <div class="join self-end mx-4 ml-auto right-0">
         <button (click)="changePage(false)"  class="join-item  btn btn-primary  pagination-btn">«</button>
         <button class="join-item btn btn-primary  pagination-btn">Page {{page}}</button>
         <button (click)="changePage(true)" class="join-item btn btn-primary  pagination-btn">»</button>

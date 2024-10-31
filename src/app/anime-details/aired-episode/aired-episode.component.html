@@ -56,11 +56,4 @@
         </div>
     </div>
 
-
-    <!-- Overview hover card with viewport adjustment -->
-    <div *ngIf="episode.overview" class="absolute top-0 left-full w-80 p-4 bg-background-100 border border-secondary rounded-lg shadow-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform group-hover:-translate-x-4"
-         [ngClass]="{'left-auto right-0': isNearEdge}">
-        <div class="item-name font-bold text-secondary">Overview</div>
-        <div class="text-sm text-text-grey-50">{{episode.overview}}</div>
-    </div>
 </div>

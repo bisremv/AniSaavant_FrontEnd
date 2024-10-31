@@ -51,7 +51,7 @@
         </div>
     </div>
 
-    <div class="logo-small  relative md:hidden  min-w-32  text-sm  p-1 text-center overflow-visible hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600">            
+    <div routerLink="/discover" class="logo-small  relative md:hidden  min-w-32  text-sm  p-1 text-center overflow-visible hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600">            
         <img src="/images/logo.svg" class="absolute -top-4  text-sm" alt="">
     </div>
     
@@ -78,7 +78,7 @@
                 
             Latest</li>
         </a>
-        <li class="relative  min-w-64  hidden md:block text-sm   text-center overflow-visible">            
+        <li routerLink="/discover" class="relative  min-w-64  hidden md:block text-sm   text-center overflow-visible">            
         <img src="images/logo.svg" class="absolute -top-6" alt="">
         
     </li>
@@ -145,9 +145,9 @@
   <li [ngClass]="{'active-tab': isActiveTab('/discover')}" routerLink="/discover" class="Discover menu-tabs">Discover</li>
   <li [ngClass]="{'active-tab': isActiveTab('/extension')}" routerLink="/extension" class="Extension menu-tabs">Extensions</li>
 </ul>
-<div *ngIf="isSearchOpen" class="search-input relative block p-1  lg:hidden">
+<div *ngIf="isSearchOpen" class="search-input  relative block p-1  lg:hidden">
     <div class="search small-screen bg-transparent ">
-        <div class="search-input relative w-full   lg:hidden">
+        <div class="search-input relative w-full  lg:hidden">
             <div class="search-icon  absolute inset-y-0 start-0 flex items-center ps-3 ">
                 <svg *ngIf="isSearchAnime" (click)="changeSearchType('tomanga')" class="size-4 fill-secondary text-gray-500 dark:text-gray-400" viewBox="-0.5 0 7 7" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                     <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
@@ -168,7 +168,7 @@
             <div class="join">
                 <div>
                 <div>
-                    <input type="text" id="search-navbar" class="block  bg-background-100/10 max-w-52  p-2  ps-10 font-bold input input-bordered text-xs  focus:outline-none focus:border-primary border border-primary join-item  text-text-grey-100" placeholder="Search..."    (keydown.enter)="searchItem()"  [(ngModel)]="searchQuery">
+                    <input type="text" id="search-navbar" class="block  bg-background-100/10 max-w-28  p-2  ps-10 font-bold input input-bordered text-xs  focus:outline-none focus:border-primary border border-primary join-item  text-text-grey-100" placeholder="Search..."    (keydown.enter)="searchItem()"  [(ngModel)]="searchQuery">
                 </div>
                 </div>
                 <select class="select select-bordered border-primary focus:border-primary bg-background-100/10 focus:outline-none  active:outline-none hover:outline-none join-item"

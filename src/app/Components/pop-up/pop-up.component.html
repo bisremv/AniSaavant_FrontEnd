@@ -3,8 +3,8 @@
 >
 <h3 class="text-lg font-bold">{{ title }}</h3>
 <p class="py-4"
-[ngClass]="{ 'text-error': !isSuccess, 'text-green-500': isSuccess }"
-    >{{ message }}</p>
+[ngClass]="{ 'text-error': !isSuccess, 'text-green-500': isSuccess }">
+    {{ message }}</p>
     <div *ngIf="isLoading" class="full flex m-4 justify-center">
         <span class=" loading size-20 loading-spinner  loading-lg"></span>
     </div>

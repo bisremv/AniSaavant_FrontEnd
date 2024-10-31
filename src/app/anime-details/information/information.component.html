@@ -44,7 +44,10 @@
         <h6 class="info-content">{{animeInfo.type}}</h6>
     </div>
     <div class="info-item ">
+        
+        <div class="info-names lg:hidden">Genre:</div>
         <h6 class="info-content ">
+
         <div class="flex gap-2 flex-wrap">
             <span *ngFor="let genre of animeInfo.animeGener" class="border text-xs border-primary rounded p-1">
                 {{ genre }}

@@ -44,17 +44,4 @@ export class AiredEpisodeComponent implements OnInit {
   getStyleRating() {
     return "--value:"+(this.episode.voteAverage * 10)+";"
   }
-
-  @HostListener('window:resize', ['$event'])
-  @HostListener('window:scroll', ['$event'])
-  checkIfNearEdge() {
-    const rect = this.el.nativeElement.getBoundingClientRect();
-    const windowWidth = window.innerWidth;
-    this.isNearEdge = rect.right + 320 > windowWidth; // 320px is the width of the overview card
-  }
-
-  ngAfterViewInit() {
-    this.checkIfNearEdge(); // Check initially
-  }
-
 }

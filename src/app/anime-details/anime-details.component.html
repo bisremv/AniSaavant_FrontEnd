@@ -22,7 +22,7 @@
 
 <div class="flex flex-col   lg:flex-row items-center justify-between  m-4  gap-2">
     <app-information class=" w-full lg:w-fit"  [animeInfo]="animeInfo"></app-information>
-    <app-season-carousel class="flex-grow w-full" [seasons]="animeInfo.seasons" [tmdbId]="animeInfo.tmdbId" 
+    <app-season-carousel class="flex-grow w-full  lg:max-w-[77vw]" [seasons]="animeInfo.seasons" [tmdbId]="animeInfo.tmdbId" 
     [animeId]="animeInfo.animeId" [isAnimeLoading]="isAnimeLoading"></app-season-carousel>
 </div>
 <div class="wrapper">

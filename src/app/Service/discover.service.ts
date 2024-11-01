@@ -4,7 +4,6 @@ import { tap } from 'rxjs';
 import { MangaItem } from '../Models/MangaItem';
 import { UserManagmentService } from './user-managment.service';
 import { ExtensionService } from './extension.service';
-import { Extension } from '../Models/Extenison';
 
 @Injectable({
   providedIn: 'root'
@@ -58,17 +57,11 @@ export class DiscoverService {
     }));
   }
   getMangaList() {
-    let extId: number=0;
-    this.extensionService.getExtension().subscribe((extList ) => {
-      let list=extList as Extension[]
-      if (list.length > 0){
-      extId = list[0].exId;
-      }
-    });
-    return this.http.get(this.url+'/api/discover/hero/manga?extId='+extId)
+    // let extId = this.extensionService.getExtension().subscribe((ext) => {})
+    return this.http.get(this.url+'/api/discover/hero/manga?extId='+1)
     .pipe(tap((response: any) => {
       response.forEach((item:MangaItem) => {
-        item.extId = extId;
+        item.extId = 1;
       })
       return response;
     }));

@@ -5,14 +5,14 @@
     
     <div class="flex w-full justify-between flex-col sm:flex-row   sm:items-start" >
         <div class="flex flex-col gap-3 flx-grow sm:w-1/2" >
-            <ng-container *ngIf="extensions && extensions.length > 0; else emptyList">
+            <ng-container *ngIf="extensions && extensions.length > 0">
                 <ng-container *ngFor="let ext of extensions; let i = index" >
                     <app-extension-item [isActiveList]="isActiveList"
                     [ext]="ext"
                     *ngIf="i % 2 === 0" ></app-extension-item>
                 </ng-container>
                 </ng-container>
-                <ng-template #emptyList>
+                <ng-template *ngIf="isLoading">
                     <div class="snap-start" *ngFor="let extensions of [1,2,3];">
                     <div class="flex w-52 flex-col gap-4">
                         <div class="flex items-center gap-4">
@@ -31,14 +31,14 @@
         </div>
         <div class="flex flex-col gap-3 flx-grow sm:w-1/2" >
             
-            <ng-container *ngIf="extensions && extensions.length > 0; else emptyList">
+            <ng-container *ngIf="extensions && extensions.length > 0">
                 <ng-container *ngFor="let ext of extensions; let i = index" >
                     <app-extension-item [isActiveList]="isActiveList"
                     [ext]="ext"
                     *ngIf="i % 2 !== 0" ></app-extension-item>
                 </ng-container>
                 </ng-container>
-                <ng-template #emptyList>
+                <ng-template *ngIf="isLoading">
                     <div class="snap-start" *ngFor="let extensions of [1,2,3];">
                         <div class="flex w-52 flex-col gap-4">
                         <div class="flex items-center gap-4">

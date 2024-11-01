@@ -17,6 +17,9 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './extension-page.component.scss'
 })
 export class ExtensionPageComponent implements OnInit {
+changePage(arg0: boolean) {
+throw new Error('Method not implemented.');
+}
   ext:Extension=new Extension(0,"","","")
   extId:number=0;
   activeTab: Tab = Tab.Search; // Set default tab to Search
@@ -75,6 +78,8 @@ getLatest(){
     },
     complete:()=>{
       this.isLoading=false
+      console.log(this.mangaList)
+
     }
   })
 }
@@ -83,6 +88,8 @@ getPopular(){
   this.discover.getPopularManga(this.ext.exId).subscribe({
     next:(popular)=>{
       this.mangaList=(popular as MangaItem[]);
+      console.log(this.mangaList)
+
     }
     ,
     error:(error)=>{
@@ -98,6 +105,7 @@ getSearch(){
   this.search.searchManga(this.searchQuery , this.ext.exId).subscribe({
     next: (res) => {
       this.mangaList = res as MangaItem[];
+      console.log(this.mangaList)
     },
     error:(error)=>{
       this.isLoading=false

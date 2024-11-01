@@ -1,11 +1,11 @@
-<div class="toggle-wrapper flex flex-wrap flex-col md:flex-row font-bold font-main bg-background-50   gap-4 md:gap-3 max-w-52 rounded-md  m-0.5 p-2 md:p-4 md:m-3 justify-between overflow-hidden  text-xs md:text-base">
+<div class="toggle-wrapper flex flex-wrap flex-col md:flex-row font-bold font-main bg-background-50/30   gap-4 md:gap-3 max-w-52 rounded-md  m-0.5 p-2 md:p-4 md:m-3 justify-between overflow-hidden  text-xs md:text-base">
     <div class=" flex items-center justify-center" >
         <a class="choice" [ngClass]="{'drop-shadow-purple':isAnimePage}" routerLink="anime">
             Anime
         </a>    
     </div>
     <div class="flex items-center justify-center">
-        <a routerLink="manga" [ngClass]="{'drop-shadow-purple':!isAnimePage}" class="choice">
+        <a routerLink="manga" [ngClass]="{'drop-shadow-purple':isMangaPage}" class="choice">
             Manga
         </a>
     </div>

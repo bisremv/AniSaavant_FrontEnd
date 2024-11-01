@@ -3,6 +3,8 @@ import { inject, Injectable } from '@angular/core';
 import { tap } from 'rxjs';
 import { MangaItem } from '../Models/MangaItem';
 import { UserManagmentService } from './user-managment.service';
+import { ExtensionService } from './extension.service';
+import { Extension } from '../Models/Extenison';
 
 @Injectable({
   providedIn: 'root'
@@ -10,6 +12,7 @@ import { UserManagmentService } from './user-managment.service';
 export class DiscoverService {
   url: string ="https://anisavantbackendnew-production.up.railway.app";
   http:HttpClient=inject(HttpClient);
+  extensionService:ExtensionService=inject(ExtensionService);
   userManagmentService:UserManagmentService=inject(UserManagmentService);
   
   getPopularAnime(page:number) {
@@ -55,10 +58,17 @@ export class DiscoverService {
     }));
   }
   getMangaList() {
-    return this.http.get(this.url+'/api/discover/hero/manga?extId='+1)
+    let extId: number=0;
+    this.extensionService.getExtension().subscribe((extList ) => {
+      let list=extList as Extension[]
+      if (list.length > 0){
+      extId = list[0].exId;
+      }
+    });
+    return this.http.get(this.url+'/api/discover/hero/manga?extId='+extId)
     .pipe(tap((response: any) => {
       response.forEach((item:MangaItem) => {
-        item.extId = 1;
+        item.extId = extId;
       })
       return response;
     }));

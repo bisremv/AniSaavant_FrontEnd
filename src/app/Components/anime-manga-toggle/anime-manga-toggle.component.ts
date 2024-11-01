@@ -13,18 +13,30 @@ import { filter } from 'rxjs';
 })
 export class AnimeMangaToggleComponent {
   constructor(private route: ActivatedRoute, private router: Router ) {}
-  isAnimePage:boolean=true;
+
+  isAnimePage: boolean = false;
+  isMangaPage: boolean = false;
+
   ngOnInit(): void {
+    // Check the initial URL to set the flags
+    this.updatePageFlags(this.router.url);
+
     // Subscribe to router events
     this.router.events
-      .pipe(filter((event: any) => event instanceof NavigationEnd)) // Listen to the end of navigation
-      .subscribe((event: any) => {
-        if (this.router.url.includes('anime') ) { 
-          this.isAnimePage=true;
-        }
-        else if(this.router.url.includes('manga')){
-          this.isAnimePage=false;
-        }
-      });
+      .pipe(filter((event) => event instanceof NavigationEnd))
+      .subscribe(() => this.updatePageFlags(this.router.url));
+  }
+
+  private updatePageFlags(url: string): void {
+    if (url.includes('anime')) {
+      this.isAnimePage = true;
+      this.isMangaPage = false;
+    } else if (url.includes('manga')) {
+      this.isAnimePage = false;
+      this.isMangaPage = true;
+    } else {
+      this.isAnimePage = false;
+      this.isMangaPage = false;
+    }
   }
 }

@@ -16,6 +16,6 @@
         </ng-container>
     </div>
     <ng-container >
-        <app-empty-page></app-empty-page>
+        <app-empty-page *ngIf="this.mangaList.length == 0 && !this.isLoading"></app-empty-page>
     </ng-container>
 </div>

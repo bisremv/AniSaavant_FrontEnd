@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter, inject, Input, Output } from '@angular/core';
+import { Component, ElementRef, EventEmitter, HostListener, inject, Input, Output } from '@angular/core';
 import { MangaService } from '../../../Service/manga.service';
 import { Chapter } from '../../../Models/chapters';
 import { Router } from '@angular/router';
@@ -32,8 +32,9 @@ export class PageControlsComponent {
   extension:Extension=new Extension(0,"","","")
   currentChapter:Chapter=new Chapter(0,false,"","",0,"")
   isPageMenuOpen:boolean=false;
-  isSideMenuOpen: boolean = true; // Controls sidenav visibility
+  isSideMenuOpen: boolean = false; // Controls sidenav visibility
   isChapterMenuOpen: boolean = false;
+  elementRef: ElementRef = inject(ElementRef);
   @Output() navToggle: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Output() sideToggle: EventEmitter<boolean> = new EventEmitter<boolean>();
   @Output() pageViewControl: EventEmitter<string> = new EventEmitter<string>();
@@ -197,4 +198,11 @@ export class PageControlsComponent {
       this.getChapters()
       this.getExtension()
     }
+
+    @HostListener('document:click', ['$event'])
+  handleOutsideClick(event: Event) {
+    if (this.isSideMenuOpen && !this.elementRef.nativeElement.contains(event.target)) {
+      this.isSideMenuOpen = false;
+    }
+  }
 }

@@ -9,12 +9,13 @@
   
 <app-anime-display [animeInfo]="animeInfo"></app-anime-display>
 
-<div class="Related h-96 flex-grow ">
+<div class="Related h-[26rem] overflow-hidden mb-16 flex-grow ">
   <div class="Related-header p-3 w-full text-lg md:text-2xl  font-black font-body">Related</div>
 
-  <div class="Related-list h-full flex flex-col gap-4 p-4 overflow-scroll">
-    <app-related-item *ngFor="let anime of similarList " [anime]="anime"  ></app-related-item>
+  <div class="Related-list h-full  flex flex-col gap-4 p-4  overflow-y-scroll scroll-smooth">
+    <app-related-item *ngFor="let anime of similarList" [anime]="anime"></app-related-item>
   </div>
+  
 
 </div>
 </div>

@@ -1,5 +1,5 @@
 <div class="warapper flex flex-col gap-5 ">
-    <div class="header flex justify-between  items-center gap-2 my-3">
+    <div class="header flex justify-between  items-center gap-2 md:my-3">
         <h2 class="text-lg md:text-3xl flex font-black text-text-grey-50 capitalize font-body"> 
             <div class="w-2 h-8 rounded bg-white mr-2"></div>
             {{animeGroup}}</h2>
@@ -12,7 +12,8 @@
     </div>
     <div class="anime-group grid   grid-cols-2  lg:grid-cols-4 gap-5 ">    
         <ng-container *ngIf="animeList && animeList.length > 0; else emptyList">
-            <app-anime-item-horizontal *ngFor="let anime of animeList | slice:0:8" [anime]="anime" ></app-anime-item-horizontal>
+            <app-anime-item-horizontal class="hidden md:inline-block" *ngFor="let anime of animeList | slice:0:8" [anime]="anime" ></app-anime-item-horizontal>
+            <app-anime-item-horizontal class="md:hidden" *ngFor="let anime of animeList | slice:0:4" [anime]="anime" ></app-anime-item-horizontal>
         </ng-container>
         <ng-template #emptyList>
             <div class="snap-start" *ngFor="let anime of [1,2,3,4,5,6,7,8];">

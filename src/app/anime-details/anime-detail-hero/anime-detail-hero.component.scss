@@ -4,11 +4,11 @@
     background-image: radial-gradient(transparent 0%,  #0e0e0e 90%) ;
 }
 .anime-info {
-    @apply z-0   flex flex-col gap-1 sm:gap-2 lg:gap-3  justify-center items-center md:items-start text-text-grey-50 font-bold font-body  m-4 md:m-0 md:w-[60%];
+    @apply z-0   flex flex-col gap-1 sm:gap-2 lg:gap-3  justify-center items-center md:items-start text-text-grey-50 font-bold font-body  m-2 md:m-0 md:w-[60%];
 }
 .detail-item{
     // @apply  tex;
 }
 .call-to-action{
-    @apply flex gap-1 font-bold  justify-around items-center bg-secondary text-xs sm:text-base md:text-2xl w-24 md:w-44  text-text-grey-50 p-1 md:p-2 rounded-lg font-header;
+    @apply flex gap-1 font-bold  justify-around items-center bg-secondary text-base md:text-2xl text-text-grey-50  md:p-2 rounded-lg font-header ;
 }

@@ -1,13 +1,11 @@
 .menu-tabs{
-    @apply p-1 flex flex-row flex-nowrap gap-1 items-center xl:text-lg lg:text-xl cursor-pointer hover:text-secondary active:text-primary ;
+    @apply p-1 flex flex-row flex-nowrap gap-1 items-center xl:text-lg lg:text-xl cursor-pointer hover:text-secondary active:text-primary shadow-2xl shadow-black ;
 }
 
 .userSign{
     @apply  btn  bg-primary rounded-md   btn-xs hover:bg-secondary active:bg-hover ;
 }
-.icon{
-    @apply size-8
-}
+
 .search-icon{
     cursor: pointer;
 }

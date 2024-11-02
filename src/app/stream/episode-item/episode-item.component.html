@@ -1,25 +1,49 @@
 <div (click)="changeEpisode()" >
+  <div 
+  *ngIf="!isNumberList" 
+  class="episode-item flex flex-col gap-4 p-3 md:p-4 rounded-lg bg-background-50/40 shadow-lg hover:shadow-xl hover:bg-background-50/60 cursor-pointer hover:scale-[.98] active:scale-100 transform duration-300 transition-all ease-in-out md:flex-row">
+  
+  <img 
+    class="w-16 h-16 md:w-20 md:h-20 object-cover rounded-lg" 
+    [src]="episode.stillPath" 
+    alt="Episode" 
+    (error)="onImageError($event)"
+  />
 
-  <div *ngIf="!isNumberList" class="episode-item flex flex-col md:flex-row gap-4 p-4 rounded-lg bg-background-50/40 shadow-lg hover:shadow-xl hover:bg-background-50/60 cursor-pointer hover:scale-[.98] active:scale-100 transform duration-300 transition-all ease-in-out">
-    <img class="w-20 h-20 object-cover rounded-lg" [src]="episode.stillPath" alt="Episode" 
-    (error)="onImageError($event)">
+  <div class="episode-info flex-grow flex flex-col justify-between md:w-64">
+    <!-- Episode title and number -->
+    <h3 class="text-sm md:text-base font-semibold text-text-grey-50">
+      <span class="text-primary">{{ episode.episodeNumber }}</span> . 
+      <span>{{ episode.name }}</span>
+    </h3>
+
+    <!-- Air date -->
+    <p class="text-xs md:text-sm text-text-grey-200 mt-1 md:mt-2">
+      Air Date: <span class="text-text-grey-100">{{ episode.airDate }}</span>
+    </p>
     
-    <div class="episode-info flex-grow md:w-64 flex flex-col justify-between">
-      <h3 class="text-base font-semibold text-text-grey-50">
-        <span class="text-primary">{{episode.episodeNumber}}</span> {{"."}} <span>{{episode.name}}</span>
-      </h3>
-      <p class="text-sm text-text-grey-200 mt-2">Air Date: <span class="text-text-grey-100">{{episode.airDate}}</span></p>
-      
-      <div class="flex items-center gap-2 mt-1">
-        <span class="text-sm bg-secondary/30 text-secondary px-2 py-1 rounded-md">Runtime: {{episode.runtime}} min</span>
-        <span class="text-sm text-text-grey-100">Rating: {{episode.voteAverage}}/10</span>
-      </div>
-      <p *ngIf="episode.watched" class="text-xs bg-green-500 text-white rounded-full px-3 py-1 mt-2 w-max">Watched</p>
+    <!-- Runtime and rating -->
+    <div class="flex flex-wrap items-center gap-1 mt-1">
+      <span class="text-xs md:text-sm bg-secondary/30 text-secondary px-2 py-1 rounded-md">
+        Runtime: {{ episode.runtime }} min
+      </span>
+      <span class="text-xs md:text-sm text-text-grey-100">
+        Rating: {{ episode.voteAverage }}/10
+      </span>
     </div>
+
+    <!-- Watched tag -->
+    <p 
+      *ngIf="episode.watched" 
+      class="text-xs bg-green-500 text-white rounded-full px-3 py-1 mt-2 w-max md:text-sm">
+      Watched
+    </p>
   </div>
+</div>
+
   
   <div *ngIf="isNumberList" class="p-2 flex justify-center items-center rounded bg-background-50 shadow-md hover:bg-background-50/50 cursor-pointer hover:scale-90 active:scale-100 transform duration-200">
-    aa
+    {{episode.episodeNumber}}
   </div>
 
 </div>

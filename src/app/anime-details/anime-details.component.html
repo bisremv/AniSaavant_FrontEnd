@@ -25,13 +25,13 @@
     <app-season-carousel class="flex-grow w-full  lg:max-w-[77vw]" [seasons]="animeInfo.seasons" [tmdbId]="animeInfo.tmdbId" 
     [animeId]="animeInfo.animeId" [isAnimeLoading]="isAnimeLoading"></app-season-carousel>
 </div>
-<div class="wrapper">
+<div class="wrapper hidden md:inline-block">
     <app-aired-episode *ngIf="animeInfo.lastEpisodeToAir" [episode]="animeInfo.lastEpisodeToAir" [header]="'Last Episode To Air'" class="m-4 sm:m-0 "></app-aired-episode>
     <img src="images/S_logo.svg"  class="max-h-72 w-1/6 ml-auto mr-auto  sm:inline-block hidden " alt="" >
     <app-aired-episode *ngIf="animeInfo.nextEpisodeToAir" [episode]="animeInfo.nextEpisodeToAir" [backdropPath]="animeInfo.backdropPath" [posterPath]="animeInfo.posterPath" [header]="'Next Episode To Air'" class="h-fit"></app-aired-episode>
 
 </div>
-<div class=" wrapper ">
+<div class=" wrapper hidden md:inline-block">
     <app-production-company [productionCompanies]="animeInfo.productionCompanies"></app-production-company>
 </div>
 

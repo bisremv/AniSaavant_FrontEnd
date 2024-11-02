@@ -1,5 +1,5 @@
 
-<div class="anime-item drop-shadow-lg  overflow-hidden   flex flex-col rounded-lg w-36 h-64 sm:w-44 sm:h-64 md:w-56 md:h-80    font-main  active:scale-100  transition duration-500 ease-in-out ">
+<div class="anime-item drop-shadow-lg  overflow-hidden  hidden   md:flex flex-col rounded-lg w-36 h-64 sm:w-44 sm:h-64 md:w-56 md:h-80    font-main  active:scale-100  transition duration-500 ease-in-out ">
     <div (click)="navigateToSeasons()" class="img-container  rounded-lg overflow-hidden h-4/5 md:h-5/6 relative ">
         <img class="w-full h-full " [src]="season.posterPath" alt="seasons" (error)="onImageError($event)">
         <div class="absolute inset-0 w-full h-full flex justify-center items-center group ">
@@ -12,6 +12,26 @@
             <div class="episode  self-end item-subtitles">{{season.episodeCount}} Eps</div>
         </div>
         <div class="row-2 flex justify-between ">
+            <div class="season item-subtitles">season {{season.seasonNumber}}</div>
+            <div class="staus item-subtitles" >{{getAirDate()}}</div>
+        </div>
+    </div>
+</div>
+
+<div (click)="navigateToSeasons()" class="anime-item drop-shadow-lg  overflow-hidden relative  flex md:hidden flex-col rounded-lg h-28 sm:h-44     font-main    transition duration-500 ease-in-out ">
+    <div (click)="navigateToSeasons()" class="img-container  rounded-lg overflow-hidden h-4/5 md:h-5/6 relative ">
+        <img class="w-full h-full " [src]="season.posterPath" alt="seasons" (error)="onImageError($event)">
+        <div class="absolute inset-0 w-full h-full flex  pointer-events-none justify-center items-center group ">
+            <div class=" absolute inset-0 z-10 bg-black/50  pointer-events-none rounded-lg ">
+            </div>
+        </div>
+    </div>
+    <div class="season-info-small p-1 w-full h-full flex flex-col justify-between items-center flex-grow font-bold text-text-grey-50 absolute z-20 ">
+        <div class="row-1 flex justify-between w-full items-start ">
+            <div (click)="navigateToSeasons()" class="title w-4/6  text-xs sm:text-base  font-bold   ">{{season.name}}</div>
+            <div class="episode text-text-grey-50   item-subtitles">{{season.episodeCount}} Eps</div>
+        </div>
+        <div class="row-2 flex justify-between w-full">
             <div class="season item-subtitles">season {{season.seasonNumber}}</div>
             <div class="staus item-subtitles" >{{getAirDate()}}</div>
         </div>

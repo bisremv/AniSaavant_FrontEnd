@@ -1,4 +1,4 @@
-<div class="wrapper border border-primary m-6  rounded-lg">
+<div class="wrapper md:border border-primary m-6  rounded-lg">
     <div class="header  bg-secondary sm:flex gap-2 rounded-t-lg p-3">
         <div class="image max-w-28"> 
             <img [src]="season.posterPath" alt="" class="object-fill">
@@ -18,7 +18,7 @@
             </div>
         </div>
     </div>
-    <div class="page-control border-b-2 border-primary p-2 flex justify-between">
+    <div class="page-control md:border-b-2 border-primary p-2 flex justify-between">
         <div  (click)="changeSeason(previousSeason)" class="prev flex gap-2 h-8 w-fit justify-center items-center"> 
             <div *ngIf="previousSeason" class="flex gap-2 h-8 w-fit justify-center items-center">
                 <svg  class="rotate-180 h-4/5 hover:scale-90 active:scale-100 transform duration-200" viewBox="0 -2 12 12" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -54,7 +54,7 @@
         </div>
         </div>
         </div>
-    <div class="Season-content p-1 ">
+    <div class="Season-content p-1 grid gap-4">
         <ng-container *ngFor="let episode of season.episodes">
             <app-episode-card  [episode]="episode" [animeId]="animeId"></app-episode-card>
         </ng-container>

@@ -4,7 +4,6 @@ import { SeasonItemComponent } from "./season-item/season-item.component";
 import { CommonModule } from '@angular/common';
 import { Arrow } from '../../Components/anime-grouping/next-carousel/arrow';
 import { NextCarouselComponent } from "../../Components/anime-grouping/next-carousel/next-carousel.component";
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-season-carousel',

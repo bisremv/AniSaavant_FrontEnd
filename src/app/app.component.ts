@@ -3,7 +3,7 @@ import { ActivatedRoute, NavigationEnd, Router, RouterModule, RouterOutlet } fro
 import { AnimeItemComponent } from "./Components/anime-item/anime-item.component";
 import { NavBarComponent } from "./Components/nav-bar/nav-bar.component";
 import { filter } from 'rxjs';
-import { CommonModule } from '@angular/common';
+import { CommonModule, ViewportScroller } from '@angular/common';
 import { UserManagmentService } from './Service/user-managment.service';
 import { PopUpComponent } from "./Components/pop-up/pop-up.component";
 import { PopupService } from './Service/popup.service';
@@ -25,8 +25,7 @@ export class AppComponent implements OnInit , AfterViewInit {
   navControl:NavBarPageHIdeService=inject(NavBarPageHIdeService);
   userService:UserManagmentService=inject(UserManagmentService);
   
-  constructor(private route: ActivatedRoute, private router: Router ,private popupService:PopupService) {}
-  
+  constructor(private route: ActivatedRoute, private router: Router ,private popupService:PopupService, private viewportScroller: ViewportScroller) {}
   ngOnInit(): void {
     // Subscribe to router events
     this.router.events
@@ -45,6 +44,7 @@ export class AppComponent implements OnInit , AfterViewInit {
           this.showFooter=true;
         }
       });
+      this.viewportScroller.scrollToPosition([0, 0]); // Scroll to top
       this.userService.autoLogin();
   }
 

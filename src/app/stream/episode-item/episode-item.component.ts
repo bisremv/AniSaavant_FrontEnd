@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 })
 export class EpisodeItemComponent {
   @Input() animeId:number=0;
-  @Input() isNumberList: boolean = false;
+  @Input() isNumberList: boolean = true;
   @Input()episode: Episode=new Episode(0, "", 0, "", "", "", 0, 0, "", 0, 0, 0, "", false);
   router:Router=inject(Router);
   onImageError(event: Event) {

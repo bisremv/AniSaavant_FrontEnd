@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, ElementRef, HostListener, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { UserManagmentService } from '../../Service/user-managment.service';
@@ -12,12 +12,12 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './nav-bar.component.scss'
 })
 export class NavBarComponent {
-
   isMenuOpen:boolean=false;
   isSearchOpen:boolean=false;
   isLogedIn: boolean=false;
   userService: UserManagmentService=inject(UserManagmentService);
   activeRoute:ActivatedRoute=inject(ActivatedRoute);
+  elementRef: ElementRef=inject(ElementRef);
   router:Router=inject(Router);
   searchQuery: string = '';
   routes:Router=inject(Router);
@@ -68,5 +68,12 @@ isActiveTab(tabRoute: string): boolean {
   return this.router.url.includes(tabRoute);
 }
 
+
+@HostListener('document:click', ['$event'])
+  handleOutsideClick(event: Event) {
+    if (this.isMenuOpen && !this.elementRef.nativeElement.contains(event.target)) {
+      this.isMenuOpen = false;
+    }
+  }
 
 }

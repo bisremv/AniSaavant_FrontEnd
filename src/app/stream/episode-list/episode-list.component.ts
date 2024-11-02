@@ -17,7 +17,7 @@ import { Router } from '@angular/router';
 export class EpisodeListComponent  {
   router:Router=inject(Router);
   isEpisodeDescending:boolean = false;
-  isNumberList:boolean = false;
+  isNumberList:boolean = true;
   @Input() seasonNumber:number=0;
   @Input() animeId:number=0;
   

@@ -14,20 +14,19 @@
         <img [src]="animeInfo.backdropPath" alt="anime" class=" object-cover h-full w-full  ">
     </div>
     
-    
-    <img [src]="animeInfo.posterPath" alt="anime" class="  w-[50%] md:h-[60%] lg:h-[78%] md:w-[20%] m-5 my-2 rounded-md  z-0">
+    <img [src]="animeInfo.posterPath" alt="anime" class="  w-[60%] md:h-[60%] lg:h-[78%] md:w-[20%] m-5 md:my-2 rounded-md  z-0">
     <div class="anime-info ">
         <div class="">
-            <div class="title m-2 md:m-0 text-4xl md:text-6xl capitalize font-black text-text-grey-50 font-header">
+            <div class="title text-center m-2 md:m-0 text-4xl md:text-6xl capitalize font-black text-text-grey-50 font-header">
                 <h1>{{animeInfo.title}}</h1>
             </div>
         </div>
-        <div class="detail-item">
+        <div class="detail-item hidden md:inline-block">
             <div class="orginal-name">
                 <h4>original Name:{{animeInfo.originalName}}</h4>
             </div>
         </div>
-        <div class="detail-item">
+        <div class="detail-item hidden md:inline-block">
             <div class="rating detail-item" >
                 <span class="Rating detail-icon"> 
                     <div class=" text-sm hidden md:flex">
@@ -47,11 +46,11 @@
                 <span class="Votes "> {{animeInfo.voteCount}} Votes</span>
             </div>
         </div>
-        <div *ngIf="animeInfo.tagline"  class="detail-item capitalize text-2xl"  >
+        <div *ngIf="animeInfo.tagline"  class="detail-item  hidden md:inline-blockcapitalize text-2xl"  >
         
         {{animeInfo.tagline}}
         </div>
-        <div class="detail-item ">
+        <div class="detail-item  hidden md:inline-block">
             <h1 class="font-header text-2xl flex flex-col items-center justify-center md:inline-block">OverView</h1>
             <p >{{getOverview()}}</p>
         </div>

@@ -40,6 +40,7 @@ export class SearchMangaComponent implements OnInit {
       next: (res) => {
         let data = res as MangaItem[];
         this.results.push({ext: ext, result: data});
+        
       },
       error: (error) => {
         

@@ -35,13 +35,8 @@ export class MangaGridItemComponent {
   router:Router=inject(Router)
   popupService:PopupService=inject(PopupService)
   mangaTitle():string{
-    if(this.manga.title.length>25){
-      const truncatedTitle = this.manga.title.substring(0, 25);
-      return truncatedTitle.substring(0, truncatedTitle.lastIndexOf(' ')) + " ...";
-  }
-    else{ 
+
       return this.manga.title;
-    }
   }
 
   navigateToManga() {

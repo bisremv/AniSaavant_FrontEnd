@@ -21,9 +21,10 @@
     <app-manga-group 
     [mangaList]="searchResult.result" 
     [ListName]="searchResult.ext.exName" 
+    [extObj]="searchResult.ext"
     *ngFor="let searchResult of results" > 
     </app-manga-group>
     <div *ngFor="let e of extensionActiveButNOValueGot" >
-        <app-manga-group [ListName]="e.exName" [mangaList]="[]"></app-manga-group>
+        <app-manga-group [ListName]="e.exName" [mangaList]="[]" ></app-manga-group>
     </div>
 </div>

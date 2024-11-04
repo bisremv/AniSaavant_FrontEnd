@@ -23,6 +23,7 @@ export class MangaDiscoverComponent implements OnInit {
   Extension:ExtensionService=inject(ExtensionService)
   Discover:DiscoverService=inject(DiscoverService);
   extInfo:Extension[]=[];
+  extLoading:Boolean=false;
   mangaHeros:MangaItem[] = []
   ngOnInit() {
     this.getMangaHeros();
@@ -78,14 +79,19 @@ export class MangaDiscoverComponent implements OnInit {
       })
   }
   getExternalMangaSites() {
+    
+    this.extLoading=true;
     this.Extension.getExtension().subscribe({
       next:(extList)=>{
+
         this.extInfo=(extList as Extension[]);
       },
       error:(error)=>{
+        this.extLoading=false;
       },
       complete:()=>{
 
+        this.extLoading=false;
       }
     })
   }

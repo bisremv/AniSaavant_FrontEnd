@@ -1,5 +1,5 @@
 .controll-items{
-    // @apply ;
+    @apply text-xs sm:text-sm md:text-base lg:text-lg xl:text-xl;
 }
 .dropdown{
     @apply w-full

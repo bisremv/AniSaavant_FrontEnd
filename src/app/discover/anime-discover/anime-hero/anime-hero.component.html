@@ -14,7 +14,8 @@
     </div>
     <div class="anime-info  ">
         <div class="anime-title text-xl sm:text-2xl md:text-4xl lg:text-6xl  font-black text-text-grey-50 font-header">
-            <h1>{{getAnimeTitle()}}</h1>
+            <h1 class="hidden md:inline-block">{{getAnimeTitle()}}</h1>
+            <h1 class="md:hidden inline-block">{{anime.title}}</h1>
         </div>
         <div class="flex gap-4 justify-start items-center detail">
                 <div class="Type detail-item" >

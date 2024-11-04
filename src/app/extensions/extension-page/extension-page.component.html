@@ -1,5 +1,5 @@
-<div class="mt-16 mx-4">
-    <div class="header rounded-lg bg-background-100 p-4 flex gap-2 flex-col">
+<div class="mt-16 md:mx-4">
+    <div class="header rounded-lg bg-background-100 py-3 md:p-4 flex gap-2 flex-col">
         <h1 class="text-xl font-bold mx-2">{{ext.exName}}</h1>
         <div class="grid gap-2">
         <div class="flex flex-col md:w-2/6">
@@ -47,13 +47,19 @@
             </a>
             </div>
         </div>
-        <div class="join self-end mx-4 ml-auto right-0">
+        <div *ngIf="(activeTab != Tab.Search)" class="join self-end mx-4 ml-auto right-0">
             <button (click)="changePage(false)"  class="join-item  btn btn-primary  pagination-btn">«</button>
-            <button class="join-item btn btn-primary  pagination-btn">Page {{"1"}}</button>
+            <!-- <button class="join-item btn btn-primary  pagination-btn">Page {{"1"}}</button> -->
             <button (click)="changePage(true)" class="join-item btn btn-primary  pagination-btn">»</button>
         </div>
         </div>
-
     </div>
 </div>
 <app-latest [mangaList]="mangaList" [isLoading]="isLoading" ></app-latest>
+<div *ngIf="(activeTab != Tab.Search)" class="w-full flex py-3">
+    <div class="join self-end mx-4 ml-auto right-0">
+        <button (click)="changePage(false)"  class="join-item  btn btn-primary  pagination-btn">«</button>
+        <!-- <button class="join-item btn btn-primary  pagination-btn">Page {{pageNumber.value}}</button> -->
+        <button (click)="changePage(true)" class="join-item btn btn-primary  pagination-btn">»</button>
+    </div>
+    </div>

@@ -4,5 +4,5 @@
   scrollbar-width: none;  /* Firefox */
 }
 .Arrow-Direction{
-    @apply absolute  my-auto transition duration-200 ease-in-out;
+    @apply absolute z-50  my-auto transition duration-200 ease-in-out;
 }

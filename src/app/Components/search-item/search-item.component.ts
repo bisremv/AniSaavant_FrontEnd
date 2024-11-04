@@ -21,7 +21,6 @@ export class SearchItemComponent {
   @Input() anime!: animeItem;
   @Input() inLibrary:boolean=false;
   @Output() deleted: EventEmitter<number> = new EventEmitter<number>();
-  smallScreenTitle:string=''
   library:LibraryService=inject(LibraryService)
   popupService:PopupService=inject(PopupService)
   userService:UserManagmentService=inject(UserManagmentService)
@@ -50,18 +49,7 @@ export class SearchItemComponent {
 calculateAnimeInfo(){
   this.anime.season=this.animeInfo.numberOfSeasons;
   this.anime.img=this.animeInfo.posterPath;
-  if(this.animeInfo.title.length>19){
-    const truncatedTitle = this.animeInfo.title.substring(0, 23);
-    this.anime.title =truncatedTitle.substring(0, truncatedTitle.lastIndexOf(' ')) + " ...";
-  }else{
-    this.anime.title=this.animeInfo.title;
-  }
-  if(this.animeInfo.title.length>13){
-    const truncatedTitle = this.animeInfo.title.substring(0, 23);
-    this.smallScreenTitle =truncatedTitle.substring(0, truncatedTitle.lastIndexOf(' ')) + " ...";
-  }else{
-    this.smallScreenTitle=this.animeInfo.title;
-  }
+  
   
   this.anime.episode=this.animeInfo.numberOfEpisodes;
   this.anime.status=this.animeInfo.status;

@@ -24,6 +24,7 @@ import { AccountManageComponent } from './settings/account-manage/account-manage
 import { StatsticsComponent } from './settings/statstics/statstics.component';
 import { ExploreAnimeComponent } from './explore-anime/explore-anime.component';
 import { StreamComponent } from './stream/stream.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 export const routes: Routes = [
     {
@@ -98,6 +99,9 @@ export const routes: Routes = [
             {    path: 'account',component: AccountManageComponent},
             {    path: 'stats',component: StatsticsComponent},
                     ],
+    },
+    {
+        path:'**', component:NotFoundComponent
     },
 
 ];

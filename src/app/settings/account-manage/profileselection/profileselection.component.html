@@ -1,57 +1,88 @@
-<div class="relative container mx-auto p-0.5 bg-gradient-to-b from-indigo-600 to-purple-500 rounded-lg shadow-xl">
-    <div class="w-full h-full py-11 px-7 rounded-lg bg-background-200">
-        
-<!-- Title -->
-<h2 class="text-4xl font-extrabold mb-10 text-center text-gray-50">
-    Choose Your Profile Picture
-</h2>
+<div class="relative container mx-auto p-1  m-5 bg-gradient-to-b from-indigo-600 to-purple-500 rounded-lg shadow-xl">
+    <div class="w-full h-full py-8 px-4 sm:py-10 sm:px-7 lg:py-12 lg:px-10 rounded-lg bg-background-200">
 
-<!-- Avatar Grid -->
-<div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-8 justify-center">
-    <div
-    *ngFor="let avatar of avatars"
-    (click)="selectAvatar(avatar)"
-    class="relative cursor-pointer group transform hover:scale-105 transition-transform duration-300"
-    >
-    <div
-        class="w-32 h-32 relative rounded-full border-4 transition-all duration-300 ease-in-out overflow-hidden shadow-lg"
-        [ngClass]="{
-        'border-primary scale-110 ring-2 ring-link shadow-xl': selectedAvatar === avatar,
-        'border-gray-200 shadow-md hover:shadow-lg': selectedAvatar !== avatar
-        }"
-    >
-        <img
-        [src]="getAvatarUrl(avatar)"
-        [alt]="'Avatar ' + avatar"
-        class="w-full h-full object-cover rounded-full"
-        />
+        <!-- Title -->
+        <h2 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold mb-6 lg:mb-10 text-center text-gray-50">
+            Choose Your Profile Picture
+        </h2>
 
-        <!-- Checkmark Overlay for Selected Avatar -->
-        <div
-        *ngIf="selectedAvatar === avatar"
-        class="absolute inset-0 bg-link bg-opacity-20 flex items-center justify-center transition-opacity duration-300 ease-in-out"
-        >
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-        </svg>
+        <!-- Avatar Scroll Group -->
+        <div class="flex items-center space-x-2  justify-center">
+            <!-- Left Scroll Button -->
+            <button
+                (click)="scrollLeft()"
+                class="btn btn-primary rounded-full p-2 disabled:opacity-50"
+                [disabled]="currentGroupIndex === 0"
+            >
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 rotate-180 text-text-grey-50">
+                <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+              </svg>
+              
+            </button>
+
+            <!-- Avatar Grid (Scrollable in Groups of 8) -->
+            <div
+                class="overflow-x-auto w-full snap-x snap-mandatory carousel-inner overflow-visible flex space-x-4 px-4">
+                <div
+                    class="grid grid-cols-2 overflow-visible sm:grid-cols-4 md:grid-cols-4 lg:grid-cols-8 gap-4 justify-center snap-start"
+                    *ngFor="let group of avatarGroups; let i = index"
+                    [class.hidden]="i !== currentGroupIndex">
+                    <div
+                        *ngFor="let avatar of group"
+                        (click)="selectAvatar(avatar)"
+                        class="relative cursor-pointer group transform hover:scale-105 transition-transform duration-300"
+                    >
+                        <div
+                            class="w-24 h-24 sm:w-28 sm:h-28  relative rounded-full border transition-all duration-300 ease-in-out overflow-hidden shadow-lg"
+                            [ngClass]="{
+                                'border-primary scale-110 ring-2 ring-link shadow-xl': selectedAvatar === avatar,
+                                'border-gray-200 shadow-md hover:shadow-lg': selectedAvatar !== avatar
+                            }"
+                        >
+                            <img
+                                [src]="getAvatarUrl(avatar)"
+                                [alt]="'Avatar ' + avatar"
+                                class="w-full h-full object-cover rounded-full"
+                            />
+
+                            <!-- Checkmark Overlay for Selected Avatar -->
+                            <div
+                                *ngIf="selectedAvatar === avatar"
+                                class="absolute inset-0 bg-link bg-opacity-20 flex items-center justify-center transition-opacity duration-300 ease-in-out"
+                            >
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 sm:h-8 sm:w-8 lg:h-10 lg:w-10 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Scroll Button -->
+            <button
+                (click)="scrollRight()"
+                class="btn btn-primary rounded-full p-2 disabled:opacity-50"
+                [disabled]="currentGroupIndex === avatarGroups.length - 1"
+            >
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 text-text-grey-50">
+                <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+              </svg>
+              
+            </button>
+        </div>
+
+        <!-- Selected Avatar Info -->
+        <div class="text-center mt-8 sm:mt-10 lg:mt-12">
+            <p *ngIf="selectedAvatar" class="text-lg sm:text-xl lg:text-2xl text-gray-50 font-bold">
+                You selected avatar <span class="text-link">#{{ selectedAvatar }}</span>
+            </p>
+            <button (click)="changeProfile()" class="btn bg-gradient-to-r text-text-grey-50 from-indigo-600 to-purple-500 mt-4">
+                Change Profile Picture
+            </button>
+            <p *ngIf="!selectedAvatar" class="text-sm sm:text-lg lg:text-xl text-gray-300 mt-4">
+                Please select an avatar.
+            </p>
         </div>
     </div>
-    </div>
-</div>
-
-<!-- Selected Avatar Info -->
-<div class="text-center mt-12">
-    <p *ngIf="selectedAvatar" class="text-2xl text-gray-50 font-bold">
-    You selected avatar <span class="text-link">#{{ selectedAvatar }}</span>
-    </p>
-    <button (click)="changeProfile()" class="btn bg-gradient-to-r text-text-grey-50 from-indigo-600 to-purple-500">
-        change Profile Picture
-    </button>
-    <p *ngIf="!selectedAvatar" class="text-xl text-gray-300">
-    Please select an avatar.
-    </p>
-</div>
-</div>
-
-
 </div>

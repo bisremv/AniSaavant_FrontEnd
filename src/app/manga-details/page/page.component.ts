@@ -22,7 +22,7 @@ pages:Page[]=[]
 chapterLink:string=''
 itemLink:string=''
 extId:number=0;
-isSideMenuOpen: boolean = true; // Controls sidenav visibility
+isSideMenuOpen: boolean = false; // Controls sidenav visibility
 isNavOpen: boolean = true; // Controls navbar visibility
 pageView="single";
 imageFit="no"
@@ -30,7 +30,7 @@ pageNumber=0;
 page2Number=1;
 progress=true;
 loading = true; // State to track image loading
-isRightToLeft: boolean=true;
+isRightToLeft: boolean=false;
     NavToggle(isNavOpen: boolean) {
         this.isNavOpen = isNavOpen;
 
@@ -111,6 +111,7 @@ isRightToLeft: boolean=true;
 
     changeByProgress(index: number) {
     if(index<this.pages.length){
+        this.loading = true;
         this.pageNumber=index;
         this.page2Number=index+2;
     }

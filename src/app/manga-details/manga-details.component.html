@@ -23,12 +23,16 @@
     <div class="info-container  flex flex-col gap-4  mt-32 md:mt-0 row-start-3 md:row-start-2 col-span-full md:col-span-9  p-4 md:p-8">
         <div class="title  font-body font-bold text-text-grey-50 "> 
             <h1 class="text-4xl capitalize w-full  md:text-6xl">{{mangaInfo.title}}</h1>
-            <div class="gener flex  gap-4 py-4 ">
-                <span  *ngFor="let genre of mangaInfo.mangaGener" class="genre p-1 text-sm md:text-xl font-bold font-header capitalize bg-yellow-800 rounded">{{genre}}</span>
-                    
+            <div class="gener flex flex-wrap gap-4 py-4 ">
+                <span  *ngFor="let genre of mangaInfo.mangaGener" class="genre p-1 text-sm md:text-xl font-bold font-header capitalize bg-red-800 text-nowrap rounded">{{genre}}</span>
             </div>
         </div>
-    
+        <button (click)="addMangaToLibrary()" class="btn call-to-action"> 
+            <svg class="w-4 md:w-6" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M4 12H20M12 4V20" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        Add To Library
+        </button>
         <div class="description text-sm  text-text-grey-100"  >
         {{mangaInfo.description}}    
         </div>

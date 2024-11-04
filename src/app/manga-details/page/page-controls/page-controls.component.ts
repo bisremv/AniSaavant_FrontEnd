@@ -45,7 +45,7 @@ export class PageControlsComponent {
   currentProgress=true;
   currentPageView="single";
   currentImageFit="no"
-  isRightToLeft:boolean=true;
+  isRightToLeft:boolean=false;
   imageFitView='no Limit'
   openSideMenu() {
     this.isSideMenuOpen = true;
@@ -202,7 +202,7 @@ export class PageControlsComponent {
     @HostListener('document:click', ['$event'])
   handleOutsideClick(event: Event) {
     if (this.isSideMenuOpen && !this.elementRef.nativeElement.contains(event.target)) {
-      this.isSideMenuOpen = false;
+      this.closeSideMenu()
     }
   }
 }

@@ -12,7 +12,7 @@
     </div>
     <div class="join self-end mx-4 ml-auto right-0">
         <button (click)="changePage(false)"  class="join-item  btn btn-primary  pagination-btn">«</button>
-        <button class="join-item btn btn-primary  pagination-btn">Page {{page}}</button>
+        <button class="join-item btn btn-primary hidden md:inline-block  pagination-btn">Page {{page}}</button>
         <button (click)="changePage(true)" class="join-item btn btn-primary  pagination-btn">»</button>
     </div>
 </div>
@@ -52,7 +52,7 @@
 
 <div class="join self-end mx-4 ">
     <button (click)="changePage(false)"  class="join-item  btn btn-primary  pagination-btn">«</button>
-    <button class="join-item btn btn-primary  pagination-btn">Page {{page}}</button>
+    <button class="join-item btn btn-primary hidden md:inline-block pagination-btn">Page {{page}}</button>
     <button (click)="changePage(true)" class="join-item btn btn-primary  pagination-btn">»</button>
 </div>
 </div>

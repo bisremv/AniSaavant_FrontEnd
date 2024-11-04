@@ -1,4 +1,4 @@
-<div class="filter  p-7 my-14 md:my-10">
+<div class="filter p-2 md:p-7 my-14 md:my-10">
     <div class="header text-4xl font-main font-bold mb-4"> Filter</div>
     <div class="controlls flex flex-col md:flex-row gap-2">
         <div class="search">
@@ -22,10 +22,13 @@
                 </svg>
             </label>
         </div>
-        <div class="filter-controls grid  grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 md:w-5/6">
+        <div class="filter-controls grid  grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-2 md:gap-4 md:w-5/6">
             <div class="year  controll-items w-full">
                 <div class="dropdown dropdown-bottom dropdown-hover">
-                    <div tabindex="0" role="button" class="btn bg-background-50 hover:bg-background-100 m-1 grid-dropdown grid-dropdown">  year  </div>
+                    <button tabindex="0" class="btn bg-background-50 hover:bg-background-100 m-1 grid-dropdown ">  year  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+                      </svg>
+                      </button>
                     <ul tabindex="0" class="dropdown-content w-full h-fit  overflow-scroll bg-background-50  z-[1] rounded p-4 shadow flex gap-1 flex-col md:flex-row justify-around">
                         <li>
                             <label> Min </label>
@@ -49,7 +52,9 @@
         </div>
             <div class="country controll-items">
                 <div class="dropdown dropdown-bottom dropdown-hover">
-                    <div tabindex="0" role="button" class="btn bg-background-50 hover:bg-background-100 m-1 grid-dropdown grid-dropdown">   country's  </div>
+                    <button tabindex="0"  class="btn bg-background-50 hover:bg-background-100 m-1 grid-dropdown grid-dropdown">   country's  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+                      </svg></button>
                     <ul tabindex="0" class="dropdown-content  overflow-scroll w-full flex flex-col gap-3 bg-background-50  z-[1] rounded p-4 shadow">
                         <label class="cursor-pointer label" *ngFor="let c of country">
                             <span class="label-text">{{ c }}</span>
@@ -65,7 +70,10 @@
             </div>
             <div class="runtime controll-items">  <div class="dropdown dropdown-bottom dropdown-hover">
                     <!-- <div tabindex="0" role="button" class="btn m-1">Click</div> -->
-                    <div tabindex="0" role="button" class="btn bg-background-50 hover:bg-background-100 m-1 grid-dropdown grid-dropdown">  Runtime  
+                    <div tabindex="0" role="button" class="btn bg-background-50 hover:bg-background-100 m-1 grid-dropdown grid-dropdown">  Runtime 
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+                          </svg> 
                     </div>
                     <ul tabindex="0" class="dropdown-content w-full h-fit  overflow-scroll bg-background-50  z-[1] rounded p-4 shadow flex flex-col md:flex-row gap-1 justify-around">
                         <li>
@@ -91,7 +99,10 @@
         </div>
             <div class="studio controll-items">  
                 <div class="dropdown dropdown-bottom dropdown-hover">
-                    <div tabindex="0" role="button" class="btn bg-background-50 hover:bg-background-100 m-1 grid-dropdown grid-dropdown">  Studio  </div>
+                    <div tabindex="0" role="button" class="btn bg-background-50 hover:bg-background-100 m-1 grid-dropdown grid-dropdown">  Studio 
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+                          </svg> </div>
                     <ul tabindex="0" class="dropdown-content gap-4 flex flex-col bg-background-50 w-full h-96 overflow-y-scroll rounded z-[1]  p-2 shadow">
                         <li *ngFor="let studio of studios"> 
                             <label class="cursor-pointer label">
@@ -107,7 +118,11 @@
         </div>
             <div class="ageRating controll-items">  <div class="dropdown dropdown-bottom dropdown-hover">
                     <!-- <div tabindex="0" role="button" class="btn m-1">Click</div> -->
-                    <div tabindex="0" role="button" class="btn bg-background-50 hover:bg-background-100 m-1 grid-dropdown grid-dropdown">  age rating  </div>
+                    <div tabindex="0" role="button" class="btn bg-background-50 hover:bg-background-100 m-1 grid-dropdown grid-dropdown">  age rating 
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+                          </svg>
+                         </div>
                     <ul tabindex="0" class="dropdown-content h-fit w-full overflow-scroll flex flex-col gap-1 bg-background-50  z-[1] rounded p-4 shadow">
                         <li *ngFor="let rate of ageRating">
                             <label class="cursor-pointer label" >
@@ -123,7 +138,12 @@
         </div>
         <div class="tmdb-rating controll-items">  <div class="dropdown dropdown-bottom dropdown-hover">
             <!-- <div tabindex="0" role="button" class="btn m-1">Click</div> -->
-            <div tabindex="0" role="button" class="btn bg-background-50 hover:bg-background-100 m-1 grid-dropdown"> IMDB Score  </div>
+            <div tabindex="0" role="button" class="btn bg-background-50 hover:bg-background-100 m-1 grid-dropdown"> IMDB Score  
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+                  </svg>
+
+            </div>
         <ul tabindex="0" class="dropdown-content max-h-60 w-full overflow-scroll flex flex-col gap-1 bg-background-50  z-[1] rounded p-4 shadow">
                 <li>
                     <label class="flex justify-between"> Max value <span>{{imdbRatingMax}}</span> </label>
@@ -144,7 +164,11 @@
             </div>
         </div>
         <div class="Tmdb-rating controll-items">  <div class="dropdown dropdown-bottom dropdown-hover">
-                <div tabindex="0" role="button" class="btn bg-background-50 hover:bg-background-100 m-1 grid-dropdown">  TMDB Score  </div>
+                <div tabindex="0" role="button" class="btn bg-background-50 hover:bg-background-100 m-1 grid-dropdown">  TMDB Score 
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+                      </svg>    
+                </div>
                 <ul tabindex="0" class="dropdown-content max-h-60 w-full overflow-scroll flex flex-col gap-1 bg-background-50  z-[1] rounded p-4 shadow">
                     <li>
                         <label class="flex justify-between"> Max value <span>{{tmdbRatingMax}}</span> </label>
@@ -168,7 +192,15 @@
         <div class="Rotten-tomatoes controll-items">  
                 <div class="dropdown dropdown-bottom dropdown-hover">
                     
-                    <div tabindex="0" role="button" class="btn bg-background-50 hover:bg-background-100 m-1 grid-dropdown">  Rotten Tomatoes score  </div>
+                    <div tabindex="0" role="button" class="btn bg-background-50 hover:bg-background-100 m-1 grid-dropdown"> 
+                        <span>
+                            RT score
+
+                        </span> 
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+                          </svg>    
+                    </div>
                     
                     <ul tabindex="0" class="dropdown-content max-h-60 w-full overflow-scroll flex flex-col gap-1 bg-background-50  z-[1] rounded p-4 shadow">
                         <li>
@@ -194,7 +226,12 @@
         <div class="status controll-items">  
             <div class="dropdown dropdown-bottom dropdown-hover">
                 
-                <div tabindex="0" role="button" class="btn bg-background-50 hover:bg-background-100 m-1 grid-dropdown">  status </div>
+                <div tabindex="0" role="button" class="btn bg-background-50 hover:bg-background-100 m-1 grid-dropdown">  status 
+
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
+                      </svg>
+                </div>
                 <ul tabindex="0" class="dropdown-content max-h-60 w-full overflow-scroll flex flex-col gap-1 bg-background-50  z-[1] rounded p-4 shadow">
                     <li *ngFor="let stat of status"> 
                         <label class="cursor-pointer label">

@@ -66,18 +66,22 @@ export class DiscoverService {
       return response;
     }));
   }
-  getLatestManga(extId:number){
-    return this.http.get(this.url+'/api/discover/Latest/manga?extId='+extId)
+  getLatestManga(extId:number,page:number){
+    let params = new HttpParams().set('extId', extId).set('page', page);
+    return this.http.get(this.url+'/api/discover/Latest/manga', { params })
     .pipe(tap((response: any) => {
       response.forEach((item:MangaItem) => {
-        item.extId = extId;
+      item.extId = extId;
       })
-      return response;}));
+      return response;
+    }));
     }
 
 
-  getPopularManga(extId:number){
-    return this.http.get(this.url+'/api/discover/popular/manga?extId='+extId)
+  getPopularManga(extId:number,page:number){
+    
+    let params = new HttpParams().set('extId', extId).set('page', page);
+    return this.http.get(this.url+'/api/discover/popular/manga',{params})
     .pipe(tap((response: any) => {
       response.forEach((item:MangaItem) => {
         item.extId = extId;

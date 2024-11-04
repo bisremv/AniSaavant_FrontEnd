@@ -43,7 +43,7 @@ getCurrentListIsEmpty(){
   return false;
 }
 
-  ngOnInit() {
+ngOnInit() {
   this.activeRoute.queryParams.subscribe(params => {
     this.activeTab=params['explore'];
     this.getAnimeList(this.activeTab,1)
@@ -51,7 +51,6 @@ getCurrentListIsEmpty(){
   }
 
 getAnimeList(activate:Tab,pageNum:number){
-      console.log(activate);
     if(activate == Tab.AiringToday){
       this.getAiringTOday(pageNum);}
     else if(activate == Tab.Popular){

@@ -1,5 +1,5 @@
 
-<div class="anime-item drop-shadow-lg  overflow-hidden   flex flex-col rounded-lg  h-64  sm:h-64   md:h-[21rem]     font-main  active:scale-100  transition duration-500 ease-in-out ">
+<div class="anime-item drop-shadow-lg  overflow-hidden   flex flex-col rounded-lg   font-main  active:scale-100  transition duration-500 ease-in-out ">
     <div *ngIf="!inLibrary"  class="absolute z-20 group overflow-hidden   ">
         <svg class="size-10 active:scale-95" (click)="addAnimeToLibrary()"   viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path opacity="0.5" d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" class="fill-text-grey-100"/>
@@ -29,7 +29,7 @@
         </ul>
     </div>
 
-    <div (click)="navigateToAnime()"  class="img-container  rounded-lg overflow-hidden h-5/6 relative ">
+    <div (click)="navigateToAnime()"  class="img-container  rounded-lg overflow-hidden h-48  sm:h-64 relative ">
         <img class="w-full h-full " [src]="anime.img" alt="anime"  (error)="onImageError($event)">
         <div class="absolute inset-0 w-full h-full flex justify-center items-center group ">
             <!-- Background overlay with opacity 50% on hover -->
@@ -51,11 +51,10 @@
     </div>
     <div class="anime-info">
         <div class="row-1 flex justify-between  align-bottom ">
-            <div (click)="navigateToAnime()" class="title cursor-pointer  text-xs lg:text-sm  font-bold  text-text-grey-50 ">    
-                <span class="hidden md:inline-block">{{anime.title}}</span>
-                <span class="inline-block md:hidden">{{smallScreenTitle}}</span>
+            <div (click)="navigateToAnime()" class="title cursor-pointer  text-[0.6rem] md:text-xs lg:text-sm  md:font-bold  text-text-grey-50 ">    
+                <span >{{anime.title}}</span>
             </div>
-            <div class="episode  self-end item-subtitles">{{anime.episode}} Eps</div>
+            <div class="episode  self-start item-subtitles">{{anime.episode}} Eps</div>
         </div>
         <div class="row-2 flex justify-between ">
             <div class="season item-subtitles">{{anime.season}} seasons</div>

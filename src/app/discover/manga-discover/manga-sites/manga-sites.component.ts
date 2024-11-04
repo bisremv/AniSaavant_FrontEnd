@@ -25,7 +25,7 @@ ngOnInit(){
 
   getLatest(){
     console.log(this.ext.exId);
-    this.discover.getLatestManga(this.ext.exId).subscribe({
+    this.discover.getLatestManga(this.ext.exId,1).subscribe({
       next:(latest)=>{
         this.LatestList=(latest as MangaItem[]);
       }
@@ -33,7 +33,7 @@ ngOnInit(){
   }
   getPopular(){
     console.log(this.ext.exId);
-    this.discover.getPopularManga(this.ext.exId).subscribe({
+    this.discover.getPopularManga(this.ext.exId,1).subscribe({
       next:(popular)=>{
         this.PopularList=(popular as MangaItem[]);
       }

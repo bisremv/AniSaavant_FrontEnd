@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject, Input, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, inject, Input, OnInit } from '@angular/core';
 import { LatestComponent } from "./latest/latest.component";
 import { Extension } from '../../Models/Extenison';
 import { ActivatedRoute } from '@angular/router';
@@ -8,6 +8,7 @@ import { MangaItem } from '../../Models/MangaItem';
 import { DiscoverService } from '../../Service/discover.service';
 import { SearchService } from '../../Service/search.service';
 import { FormsModule } from '@angular/forms';
+import { BehaviorSubject } from 'rxjs/internal/BehaviorSubject';
 
 @Component({
   selector: 'app-extension-page',
@@ -17,11 +18,12 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './extension-page.component.scss'
 })
 export class ExtensionPageComponent implements OnInit {
-changePage(arg0: boolean) {
-throw new Error('Method not implemented.');
-}
+
+
   ext:Extension=new Extension(0,"","","")
   extId:number=0;
+  pageNumber = new BehaviorSubject<number>(1);  // Initialize with default page number
+  // pageNumber:number=1;
   activeTab: Tab = Tab.Search; // Set default tab to Search
   mangaList:MangaItem[]=[]
   searchQuery:string=""
@@ -34,15 +36,30 @@ throw new Error('Method not implemented.');
   setActiveTab(tab: Tab) {
     this.activeTab = tab;
     this.mangaList=[]
+    this.pageNumber.next(1)
     if(tab == Tab.Latest){
-      this.getLatest()
+      this.getLatest(1)
     }
     else if(tab == Tab.Popular){
-      this.getPopular()
+      this.getPopular(1)
     }
     else if(tab == Tab.Search){
     this.getSearch()
     }
+  }
+  changePage(next:boolean){
+    if(!next && this.pageNumber.value>1){
+      this.getMangaList(this.activeTab,this.pageNumber.value-1);
+    }
+    else if(next){
+      this.getMangaList(this.activeTab,this.pageNumber.value+1);
+    }
+  }
+getMangaList(activeTab: Tab, pageNum: number) {
+    if(activeTab == Tab.Latest){
+      this.getLatest(pageNum);}
+    else if(activeTab == Tab.Popular){
+      this.getPopular(pageNum);}
   }
 
 
@@ -55,11 +72,11 @@ ngOnInit(): void {
         this.ext=res as Extension;
         if(this.getTab.includes(Tab.Latest)){
           this.activeTab=Tab.Latest
-          this.getLatest()
+          this.getLatest(1)
         }
         else if(this.getTab.includes(Tab.Popular)){
           this.activeTab=Tab.Popular
-          this.getPopular()
+          this.getPopular(1)
         }
       }
     })
@@ -67,9 +84,9 @@ ngOnInit(): void {
 
 }
 
-getLatest(){
+getLatest(page:number){
   this.isLoading=true
-  this.discover.getLatestManga(this.ext.exId).subscribe({
+  this.discover.getLatestManga(this.ext.exId,page).subscribe({
     next:(latest)=>{
       this.mangaList=(latest as MangaItem[]);
     },
@@ -78,25 +95,25 @@ getLatest(){
     },
     complete:()=>{
       this.isLoading=false
-      console.log(this.mangaList)
+      this.pageNumber.next(page);
 
     }
   })
 }
-getPopular(){
+getPopular(page:number){
   this.isLoading=true
-  this.discover.getPopularManga(this.ext.exId).subscribe({
+  this.discover.getPopularManga(this.ext.exId,page).subscribe({
     next:(popular)=>{
       this.mangaList=(popular as MangaItem[]);
-      console.log(this.mangaList)
-
     }
     ,
     error:(error)=>{
       this.isLoading=false
     },
     complete:()=>{
+      this.pageNumber.next(page);
       this.isLoading=false
+
     }
   })
 }
@@ -111,7 +128,6 @@ getSearch(){
       this.isLoading=false
     },
     complete:()=>{
-      this.isLoading=false
     }  
   });
 }

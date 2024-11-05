@@ -1,4 +1,4 @@
-import { Component, ElementRef, inject, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, inject, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MangaItemComponent } from "../../Components/manga-item/manga-item.component";
 import { MangaGroupComponent } from "../../Components/manga-group/manga-group.component";
@@ -20,12 +20,14 @@ import { RouterModule } from '@angular/router';
   templateUrl: './manga-discover.component.html',
   styleUrl: './manga-discover.component.scss'
 })
-export class MangaDiscoverComponent implements OnInit {
+export class MangaDiscoverComponent implements OnInit , OnDestroy{
   @ViewChild('carousel') carousel!: ElementRef;
   Extension:ExtensionService=inject(ExtensionService)
   Discover:DiscoverService=inject(DiscoverService);
   extInfo:Extension[]=[];
   extLoading:Boolean=false;
+  private intervalId: any;
+
   mangaHeros:MangaItem[] = []
   activeIndex = 0;  // Initialize active slide index
   // Other lists and initialization code...
@@ -39,6 +41,9 @@ export class MangaDiscoverComponent implements OnInit {
   ngOnInit() {
     this.getMangaHeros();
     this.getExternalMangaSites();
+    this.intervalId = setInterval(() => {
+      this.scrollNext();
+    }, 10000);
   }
   
   // Scroll to the next item in the carousel
@@ -105,5 +110,10 @@ export class MangaDiscoverComponent implements OnInit {
         this.extLoading=false;
       }
     })
+  }
+  ngOnDestroy(): void {
+    if (this.intervalId) {
+      clearInterval(this.intervalId);
+    }
   }
 }

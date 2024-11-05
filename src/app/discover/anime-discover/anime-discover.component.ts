@@ -1,4 +1,4 @@
-import { Component, ElementRef, inject, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, inject, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { AnimeHeroComponent } from "./anime-hero/anime-hero.component";
 import { CommonModule } from '@angular/common';
 import { AnimeGroupingComponent } from "../../Components/anime-grouping/anime-grouping.component";
@@ -15,7 +15,8 @@ import { iif } from 'rxjs';
   templateUrl: './anime-discover.component.html',
   styleUrl: './anime-discover.component.scss'
 })
-export class AnimeDiscoverComponent implements OnInit {
+export class AnimeDiscoverComponent implements OnInit,OnDestroy {
+  private intervalId: any;
   @ViewChild('carousel') carousel!: ElementRef;
   discover:DiscoverService = inject(DiscoverService);
   animeHeros: AnimeHero[] = []
@@ -23,15 +24,18 @@ export class AnimeDiscoverComponent implements OnInit {
   TrendingList=[]
   AnticipatedList=[]
   MostWatchedList=[]
-  activeIndex = 0;  // Initialize active slide index
-  // Other lists and initialization code...
-  jumpToSlide(index: number) {
+  activeIndex = 0;
+
+  
+
+// Other lists and initialization code...
+jumpToSlide(index: number) {
     const carousel: HTMLElement = this.carousel.nativeElement;
     const scrollAmount = carousel.clientWidth * index;
     carousel.scrollTo({ left: scrollAmount, behavior: 'smooth' });
     this.activeIndex = index; // Update active index
   }
-  
+
 // Scroll to the next item in the carousel
 scrollNext() {
   const carousel: HTMLElement = this.carousel.nativeElement;
@@ -70,6 +74,9 @@ scrollPrev() {
       this.getAnticipated();
       this.getMostWatched();
       this.getPopularAnime();
+      this.intervalId = setInterval(() => {
+        this.scrollNext();
+      }, 10000);
     }
   getAnimeHero(){
     this.discover.getAnimeHero(1).subscribe({
@@ -149,5 +156,9 @@ scrollPrev() {
   });
 
   }
-
+  ngOnDestroy(): void {
+    if (this.intervalId) {
+      clearInterval(this.intervalId);
+    }
+  }
 }

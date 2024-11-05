@@ -34,12 +34,12 @@
       <a (click)="scrollPrev()" class="btn  arrow">❮</a>
     </div>
     <!-- Slide Indicators -->
-  <div class=" md:hidden indicators absolute bottom-0 opacity-35  md:bottom-4 mx-auto w-full md:w-2/6 flex justify-around mt-4">
+  <div class="md:hidden indicators absolute bottom-1 left-auto right-auto   md:bottom-8 mx-auto  w-3/4  flex justify-around mt-4">
     <button
-      *ngFor="let anime of mangaHeros| slice: 0:8; let i = index"
+      *ngFor="let anime of mangaHeros; let i = index"
       (click)="jumpToSlide(i)"
       [class.active]="i === activeIndex"
-      class="indicator-btn bg-link rounded-full w-4 h-4 md:w-6 md:h-6 mx-1"></button>
+      class="indicator-btn bg-link rounded-full w-2 h-2 shadow mx-1"></button>
   </div>
   </div>
 <div class="extention-container">

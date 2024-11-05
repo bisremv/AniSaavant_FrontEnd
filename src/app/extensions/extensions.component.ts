@@ -19,19 +19,37 @@ export class ExtensionsComponent implements OnInit {
   deActivatedExtension:Extension[]=[]
   extensionService:ExtensionService=inject(ExtensionService)
   userService:UserManagmentService=inject(UserManagmentService)
-  
+  isActiveLoading:boolean=false
+  isInactiveLoading:boolean=false
   ngOnInit(): void {
+    
+    if(this.userService.isLoggedIn()){
+      this.getAllExtensions();
+      this.getActiveExtensions();
+    } else {
+      this.getAllExtensions();
+    }
+  }
+  getAllExtensions(){
+    this.isInactiveLoading=true
     this.extensionService.getAllExtensionList().subscribe(
       {
         next:(res)=>{
           this.deActivatedExtension=res as Extension[];
         },
         error:(err)=>{
+          
+    this.isInactiveLoading=false
         },
         complete:()=>{
+          
+    this.isInactiveLoading=false
         }
       }
     )
+  }
+  getActiveExtensions(){
+    this.isActiveLoading=true
     this.extensionService.getActiveExtensionList().subscribe(
       {
         next:(res)=>{
@@ -41,8 +59,10 @@ export class ExtensionsComponent implements OnInit {
         );
         },
         error:(err)=>{
+          this.isActiveLoading=false
         },
         complete:()=>{
+          this.isActiveLoading=false
         }
       }
     )

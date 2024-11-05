@@ -16,15 +16,24 @@ export class ChapterListComponent implements OnInit {
   @Input() itemLink:string="";
   mangaService:MangaService=inject(MangaService);
   router:Router=inject(Router)
-
+  chapterIsLoading:boolean=true;
   chapters:Chapter[]=[];
   ngOnInit(): void {
     this.getChapters();
   }
   getChapters(){
+    this.chapterIsLoading = true;
     this.mangaService.getChapters(this.itemLink, this.extId).subscribe({
       next:(res)=>{
         this.chapters = res;
+      },
+      error:(error)=>{
+        
+    this.chapterIsLoading = false;
+      }
+      ,
+      complete:()=>{
+        this.chapterIsLoading = false;
       }
     });
   }

@@ -3,7 +3,6 @@
 <app-page-controls class="z-50 fixed top-0 left-0 w-full"  (navToggle)="NavToggle($event)" (sideToggle)="SideToggle($event)" (pageViewControl)="changePageView($event)" (imageFitControl)="changeImageFit($event)"  (directionControl)="toggleDirection($event)" (progressControl)="changeProgress($event)"     [itemLink]="itemLink" [extId]="extId" [chapterLink]="chapterLink" [pageNumberView]="pageNumber" (pageNumber)="changePageNumber($event)"
 [pages]="pages"
 ></app-page-controls>
-
 <!-- Main Content -->
 <div [ngClass]="{'md:mr-80': isSideMenuOpen, 'm-0': !isSideMenuOpen}" class="transition-all relative duration-500 ">
 <div class="flex relative   z-0    overflow-y-scroll" [ngClass]="{'h-[89vh] md:h-[89.6vh]':isNavOpen,
@@ -23,7 +22,9 @@
 <div class="abs-controls   ">
  <div *ngIf="loading" class="fixed  inset-0 flex justify-center items-center" [ngClass]="{'md:mr-80': isSideMenuOpen, 'mr-10 mx-10': !isSideMenuOpen}" >
     <div class="loader">
-        <span class="loading text-text-grey-50  loading-ring  w-20"></span>
+        <!-- <span class="loading text-text-grey-50  loading-ring  w-20"></span> -->
+        <!-- <span class="loader"></span> -->
+        <!--  -->
     </div>
 </div>
 <div class="right fixed left-0 inset-y-0  flex items-center justify-center    w-1/6 " (click)="changePage(true)" [ngClass]="{'fade-out bg-primary/50': !loading}" >
@@ -34,8 +35,7 @@
 <div class="left fixed right-0 inset-y-0 flex items-center justify-center  w-1/6 " (click)="changePage(false)" [ngClass]="{'md:right-[21rem] ': isSideMenuOpen, 'md:right-14': !isSideMenuOpen,'fade-out bg-primary/50': !loading}"   > 
     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="size-6 text-link md:size-14">
         <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
-    </svg>      
-
+    </svg>
 </div>
 </div>
 </div> 

@@ -55,7 +55,7 @@
         <img src="/images/logo.svg" class="absolute -top-4  text-sm" alt="">
     </div>
     
-    <ul class="tabs text-text-grey-100 hidden font-black md:flex  lg:gap-2 justify-between items-center text-lg lg:text-xl ">
+    <ul class="tabs text-text-grey-50 hidden font-black md:flex  lg:gap-2 justify-between items-center text-lg lg:text-xl ">
         <li [ngClass]="{'active-tab': isActiveTab('/library')}" class="Library menu-tabs">
             <div class="icon-container">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-8">
@@ -83,14 +83,11 @@
 
 
     <a [ngClass]="{'active-tab': isActiveTab('/discover')}" routerLink="/discover">
-        <li class="Discover  menu-tabs ">
-                
+        <li class="Discover  menu-tabs  ">
             <div class="icon-container">
-                
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-8">
                 <path stroke-linecap="round" stroke-linejoin="round" d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
-              </svg>
-              
+            </svg>
             </div>
                 <!-- this is the discover componet for ux reasons changed to Home -->
                     Home

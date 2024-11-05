@@ -195,7 +195,7 @@ export class PageControlsComponent {
       this.router.navigate(['/manga'], { queryParams: { extId: this.extId,itemLink:this.itemLink } });
     }
     ngOnInit(){
-      if(this.mangaType!="manga"){
+      if(this.mangaType!="manga" && this.mangaType!='N/A'){
         // we want long strip view we used double b/c changePa
           this.currentPageView="double";
           this.changePageView()

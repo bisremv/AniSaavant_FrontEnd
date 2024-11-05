@@ -1,18 +1,18 @@
 <div class="min-h-full ">
     <!-- Side Navigation -->
-<app-page-controls class="z-50 fixed top-0 left-0 w-full"  (navToggle)="NavToggle($event)" (sideToggle)="SideToggle($event)" (pageViewControl)="changePageView($event)" (imageFitControl)="changeImageFit($event)"  (directionControl)="toggleDirection($event)" (progressControl)="changeProgress($event)"     [itemLink]="itemLink" [extId]="extId" [chapterLink]="chapterLink" [pageNumberView]="pageNumber" (pageNumber)="changePageNumber($event)"
+<app-page-controls class="z-50 fixed top-0 left-0 w-full"  (navToggle)="NavToggle($event)" (sideToggle)="SideToggle($event)" (pageViewControl)="changePageView($event)" (imageFitControl)="changeImageFit($event)"  (directionControl)="toggleDirection($event)" (progressControl)="changeProgress($event)"     [itemLink]="itemLink" [extId]="extId" [mangaType]="mangaType" [chapterLink]="chapterLink" [pageNumberView]="pageNumber" (pageNumber)="changePageNumber($event)"
 [pages]="pages"
 ></app-page-controls>
 <!-- Main Content -->
 <div [ngClass]="{'md:mr-80': isSideMenuOpen, 'm-0': !isSideMenuOpen}" class="transition-all relative duration-500 ">
 <div class="flex relative   z-0    overflow-y-scroll" [ngClass]="{'h-[89vh] md:h-[89.6vh]':isNavOpen,
-    'h-[99.8vh]':!isNavOpen,'flex-col justify-start':pageView=='long Strip','items-start justify-center':pageView!='long Strip'}">
+    'h-[99.8vh]':!isNavOpen,'flex-col justify-start  ':pageView=='long Strip','items-start justify-center':pageView!='long Strip'}">
     <div *ngIf="pageView=='long Strip'">
-        <div [ngClass]="{'w-full':imageFit=='w','h-full':imageFit=='h','w-full h-full':imageFit=='both'}" *ngFor="let page of pages"  >
-            <img [src]="page.pageImg" alt=""  class="h-full w-full"   >
+        <div [ngClass]="{'w-full':imageFit=='w','h-full':imageFit=='h','w-full h-full':imageFit=='both',' w-4/6 lg:w-3/6':imageFit=='no'}" class="mx-auto" *ngFor="let page of pages"  >
+            <img [src]="page.pageImg" alt=""  class="h-full w-full"   (load)="onImageLoad()">
         </div>
     </div>    
-    <div [ngClass]="{'w-full  h-full':imageFit=='w','h-full':imageFit=='h','w-full h-full':imageFit=='both','hidden':loading}" *ngIf="pageView=='single'">        
+    <div [ngClass]="{'w-full  h-full':imageFit=='w','h-full':imageFit=='h','w-full h-full':imageFit=='both','hidden':loading}" class="" *ngIf="pageView=='single'">        
         <img  [src]="pages[pageNumber].pageImg" class="w-full h-full" alt=""  [ngClass]="{'h-full ':imageFit=='h'}"    (load)="onImageLoad()">
     </div>
     <div  class="" *ngIf="pageView=='double'" class="flex" [ngClass]="{'w-full ':imageFit=='w','h-full':imageFit=='h','w-full h-full':imageFit=='both'}">
@@ -27,20 +27,28 @@
         <!--  -->
     </div>
 </div>
-<div class="right fixed left-0 inset-y-0  flex items-center justify-center    w-1/6 " (click)="changePage(true)" [ngClass]="{'fade-out bg-primary/50': !loading}" >
+<div class="right fixed left-0 inset-y-0  flex items-center justify-center   w-2/5 md:w-2/6 " [ngClass]="{' pointer-events-none':mangaType =='long Strip'}"  
+(click)="pageView !== 'long Strip' && changePage(false)"
+[ngClass]="{'md:right-[21rem] ': isSideMenuOpen, 'md:right-14': !isSideMenuOpen,'fade-out bg-primary/50': !loading && pageView !== 'long Strip', 'hidden':pageView =='long Strip' }"  
+
+>
     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="size-6 text-link md:size-14 rotate-180">
         <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
     </svg>  
 </div>
-<div class="left fixed right-0 inset-y-0 flex items-center justify-center  w-1/6 " (click)="changePage(false)" [ngClass]="{'md:right-[21rem] ': isSideMenuOpen, 'md:right-14': !isSideMenuOpen,'fade-out bg-primary/50': !loading}"   > 
-    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="size-6 text-link md:size-14">
+<div  class="left fixed right-0 inset-y-0 flex items-center justify-center w-2/5 md:w-2/6 " 
+(click)="pageView !== 'long Strip' && changePage(false)"
+[ngClass]="{'md:right-[21rem] ': isSideMenuOpen, 'md:right-14': !isSideMenuOpen,'fade-out bg-primary/50': !loading && pageView !== 'long Strip', 'hidden':pageView =='long Strip' }"  
+> 
+    <svg xmlns="http://www.w3.org/2000/svg" fill="none"
+    
+    viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="size-6 text-link md:size-14">
         <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
     </svg>
 </div>
 </div>
 </div> 
 <div  *ngIf="pageView!='long Strip' && progress" class="flex gap-0.5 h-4 hover:h-6 absolute bottom-0 w-full border transform duration-300 border-primary/30 " >
-    
 <div class="h-full relative  flex-grow   group hover:bg-background-100 "  *ngFor="let p of pages; let i = index"  [ngClass]="{'bg-primary':i<=pageNumber,'bg-background-100/50':i>pageNumber, }" (click)="changeByProgress(i)" >
         <span class="hidden group-hover:inline-block group-hover:absolute text-center  p-1  bg-link rounded  -translate-y-10 text-sm">
             {{i}}

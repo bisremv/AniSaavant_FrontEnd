@@ -14,6 +14,8 @@ import { Router, RouterModule } from '@angular/router';
 export class ChapterListComponent implements OnInit {
   @Input() extId:number=0;
   @Input() itemLink:string="";
+  @Input() mangaType:string="";
+
   mangaService:MangaService=inject(MangaService);
   router:Router=inject(Router)
   chapterIsLoading:boolean=true;
@@ -48,7 +50,7 @@ export class ChapterListComponent implements OnInit {
   }
 
   navigateToPage(chapterLink:string) {
-    this.router.navigate(['/manga/page'],{ queryParams: { chapterLink: chapterLink,itemLink: this.itemLink,extId:this.extId } }
+    this.router.navigate(['/manga/page'],{ queryParams: { chapterLink: chapterLink,itemLink: this.itemLink,extId:this.extId ,mangaType: this.mangaType } }
     )
   }
 

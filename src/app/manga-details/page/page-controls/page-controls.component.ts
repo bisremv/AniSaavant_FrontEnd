@@ -27,6 +27,7 @@ export class PageControlsComponent {
   mangaService:MangaService=inject(MangaService)
   extensionService:ExtensionService=inject(ExtensionService)
   router:Router=inject(Router)
+  @Input() mangaType:string=''
   @Input() extId:number=0
   chapters:Chapter[]=[]
   extension:Extension=new Extension(0,"","","")
@@ -57,7 +58,6 @@ export class PageControlsComponent {
     this.sideToggle.emit(this.isSideMenuOpen);
   }
   navbarToggle() {
-    console.log(this.navControl.isOpen());
     if(this.navControl.isOpen()){
       this.navControl.closeNav();
       this.navToggle.emit(this.navControl.isOpen());
@@ -195,6 +195,11 @@ export class PageControlsComponent {
       this.router.navigate(['/manga'], { queryParams: { extId: this.extId,itemLink:this.itemLink } });
     }
     ngOnInit(){
+      if(this.mangaType!="manga"){
+        // we want long strip view we used double b/c changePa
+          this.currentPageView="double";
+          this.changePageView()
+      }
       this.getChapters()
       this.getExtension()
     }

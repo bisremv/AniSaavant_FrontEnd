@@ -80,14 +80,15 @@
     
     <div class="flex flex-col gap-2">
     <button class="btn mt-2 flex justify-between" (click)="navbarToggle()">
-        <span>Collapse Nav</span> 
-        <svg fill="#fff" class="size-8 rotate-180" viewBox="0 0 36 36" version="1.1"  preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+        <span *ngIf="navControl.isOpen()">Conceal Nav</span>
+        <span *ngIf="!navControl.isOpen()">Reveal Nav</span> 
+        <svg fill="#fff" class="size-8 transform duration-300 ease-in-out" viewBox="0 0 36 36" version="1.1" [ngClass]="{' rotate-180 ':navControl.isOpen(),' -translate-y-2':!navControl.isOpen()}" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
         <title>collapse-card-solid</title>
         <rect x="2" y="22" width="32" height="8" rx="1" ry="1" class="clr-i-solid clr-i-solid-path-1"></rect><path d="M18,20.7l-5.79-5.79a1,1,0,0,1,0-1.41,1,1,0,0,1,1.41,0L18,17.87l4.38-4.37a1,1,0,0,1,1.41,0,1,1,0,0,1,0,1.41Z" class="clr-i-solid clr-i-solid-path-2"></path>
         <rect x="0" y="0" width="36" height="36" fill-opacity="0"/>
     </svg>
     </button>
-    <button (click)="changePageView()" class="btn flex justify-between capitalize" >
+    <button (click)="changePageView()" [ngClass]="{'btn-disabled':mangaType!='manga'}" class="btn flex justify-between capitalize" >
         <span (click)="isChapterMenuOpen=false">{{currentPageView}} page</span> 
         <div class="icons">
         <svg    *ngIf="currentPageView=='long Strip'" class="size-7" viewBox="0 0 59 59" fill="none" xmlns="http://www.w3.org/2000/svg">

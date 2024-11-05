@@ -21,6 +21,7 @@ activeRoute:ActivatedRoute=inject(ActivatedRoute);
 pages:Page[]=[]
 chapterLink:string=''
 itemLink:string=''
+mangaType:string=''
 extId:number=0;
 isSideMenuOpen: boolean = false; // Controls sidenav visibility
 isNavOpen: boolean = true; // Controls navbar visibility
@@ -29,7 +30,7 @@ imageFit="no"
 pageNumber=0;
 page2Number=1;
 progress=true;
-loading = true; // State to track image loading
+loading = false; // State to track image loading
 isRightToLeft: boolean=false;
     NavToggle(isNavOpen: boolean) {
         this.isNavOpen = isNavOpen;
@@ -91,6 +92,7 @@ isRightToLeft: boolean=false;
             this.chapterLink = params['chapterLink'];
             this.extId = params['extId'];
             this.itemLink=params['itemLink'];
+            this.mangaType=params['mangaType'];
             this.changeByProgress(0);
             this.getPages(this.chapterLink, this.extId);
         });

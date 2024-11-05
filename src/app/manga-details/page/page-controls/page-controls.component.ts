@@ -90,7 +90,7 @@ export class PageControlsComponent {
     }
     else if(this.currentImageFit=="w"){
       this.currentImageFit='h'
-      this.imageFitView='hight'
+      this.imageFitView='height'
     }
     else if(this.currentImageFit=='both'){
       this.currentImageFit='no'

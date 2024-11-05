@@ -7,3 +7,10 @@
 .inner-carousel {   
         scrollbar-width: none;
     }
+.indicator-btn {
+transition: background-color 0.3s;
+}
+.indicator-btn.active {
+    opacity: 100;
+background-color: #333; /* Active indicator color */
+}

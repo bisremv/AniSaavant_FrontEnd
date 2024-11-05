@@ -3,6 +3,7 @@ import { Component, inject, ViewChild } from '@angular/core';
 import { FormsModule, NgForm } from '@angular/forms';
 import { UserManagmentService } from '../../Service/user-managment.service';
 import { Router } from '@angular/router';
+import { PopupService } from '../../Service/popup.service';
 
 @Component({
   selector: 'app-sign-up',
@@ -15,6 +16,7 @@ export class SignUpComponent {
   @ViewChild('registerForm') form!: NgForm;
   url: string | undefined;
   userManagementService=inject(UserManagmentService);
+  popupService:PopupService=inject(PopupService)
   route:Router=inject(Router);
   isLoading: boolean = false;
   isSuccess: boolean = false;
@@ -40,9 +42,12 @@ sendUserInfo(data: {userName: string, userEmail: string, password: string}) {
       this.isLoading = false;
       this.isError=true;
       this.Message = error.error;
+      this.popupService.openPopup("sign", this.Message,true,false)
+
     },
     complete:() => {
       this.isLoading = false;
+      this.popupService.openPopup("sign", this.Message,true,false)
       this.navigateToSignIN()
     }
   });;

@@ -1,18 +1,27 @@
-<div class="p-0 m-0">
-	<div class="face w-52 h-52 md:w-64  md:h-56 flex flex-col justify-around p-4">
-		<div class="band w-[125%] ">
-		<div class="red"></div>
-		<div class="white"></div>
-		<div class="blue"></div>
+
+<div class="box font-main">
+	<div class="box__ghost">
+	  <div class="box__ghost-container">
+		<div class="box__ghost-eyes">
+		  <div class="box__eye-left"></div>
+		  <div class="box__eye-right"></div>
+		</div>
+		<div class="box__ghost-bottom">
+		  <div></div>
+		  <div></div>
+		  <div></div>
+		  <div></div>
+		  <div></div>
+		</div>
+	  </div>
+	  <div class="box__ghost-shadow"></div>
 	</div>
-	<div class="eyes flex justify-between"></div>
-	<div class="dimples flex justify-around"></div>
-	<div class="mouth"></div>
-</div>
-<div class="w-full flex justify-center flex-col  items-center">
-	<div class="w-full  flex justify-center flex-col  items-center">
-		<h1>Oops! Looks like there's nothing to show here!</h1>
-		<div routerLink="/discover" class="btn btn-outline m-4 md:btn-lg">Return to Home</div>
+	
+	<div class="box__description flex flex-col items-center">
+	  <div class="box__description-container">
+		<div class="box__description-text">Oops! Looks like there's nothing to show here</div>
+	  </div>
+		<div routerLink="/discover" class="btn box__button btn-outline m-4 w-64 md:btn-lg">Return to Home</div>
 	</div>
-</div>
-</div>
+	
+  </div>

@@ -10,11 +10,12 @@ import { PopupService } from './Service/popup.service';
 import { LoadingComponent } from "./Components/loading/loading.component";
 import { StreamComponent } from "./stream/stream.component";
 import { NavBarPageHIdeService } from './Service/nav-bar-page-hide.service';
+import { FooterComponent } from "./footer/footer.component";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, CommonModule, RouterModule, AnimeItemComponent, NavBarComponent, PopUpComponent, LoadingComponent, StreamComponent],
+  imports: [RouterOutlet, CommonModule, RouterModule, AnimeItemComponent, NavBarComponent, PopUpComponent, LoadingComponent, StreamComponent, FooterComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })

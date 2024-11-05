@@ -4,6 +4,7 @@ import { FormsModule, NgForm } from '@angular/forms';
 import { UserManagmentService } from '../../Service/user-managment.service';
 import { Router } from '@angular/router';
 import { exhaustMap, take } from 'rxjs/operators';
+import { PopupService } from '../../Service/popup.service';
 
 @Component({
   selector: 'app-sign-in',
@@ -20,6 +21,8 @@ export class SignInComponent {
   isLoading: boolean = false;
   isSuccess: boolean = false;
   isError: boolean = false;
+  popupService:PopupService=inject(PopupService)
+  
   Message: string = '';
   OnFormSubmit() {
     this.SignInUser(this.form.value);
@@ -37,10 +40,12 @@ export class SignInComponent {
     error:(error) => {
     this.Message = "Invalid Credentials";
     this.isError = true;
+    this.popupService.openPopup("sign", "res",true,false)
       this.isLoading = false;
     },
     complete:() => {
     this.isSuccess = true;
+    this.popupService.openPopup("sign", "res",true,false)
     this.isLoading = false;
     this.route.navigate(['discover']);
     

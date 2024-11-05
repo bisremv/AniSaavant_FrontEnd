@@ -23,18 +23,18 @@
 <div class="abs-controls   ">
  <div *ngIf="loading" class="fixed  inset-0 flex justify-center items-center" [ngClass]="{'md:mr-80': isSideMenuOpen, 'mr-10 mx-10': !isSideMenuOpen}" >
     <div class="loader">
-    <span class="loading loading-bars loading-lg"></span>
+        <span class="loading text-text-grey-50  loading-ring  w-20"></span>
     </div>
 </div>
 <div class="right fixed left-0 inset-y-0  flex items-center justify-center    w-1/6 " (click)="changePage(true)" [ngClass]="{'fade-out bg-primary/50': !loading}" >
     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="size-6 text-link md:size-14 rotate-180">
         <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
-      </svg>  
+    </svg>  
 </div>
 <div class="left fixed right-0 inset-y-0 flex items-center justify-center  w-1/6 " (click)="changePage(false)" [ngClass]="{'md:right-[21rem] ': isSideMenuOpen, 'md:right-14': !isSideMenuOpen,'fade-out bg-primary/50': !loading}"   > 
     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="size-6 text-link md:size-14">
         <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
-      </svg>      
+    </svg>      
 
 </div>
 </div>

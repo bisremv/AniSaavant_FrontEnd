@@ -23,35 +23,46 @@ export class AnimeDiscoverComponent implements OnInit {
   TrendingList=[]
   AnticipatedList=[]
   MostWatchedList=[]
-  // Scroll to the next item in the carousel
-  scrollNext() {
+  activeIndex = 0;  // Initialize active slide index
+  // Other lists and initialization code...
+  jumpToSlide(index: number) {
     const carousel: HTMLElement = this.carousel.nativeElement;
-    const scrollAmount = carousel.clientWidth;
-    const currentScroll = carousel.scrollLeft;
-    const maxScroll = scrollAmount * (this.animeHeros.length - 1); // Total width minus the width of one item
-
-    if (currentScroll + scrollAmount >= maxScroll) {
-      // If reached the end, loop back to the first item
-      carousel.scrollTo({ left: 0, behavior: 'smooth' });
-    } else {
-      // Otherwise, scroll by one item width
-      carousel.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-    }
+    const scrollAmount = carousel.clientWidth * index;
+    carousel.scrollTo({ left: scrollAmount, behavior: 'smooth' });
+    this.activeIndex = index; // Update active index
   }
-  scrollPrev() {
-    const carousel: HTMLElement = this.carousel.nativeElement;
-    const scrollAmount = carousel.clientWidth;
-    const currentScroll = carousel.scrollLeft;
+  
+// Scroll to the next item in the carousel
+scrollNext() {
+  const carousel: HTMLElement = this.carousel.nativeElement;
+  const scrollAmount = carousel.clientWidth;
+  const currentScroll = carousel.scrollLeft;
+  const maxScroll = scrollAmount * (this.animeHeros.length - 1);
 
-    if (currentScroll - scrollAmount < 0) {
-      // If reached the beginning, loop forward to the last item
-      const maxScroll = scrollAmount * (this.animeHeros.length - 1);
-      carousel.scrollTo({ left: maxScroll, behavior: 'smooth' });
-    } else {
-      // Otherwise, scroll by one item width in the reverse direction
-      carousel.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
-    }
+  if (currentScroll + scrollAmount >= maxScroll) {
+    carousel.scrollTo({ left: 0, behavior: 'smooth' });
+    this.activeIndex = 0; // Loop back to the first slide
+  } else {
+    carousel.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+    this.activeIndex = Math.min(this.activeIndex + 1, this.animeHeros.length - 1); // Update active slide index
   }
+}
+
+scrollPrev() {
+  const carousel: HTMLElement = this.carousel.nativeElement;
+  const scrollAmount = carousel.clientWidth;
+  const currentScroll = carousel.scrollLeft;
+
+  if (currentScroll - scrollAmount < 0) {
+    const maxScroll = scrollAmount * (this.animeHeros.length - 1);
+    carousel.scrollTo({ left: maxScroll, behavior: 'smooth' });
+    this.activeIndex = this.animeHeros.length - 1; // Loop forward to the last slide
+  } else {
+    carousel.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+    this.activeIndex = Math.max(this.activeIndex - 1, 0); // Update active slide index
+  }
+}
+
   ngOnInit() {
       this.getAnimeHero();
       this.getPopularAnime();

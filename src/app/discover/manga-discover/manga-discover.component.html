@@ -4,7 +4,7 @@
       <ng-container *ngIf="mangaHeros && mangaHeros.length >0; else emptyList">
         <app-manga-hero
         class="snap-centerw-full  snap-center flex-shrink-0"
-        *ngFor="let manga of mangaHeros | slice: 0:5; let i = index"
+        *ngFor="let manga of mangaHeros | slice: 0:8; let i = index"
         [manga]="manga"
       ></app-manga-hero>
         </ng-container>
@@ -33,24 +33,37 @@
       <!-- Previous slide navigation -->
       <a (click)="scrollPrev()" class="btn  arrow">❮</a>
     </div>
+    <!-- Slide Indicators -->
+  <div class=" md:hidden indicators absolute bottom-0 opacity-35  md:bottom-4 mx-auto w-full md:w-2/6 flex justify-around mt-4">
+    <button
+      *ngFor="let anime of mangaHeros| slice: 0:8; let i = index"
+      (click)="jumpToSlide(i)"
+      [class.active]="i === activeIndex"
+      class="indicator-btn bg-link rounded-full w-4 h-4 md:w-6 md:h-6 mx-1"></button>
+  </div>
   </div>
 <div class="extention-container">
     <app-manga-sites class="" *ngFor="let ext of extInfo | slice: 0:3" [ext]="ext" ></app-manga-sites>
     <div *ngIf="!(extInfo.length > 0) && 
         !this.extLoading">
-      <div  class="alert w-full alert-info">
-        <svg
+      <div  class=" w-full border-none alert bg-transparent ">
+        <div class="flex flex-col items-center justify-center gap-2 col-span-full w-full ">
+          <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
           viewBox="0 0 24 24"
           class="h-6 w-6 shrink-0 stroke-current">
           <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
         </svg>
-        <span>To view the Discover Manga list, please enable the required extensions.</span>
+        <span >To view the Discover Manga list, please enable the required extensions
+          <a class="link text-link"  routerLink="/extension"> here.</a>
+        </span>
       </div>
+    </div>
+      <app-empty-page></app-empty-page>
     </div>
   </div>

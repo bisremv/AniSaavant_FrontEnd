@@ -24,6 +24,17 @@ prev:number =Arrow.Prev;
 @Input()   isAnimeLoading:boolean=false;
 showNextArrow: boolean = true;
 showPrevArrow: boolean = false;
+displayCount = 6;  // Initial number of items to display
+  incrementCount = 6; // Number of items to load each time
+
+  loadMore() {
+    if (this.displayCount < this.seasons.length) {
+      this.displayCount += this.incrementCount;
+    }
+  }
+  get allItemsLoaded(): boolean {
+    return this.displayCount >= this.seasons.length;
+  }
 ngOnChanges(){
   if(this.seasons.length < 5){
     this.showNextArrow=false;

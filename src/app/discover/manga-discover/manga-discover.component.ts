@@ -9,12 +9,14 @@ import { MangaHero } from '../../Models/MangaHero';
 import { ExtensionService } from '../../Service/extension.service';
 import { Extension } from '../../Models/Extenison';
 import { MangaItem } from '../../Models/MangaItem';
+import { EmptyPageComponent } from "../../Components/empty-page/empty-page.component";
+import { RouterModule } from '@angular/router';
 
 
 @Component({
   selector: 'app-manga-discover',
   standalone: true,
-  imports: [MangaItemComponent, MangaGroupComponent, MangaSitesComponent, MangaHeroComponent ,CommonModule],
+  imports: [MangaItemComponent, MangaGroupComponent, MangaSitesComponent, MangaHeroComponent, CommonModule, EmptyPageComponent,RouterModule],
   templateUrl: './manga-discover.component.html',
   styleUrl: './manga-discover.component.scss'
 })
@@ -25,6 +27,15 @@ export class MangaDiscoverComponent implements OnInit {
   extInfo:Extension[]=[];
   extLoading:Boolean=false;
   mangaHeros:MangaItem[] = []
+  activeIndex = 0;  // Initialize active slide index
+  // Other lists and initialization code...
+  jumpToSlide(index: number) {
+    const carousel: HTMLElement = this.carousel.nativeElement;
+    const scrollAmount = carousel.clientWidth * index;
+    carousel.scrollTo({ left: scrollAmount, behavior: 'smooth' });
+    this.activeIndex = index; // Update active index
+  }
+  
   ngOnInit() {
     this.getMangaHeros();
     this.getExternalMangaSites();

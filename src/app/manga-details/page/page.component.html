@@ -28,7 +28,7 @@
     </div>
 </div>
 <div class="right fixed left-0 inset-y-0  flex items-center justify-center   w-2/5 md:w-2/6 " [ngClass]="{' pointer-events-none':mangaType =='long Strip'}"  
-(click)="pageView !== 'long Strip' && changePage(false)"
+(click)="pageView !== 'long Strip' && changePage(true)"
 [ngClass]="{'md:right-[21rem] ': isSideMenuOpen, 'md:right-14': !isSideMenuOpen,'fade-out bg-primary/50': !loading && pageView !== 'long Strip', 'hidden':pageView =='long Strip' }"  
 
 >

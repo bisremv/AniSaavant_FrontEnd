@@ -9,11 +9,11 @@ import { ExtensionService } from './extension.service';
   providedIn: 'root'
 })
 export class DiscoverService {
-  url: string ="https://anisavantbackendnew-production.up.railway.app";
+  url: string ="https://anisavantbackendnew-production-3de1.up.railway.app";
   http:HttpClient=inject(HttpClient);
   extensionService:ExtensionService=inject(ExtensionService);
   userManagmentService:UserManagmentService=inject(UserManagmentService);
-  
+
   getPopularAnime(page:number) {
     let params = new HttpParams().set('page',page);
     return this.http.get(this.url+'/api/discover/popular/anime' , {params})
@@ -37,13 +37,13 @@ export class DiscoverService {
       return response;
     }));
   }
-  
+
   getAnimeTrending(page:number){
     let params = new HttpParams().set('page',page);
 
     return this.http.get(this.url+'/api/discover/trending/anime' , {params})
     .pipe(tap((response: any) => {
-      
+
       return response;
     }));
   }
@@ -79,7 +79,7 @@ export class DiscoverService {
 
 
   getPopularManga(extId:number,page:number){
-    
+
     let params = new HttpParams().set('extId', extId).set('page', page);
     return this.http.get(this.url+'/api/discover/popular/manga',{params})
     .pipe(tap((response: any) => {

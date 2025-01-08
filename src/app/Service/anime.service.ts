@@ -10,11 +10,11 @@ import e from "express";
   })
 export class AnimeService {
 
-    url: string ="https://anisavantbackendnew-production.up.railway.app";
+    url: string ="https://anisavantbackendnew-production-3de1.up.railway.app";
     http:HttpClient=inject(HttpClient);
     userMangamentService:UserManagmentService=inject(UserManagmentService);
 
-    
+
     getAnimeInfo(tmdbAnimeId: number, animeId: number) {
       if(animeId==null){
         animeId=0
@@ -24,7 +24,7 @@ export class AnimeService {
     }));
         }
     getSimilarAnime(animeId: number) {
-        
+
         return this.http.get(this.url+"/api/anime/get/similar?animeId="+animeId).pipe(tap((response: any) => {
         }));
         }

@@ -11,12 +11,12 @@ import { AnimeHero } from '../Models/anime_hero';
   providedIn: 'root'
 })
 export class LibraryService {
- 
-  url: string ="https://anisavantbackendnew-production.up.railway.app";
+
+  url: string ="https://anisavantbackendnew-production-3de1.up.railway.app";
   userService:UserManagmentService=inject(UserManagmentService);
   http:HttpClient=inject(HttpClient)
   constructor() { }
-  
+
   addAnimeToLibrary(anime:AnimeInfo,season:Season[]){
     let id =this.userService.user.value.id;
     return this.http.post(this.url+"/api/library/add/anime?userId="+id,

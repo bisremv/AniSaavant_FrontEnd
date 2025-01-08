@@ -8,11 +8,11 @@ import { MangaItem } from '../Models/MangaItem';
   providedIn: 'root'
 })
 export class SearchService {
-  url: string ="https://anisavantbackendnew-production.up.railway.app";
+  url: string ="https://anisavantbackendnew-production-3de1.up.railway.app";
   http:HttpClient=inject(HttpClient);
 
   constructor() { }
-  
+
   searchAnime(filters: Filter) {
     /* /api/search/anime?search=m&page=1&status=ended&years=2000-2026&countries=jp&certifications=nr&runtimes=2-120&tmdb_ratings=4-10&imdb_ratings=4-10&rt_meters=4-100&studio_ids=1218&page=1 */
     let search = filters.search;
@@ -53,7 +53,7 @@ export class SearchService {
               country = "jp";
             break;
         }
-        
+
         if(countries !=''){
           countries+=","+country;
         }
@@ -76,7 +76,7 @@ export class SearchService {
       if(certifications!=''){
         params+="&certifications="+certifications;
       }
-      let studio_ids =''; 
+      let studio_ids ='';
       filters.studio.forEach(studio => {
         if(studio_ids!=''){
           studio_ids+=","+studio;

@@ -8,7 +8,7 @@ import { BehaviorSubject, tap } from 'rxjs';
 })
 export class UserManagmentService {
   constructor(private http: HttpClient) {}
-  url: string ="https://anisavantbackendnew-production.up.railway.app";
+  url: string ="https://anisavantbackendnew-production-3de1.up.railway.app";
   user = new BehaviorSubject<User>(new User(undefined, undefined, undefined, undefined, undefined, undefined));
 
   isLoggedIn(): boolean {
@@ -18,12 +18,12 @@ export class UserManagmentService {
 
   signIn(data: { userEmail: string; password: string; }) {
     return this.http.post(this.url+"/api/user/signIn", data).pipe(tap((response: any) => {
-      const userObj = new User( response.userName,response.userEmail, response.id, response._token, response._expirationData,response.profilePic); 
+      const userObj = new User( response.userName,response.userEmail, response.id, response._token, response._expirationData,response.profilePic);
       localStorage.setItem('userData', JSON.stringify(userObj));
       this.user.next(userObj);
     }));
 }
-  
+
   createUser(data: { userName: string; userEmail: string; password: string }) {
   const uri=this.url+"/api/user/register";
   return this.http.post(uri, data, { responseType: 'text' })
@@ -31,7 +31,7 @@ export class UserManagmentService {
 
   autoLogin() {
     const userData = JSON.parse(localStorage.getItem('userData') || '{}');
-    
+
     if (!userData) {
       return;
     }
@@ -78,15 +78,15 @@ export class UserManagmentService {
           response._expirationData || userData.expirationData,  // Preserve expiration date if not returned
           response.profilePic
         );
-        
+
         // Update local storage and the BehaviorSubject
         localStorage.setItem('userData', JSON.stringify(updatedUser));
         this.user.next(updatedUser);
-        
+
       })
     );
   }
-  
+
   changeProfilePic(picIndex:number){
     this.user.value.profilePic=picIndex;
     return this.updateUser()

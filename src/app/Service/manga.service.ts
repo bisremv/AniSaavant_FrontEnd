@@ -8,7 +8,7 @@ import { UserManagmentService } from "./user-managment.service";
 })
 export class MangaService {
 
-        url: string ="https://anisavantbackendnew-production.up.railway.app";
+        url: string ="https://anisavantbackendnew-production-3de1.up.railway.app";
         http:HttpClient=inject(HttpClient);
         userService:UserManagmentService=inject(UserManagmentService);
         getMangaInfo(itemLink:string, extId:number) {

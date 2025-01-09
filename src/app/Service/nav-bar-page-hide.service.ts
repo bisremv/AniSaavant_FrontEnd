@@ -6,9 +6,9 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class NavBarPageHIdeService {
 
-  constructor() { }  
+  constructor() { }
   isNavOpen = new BehaviorSubject<boolean>(true);
-
+// just a fake git hub hit map
 
   openNAv() {
     this.isNavOpen.next(true);
